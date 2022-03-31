@@ -154,6 +154,7 @@
         <div class="container">
             <div class="account-wrapper">
                 <h3 class="title">Register Now</h3>
+                
                 <form class="account-form">
                     <div class="form-group">
                         <input type="text" placeholder="User Name" name="username">
@@ -165,7 +166,25 @@
                         <input type="password" placeholder="Password" name="password">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Confirm Password" name="password">
+                        <input type="password" placeholder="Confirm Password" name="password" class="relative">
+                    </div>
+                    <div class="form-group">
+                        <select class="from-select">
+                            <option value="0" disabled selected>Department</option>
+                            <option value="saab">Engineering</option>
+                            <option value="saab">Management</option>
+                            <option value="saab">Law</option>
+                            <option value="saab">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="from-select">
+                            <option value="0" disabled selected>Branch</option>
+                            <option value="saab">Computer Science Engineering</option>
+                            <option value="saab">Mechanical Engineering</option>
+                            <option value="saab">Civil Engineering</option>
+                            <option value="saab">Other</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <button class="d-block lab-btn"><span>Get Started Now</span></button>
