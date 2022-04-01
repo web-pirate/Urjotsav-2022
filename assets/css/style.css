@@ -3303,6 +3303,18 @@ ul li {
   height: 18px;
   margin-right: 15px;
 }
+.account-form .form-group select {
+  width: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+  padding: 10px 15px;
+  color: #183b56 !important;
+  border: none;
+}
+
 @media (max-width: 575px) {
   .account-form .form-group .checkgroup input[type="checkbox"] {
     width: 14px;
@@ -3972,8 +3984,9 @@ ul li {
 /*================*** Header Section End Here     ***===================*/
 /*======== Banner css start here  =========*/
 .banner-section {
-  background: url(../images/banner/bg.webp);
+  background: url(../images/banner/bg-dark.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .banner-section .banner-wrapper {
   position: relative;
@@ -5387,6 +5400,17 @@ ul li {
   border: none;
   color: #183b56;
 }
+/* .form-select {
+  padding: 10px 20px;
+  background: transparent;
+  z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 14px;
+  border: none;
+  color: #183b56;
+} */
+
 @media (min-width: 992px) {
   .shop-cart
     .section-wrapper
@@ -7112,3 +7136,8 @@ ul li {
 }
 
 /*# sourceMappingURL=style.css.map */
+/* Cultural.html */
+
+.table-head{
+  color: #f64482;
+}
