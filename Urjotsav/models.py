@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     dept_name = db.Column(db.String(1000), nullable=False)
     branch = db.Column(db.String(1000), nullable=False)
     role = db.Column(db.String(1000), nullable=False)
-    reward_points = db.Column(db.String(1000), nullable=False)
+    reward_points = db.Column(db.Integer, nullable=False, default=0)
 
     def get_reset_token(self, expires_sec=600):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -47,3 +47,5 @@ class Events(db.Model):
     out_entry_fess = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.Text, nullable=False)
 
+# class EventRegistration(db.Model):
+#     pass
