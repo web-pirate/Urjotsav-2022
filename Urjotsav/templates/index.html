@@ -1,892 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <title>URJOTSAV 2K22-PIEMR,INDORE</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block content %}
 
-
-    <!-- favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/x-icon/01.png">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/icofont.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-
-
-    <!-- ==========Header Section Starts Here========== -->
-    <header class="header-section">
-
-        <div class="container text-center">
-            <img src="assets/images/logo/logo1.png" alt="PIEMR LOGO">
-        </div>
-        <div class="header-bottom">
-            <div class="container">
-                <div class="header-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="assets/images/logo/logo.png" alt="logo">
-                        </a>
-                    </div>
-                    <div class="menu-area">
-                        <ul class="menu">
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)">Events</a>
-                                <ul class="submenu">
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="registration.html">Sign Up</a></li>
-                                    <li><a href="cultural.html">cultural</a></li>
-                                    <li><a href="sports.html">sport</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="blog.html">Gallary</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                        <a href="registration.html" class="signup"><i class="icofont-ticket"
-                                style="border-radius: 2px;"></i> <span>Register</span>
-                        </a>
-
-                        <!-- toggle icons -->
-                        <div class="header-bar d-lg-none">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="ellepsis-bar d-lg-none">
-                            <i class="icofont-info-square"></i>
-                        </div>
+<!-- ==========Banner Section start Here========== -->
+<section class="banner-section">
+    <div class="container">
+        <div class="banner-wrapper">
+            <div class="row gy-5 align-items-center">
+                <div class="col-lg-12 col-12">
+                    <div class="banner-content text-center">
+                        <h1 class="mb-0"> <span style="color: #f64482;">URJOSTSAV</span> is annual technical &
+                            cultural fest of the <br> Prestige Institute of Engineering Management & Research
+                            (PIEMR)</h1>
+                        <!-- <p>Be the witness of marvalous event <br>
+                                Call us For More info.</p> -->
+                        <a href="{{ url_for('main.register') }}" class="lab-btn mt-3"><span><i
+                                    class="icofont-tasks"></i>
+                                Register
+                                Now</span> </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
-    <!-- ==========Header Section Ends Here========== -->
-
-
-    <!-- ==========Banner Section start Here========== -->
-    <section class="banner-section">
-        <div class="container">
-            <div class="banner-wrapper">
-                <div class="row gy-5 align-items-center">
-                    <div class="col-lg-12 col-12">
-                        <div class="banner-content text-center">
-                            <h1 class="mb-0"> <span style="color: #f64482;">URJOSTSAV</span> is annual technical &
-                                cultural fest of the <br> Prestige Institute of Engineering Management & Research
-                                (PIEMR)</h1>
-                            <!-- <p>Be the witness of marvalous event <br>
-                                Call us For More info.</p> -->
-                            <a href="registration.html" class="lab-btn mt-3"><span><i class="icofont-tasks"></i>
-                                    Register
-                                    Now</span> </a>
-                        </div>
-                    </div>
-                    <!-- <div class="col-lg-6 col-12">
+                <!-- <div class="col-lg-6 col-12">
                         <div class="banner-image">
                             <!-- <img src="assets/images/banner/01.png" alt="banner-img"> -->
-                </div>
-            </div> -->
-        </div>
-        </div>
-        </div>
-    </section>
-    <!-- ==========Banner Section end Here========== -->
+            </div>
+        </div> -->
+    </div>
+    </div>
+    </div>
+</section>
+<!-- ==========Banner Section end Here========== -->
 
 
-    <!-- ==========About Section start Here========== -->
-    <section class="about-section padding-tb padding-b shape-img">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="about-image">
-                        <img src="assets/images/about/01.jpg" alt="about image">
-                        <a href="https://www.youtube.com/embed/woOQPOJ9DCA" class="play-btn" data-rel="lightcase">
-                            <i class="icofont-ui-play"></i>
-                            <span class="pluse_2"></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="section-header text-center">
-                        <h2>Urjotsav 2k22</h2>
-                        <p>About Urjotsav 2k22</p>
-                    </div>
-                    <div class="section-wrapper text-center">
-                        <p style="font-weight: bold;">Urjotsav is for technical as well as cultural fest. In fact, the
-                            college atmosphere takes a festive mood on that occasion. Most of the students take part in
-                            the College Fest. They enjoy it very much. Often students of other colleges are invited to
-                            take an active part in the festival it build team mangament in students
-                            Urjotsav - as its name suggests something that is invigorating makes you feel refreshed and
-                            more energetic.
-                            We @ PIEMR celebrate this festival of amusement and enthusiasm every year as our annual
-                            fest. It's a 6 days event where everyone gets restored with power and gets fulfilled with
-                            new strength to continue our studies with high stamina.
-                        </p>
-
-                        <div class="about-btn-grp">
-                            <a href="registration.html" class="lab-btn style-orange "><span><i
-                                        class="icofont-tasks"></i> Register
-                                    Now</span> </a>
-                        </div>
-                    </div>
+<!-- ==========About Section start Here========== -->
+<section class="about-section padding-tb padding-b shape-img">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="about-image">
+                    <img src="{{ url_for('static', filename='assets/images/about/01.jpg') }}" alt="about image">
+                    <a href="https://www.youtube.com/embed/woOQPOJ9DCA" class="play-btn" data-rel="lightcase">
+                        <i class="icofont-ui-play"></i>
+                        <span class="pluse_2"></span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- ==========About Section end Here========== -->
-
-    <!-- ==========schedule Section start Here========== -->
-    <section class="speakers-section padding-tb padding-b shape-img">
-        <div class="container">
-            <div class="section-header">
-                <h2>Advisory Committe</h2>
-            </div>
-            <div class="section-wrapper">
-                <div class="row g-4 justify-content-center">
-                    <div class="col-xl-12 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/director.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Dr. Manojkumar Deshpande </a> </h5>
-                                            <p>Director, PIEMR</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="spkr-content-details">
-
-                                        <ul class="social-icons">
-                                            <li><a href="https://sites.google.com/piemr.edu.in/drmanojkumardeshpande/home"
-                                                    target="_blank"><i class="icofont-facebook"></i></a></li>
-                                            <li><a
-                                                    href="https://sites.google.com/piemr.edu.in/drmanojkumardeshpande/home"><i
-                                                        class="icofont-twitter"></i></a></li>
-                                            <li><a
-                                                    href="https://sites.google.com/piemr.edu.in/drmanojkumardeshpande/home"><i
-                                                        class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/archana.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Mrs. Archana Deshpande</a> </h5>
-                                            <p>Cultural Head</p>
-                                        </div>
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <!-- <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p> -->
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/Hemalatha1.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Dr . Hemlatha Chadrashekhar </a> </h5>
-                                            <p>DEAN, Prestige PGDM</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <!-- <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p> -->
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+            <div class="col-lg-10">
+                <div class="section-header text-center">
+                    <h2>Urjotsav 2k22</h2>
+                    <p>About Urjotsav 2k22</p>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="section-wrapper text-center">
+                    <p style="font-weight: bold;">Urjotsav is for technical as well as cultural fest. In fact, the
+                        college atmosphere takes a festive mood on that occasion. Most of the students take part in
+                        the College Fest. They enjoy it very much. Often students of other colleges are invited to
+                        take an active part in the festival it build team mangament in students
+                        Urjotsav - as its name suggests something that is invigorating makes you feel refreshed and
+                        more energetic.
+                        We @ PIEMR celebrate this festival of amusement and enthusiasm every year as our annual
+                        fest. It's a 6 days event where everyone gets restored with power and gets fulfilled with
+                        new strength to continue our studies with high stamina.
+                    </p>
 
-    <!-- Core Commitie -->
-    <section class="speakers-section padding-tb padding-b shape-img">
-        <div class="container">
-            <div class="section-header">
-                <h2>Core Committe</h2>
-            </div>
-            <div class="section-wrapper">
-                <div class="row g-4 justify-content-center">
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/Piyush.jpg" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Dr. Piyush Choudhary </a> </h5>
-                                            <p>Head Technical Committe</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <!-- <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p> -->
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/dharmesh.jpg" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Prof. Dharmesh Barodiya</a> </h5>
-                                            <p>Head Sport Committe</p>
-                                        </div>
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <!-- <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p> -->
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/kirti.jpg" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Prof. Kirti Patwardhan</a> </h5>
-                                            <p>Head Cultural Committe</p>
-                                        </div>
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <!-- <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p> -->
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/jolly.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Dr. Jolly Masih </a> </h5>
-                                            <p>Head Managerial Committe</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <!-- <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p> -->
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Core End -->
-    <!-- ==========schedule Section end Here========== -->
-
-
-    <!-- Speakers section start here -->
-    <section class="speakers-section padding-tb padding-b shape-img">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Student Co-ordinators</h2>
-                <p>Tech Contributers of Prestige</p>
-            </div>
-            <div class="section-wrapper">
-                <div class="row g-4 justify-content-center">
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/01.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Rajat Sharma</a> </h5>
-                                            <p>Full Stack Developer</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/02.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Manish Singh </a> </h5>
-                                            <p>Full Stack Developer</p>
-                                        </div>
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/03.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Navalkhe Tejas</a> </h5>
-                                            <p>Full Stack Developer</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="spkr-content-details">
-                                        <p>Completey conceplua high quality
-                                            nice markes rather than long term
-                                            impact human capital</p>
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-12">
-                        <div class="speaker-item">
-                            <div class="speaker-inner">
-                                <div class="speaker-thumb">
-                                    <img src="assets/images/speakers/04.png" alt="speaker">
-                                </div>
-                                <div class="speaker-content">
-                                    <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                        <div class="speaker-infos">
-                                            <h5><a href="speaker-details.html">Sourabh Sivare</a> </h5>
-                                            <p>Web Designer</p>
-                                        </div>
-                                        <div class="speaker-comp-logo">
-                                            <img src="assets/images/speakers/icons/04.png" alt="spkr-company">
-                                        </div>
-                                    </div>
-                                    <div class="spkr-content-details">
-
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- Speakers section end here -->
-
-    <!-- ======= Sponsor sectin start here ======== -->
-    <section class="sponsor-section padding-tb padding-b bg-image">
-        <div class="container">
-            <div class="section-header">
-                <h2>Event Sponsors</h2>
-                <p>Check Who Makes The Event Possible</p>
-            </div>
-            <div class="section-wrapper text-center">
-                <div class="all-sponsor">
-                    <!--  -->
-
-                    <!-- silver-sponsor -->
-                    <h5 class="mt-4">Tech Fest Sponsor</h5>
-                    <div class="silver-sponsor">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="assets/images/sponsor/codechef.jpg" alt="sponsor">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/sponsor/silver-2.png" alt="sponsor">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/sponsor/silver-3.png" alt="sponsor">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/sponsor/silver-4.png" alt="sponsor">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/sponsor/silver-5.png" alt="sponsor">
-                            </div>
-                        </div>
+                    <div class="about-btn-grp">
+                        <a href="registration.html" class="lab-btn style-orange "><span><i class="icofont-tasks"></i>
+                                Register
+                                Now</span> </a>
                     </div>
                 </div>
-                <!-- <a href="#" class="lab-btn"><span>
-                        Become a Sponsor
-                    </span></a> -->
-            </div>
-        </div>
-    </section>
-    <!-- ======= Sponsor sectin end here ======== -->
-
-    <!-- ===== Pricing Plan Start here  ==== -->
-    <section class="pricing-plan-section padding-tb padding-b shape-img">
-        <div class="container-fluid ml-5 mr-5">
-            <div class="section-header">
-                <h2>Our Key Events</h2>
-                <p>Choose Your Event That Fits You Best</p>
-            </div>
-            <div class="section-wrapper">
-                <div class="row g-3 justify-content-center ">
-                    <div class="col-xl-3 col-md-6 col-12">
-                        <div class="pricing-item blue-style">
-                            <div class="pricing-inner">
-                                <div class="pricing-header">
-                                    <a href="">
-                                        <h3>Cultural Event</h3>
-                                    </a>
-                                    <p>Culture is the arts elevated to a set of beliefs</p>
-
-                                </div>
-                                <div class="pricing-content">
-                                    <ul class="facilites">
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Inter College Dance Competition</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Inter College Singing Competition</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Fashion Show</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Treasure Hunt</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Flash Mob</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Classical Performance</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Drama</a>
-                                        </li>
-                                    </ul>
-                                    <div class="get-ticket">
-                                        <a href="#">
-                                            <ul>
-                                                <li class="vat">
-                                                    <h4>₹50</h4>
-                                                </li>
-                                                <li class="icon"><i class="icofont-arrow-right"></i>
-                                                </li>
-                                                <li class="ticket-text">
-                                                    <p>Get Ticket</p>
-                                                </li>
-                                            </ul>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-12">
-                        <div class="pricing-item orange-style">
-                            <div class="pricing-inner">
-                                <div class="pricing-header">
-                                    <h3>Sports Event</h3>
-                                    <p>Champions keep playing until they get it right.</p>
-
-                                </div>
-                                <div class="pricing-content">
-                                    <ul class="facilites">
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Inter College Kabaddi</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Inter College Football</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Inter College Cricket</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Inter College Volleyball</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Basketball</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Kho-Kho</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Carrom</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Badminton</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Women's Cricket</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Chess</a>
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> <a href="">Table Tennis</a>
-                                        </li>
-                                    </ul>
-                                    <div class="get-ticket">
-                                        <a href="#">
-                                            <ul>
-                                                <li class="vat">
-                                                    <h4>₹50</h4>
-                                                    <p>ex. VAT</p>
-                                                </li>
-                                                <li class="icon"><i class="icofont-arrow-right"></i>
-                                                </li>
-                                                <li class="ticket-text">
-                                                    <p>Get Ticket</p>
-                                                </li>
-                                            </ul>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 col-12">
-                        <div class="pricing-item purple-style">
-                            <div class="pricing-inner">
-                                <div class="pricing-header">
-                                    <h3>Managerial Event</h3>
-                                    <p>For VIP Seating</p>
-
-                                </div>
-                                <div class="pricing-content">
-                                    <ul class="facilites">
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> Event Attendance
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> Networking Area Access
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> Tea And Coffee
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> Lunch
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> Free Wifi
-                                        </li>
-                                        <li class="facility-item">
-                                            <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span> 3 Lottery Ticket
-                                        </li>
-                                    </ul>
-                                    <div class="get-ticket">
-                                        <a href="#">
-                                            <ul>
-                                                <li class="vat">
-                                                    <h4>₹50</h4>
-                                                    <p>ex. VAT</p>
-                                                </li>
-                                                <li class="icon"><i class="icofont-arrow-right"></i>
-                                                </li>
-                                                <li class="ticket-text">
-                                                    <p>Get Ticket</p>
-                                                </li>
-                                            </ul>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== Pricing Plan end here  ==== -->
-
-    <!-- ===== Event Gift start here  ==== -->
-    <section class="event-gift-section padding-tb padding-b bg-image">
-        <div class="container">
-            <div class="row flex-lg-row-reverse">
-                <div class="col-lg-6 col-12">
-                    <div class="section-header">
-                        <h2>Event Prices</h2>
-                        <p>Our Complimentary Gifts For You</p>
-                    </div>
-                    <div class="section-wrapper">
-                        <div class="gift-content">
-                            <p>
-                                It is a long established fact that a reader will be distracted by theing
-                                readable content of a page when looking at its layout. The point info
-                                using Lorem Ipsum is that it has a more-or-less
-                            </p>
-                            <ul class="gift-list">
-                                <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    </span> Exclusive T-shirt</li>
-                                <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    </span> Lather Bag</li>
-                                <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    </span> Mug</li>
-                                <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    </span> Gift Hamper</li>
-                            </ul>
-                            <div class="register-button">
-                                <a href="registration.html" class="lab-btn"><span>Register Now</span> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="image-part">
-                        <img src="assets/images/gift/01.png" alt="gift-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== Event Gift end here  ==== -->
-
-    <!-- ===== News Section Start here  ==== -->
-    <section class="news-section padding-tb padding-b shape-img">
-        <div class="container">
-            <div class="section-header">
-                <h2>Recent News</h2>
-                <p>Start Your Remarkable Journey</p>
-            </div>
-            <div class="section-wrapper">
-                <div class="row g-4 justify-content-center">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="news-item">
-                            <div class="news-inner">
-                                <div class="news-thumb">
-                                    <img src="assets/images/news/01.jpg" alt="Image">
-                                </div>
-                                <div class="news-content">
-                                    <h6><a href="blog-single.html">
-                                            How Marching For Science
-                                            Risks Politicizing It
-                                        </a>
-                                    </h6>
-                                    <p><span><i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span> December 24, 2021</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="news-item">
-                            <div class="news-inner">
-                                <div class="news-thumb">
-                                    <img src="assets/images/news/02.jpg" alt="Image">
-                                </div>
-                                <div class="news-content">
-                                    <h6><a href="blog-single.html">
-                                            How Marching For Science
-                                            Risks Politicizing It
-                                        </a>
-                                    </h6>
-                                    <p><span><i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span> December 24, 2021</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="news-item">
-                            <div class="news-inner">
-                                <div class="news-thumb">
-                                    <img src="assets/images/news/03.jpg" alt="Image">
-                                </div>
-                                <div class="news-content">
-                                    <h6><a href="blog-single.html">
-                                            How Marching For Science
-                                            Risks Politicizing It
-                                        </a>
-                                    </h6>
-                                    <p><span><i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span> December 24, 2021</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== News Section end here  ==== -->
-
-
-    <!-- ===== Map  Section start here  ==== -->
-    <div class="map-section">
-        <div class="container-fluid">
-            <div class="map-wrapper">
-                <iframe class="w-100"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.135402865302!2d75.88329351496297!3d22.76035578508646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396302a52ba04921%3A0x7fad922991d66926!2sPrestige%20Institute%20of%20Engineering%20Management%20%26%20Research!5e0!3m2!1sen!2sin!4v1648629164024!5m2!1sen!2sin"
-                    allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
-    <!-- ===== Map  Section end here  ==== -->
+</section>
+<!-- ==========About Section end Here========== -->
 
+<!-- ==========schedule Section start Here========== -->
+<section class="speakers-section padding-tb padding-b shape-img">
+    <div class="container">
+        <div class="section-header">
+            <h2>Advisory Committe</h2>
+        </div>
+        <div class="section-wrapper">
+            <div class="row g-4 justify-content-center">
+                <div class="col-xl-12 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/director.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Dr. Manojkumar Deshpande </a> </h5>
+                                        <p>Director, PIEMR</p>
+                                    </div>
 
-    <!-- ==== Newsletter  Section start here  ==== -->
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h3>Our Newsletter</h3>
+                                </div>
+                                <div class="spkr-content-details">
+
+                                    <ul class="social-icons">
+                                        <li><a href="https://sites.google.com/piemr.edu.in/drmanojkumardeshpande/home"
+                                                target="_blank"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="https://sites.google.com/piemr.edu.in/drmanojkumardeshpande/home"><i
+                                                    class="icofont-twitter"></i></a></li>
+                                        <li><a href="https://sites.google.com/piemr.edu.in/drmanojkumardeshpande/home"><i
+                                                    class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter Your Email"
-                                aria-label="Enter Your Email" aria-describedby="button-addon2">
-                            <button class="lab-btn style-orange" type="button" id="button-addon2">Send Massage <i
-                                    class="icofont-paper-plane"></i> </button>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/archana.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Mrs. Archana Deshpande</a> </h5>
+                                        <p>Cultural Head</p>
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+                                    <!-- <p>Completey conceplua high quality
+                                            nice markes rather than long term
+                                            impact human capital</p> -->
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/Hemalatha1.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Dr . Hemlatha Chadrashekhar </a> </h5>
+                                        <p>DEAN, Prestige PGDM</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <!-- <p>Completey conceplua high quality
+                                            nice markes rather than long term
+                                            impact human capital</p> -->
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -894,43 +173,670 @@
 
             </div>
         </div>
-    </section>
-    <!-- ==== Newsletter  Section end here  ==== -->
+    </div>
+</section>
 
-    <!-- Footer Section start here -->
-    <footer class="footer-section padding-tb padding-b" style="background-image: url(assets/images/footer/bg.jpg);">
-        <div class="container">
-            <div class="footer-content text-center">
-                <!-- <a class="mb-2" href="index.html"><img src="assets/images/footer/logo.png" alt="eventoz"></a> -->
-                <!-- <h3 class="mb-4">eventoz Eventsite</h3> -->
-                <ul class="social-icons justify-content-center">
-                    <li><a href=""><i class="icofont-facebook"></i></a></li>
-                    <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                    <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                    <li><a href="#"><i class="icofont-linkedin"></i></a></li>
-                    <li><a href="#"><i class="icofont-pinterest"></i></a></li>
-                </ul>
+<!-- Core Commitie -->
+<section class="speakers-section padding-tb padding-b shape-img">
+    <div class="container">
+        <div class="section-header">
+            <h2>Core Committe</h2>
+        </div>
+        <div class="section-wrapper">
+            <div class="row g-4 justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/Piyush.jpg') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Dr. Piyush Choudhary </a> </h5>
+                                        <p>Head Technical Committe</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <!-- <p>Completey conceplua high quality
+                                            nice markes rather than long term
+                                            impact human capital</p> -->
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/dharmesh.jpg') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Prof. Dharmesh Barodiya</a> </h5>
+                                        <p>Head Sport Committe</p>
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+                                    <!-- <p>Completey conceplua high quality
+                                            nice markes rather than long term
+                                            impact human capital</p> -->
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/kirti.jpg') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Prof. Kirti Patwardhan</a> </h5>
+                                        <p>Head Cultural Committe</p>
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+                                    <!-- <p>Completey conceplua high quality
+                                            nice markes rather than long term
+                                            impact human capital</p> -->
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/jolly.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Dr. Jolly Masih </a> </h5>
+                                        <p>Head Managerial Committe</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <!-- <p>Completey conceplua high quality
+                                            nice markes rather than long term
+                                            impact human capital</p> -->
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </footer>
-    <!-- Footer Section end here -->
+    </div>
+</section>
+<!-- Core End -->
+<!-- ==========schedule Section end Here========== -->
 
 
-    <!-- scrollToTop start here -->
-    <a href="#" class="scrollToTop"><i class="icofont-bubble-up"></i><span class="pluse_1"></span><span
-            class="pluse_2"></span></a>
-    <!-- scrollToTop ending here -->
+<!-- Speakers section start here -->
+<section class="speakers-section padding-tb padding-b shape-img">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Student Co-ordinators</h2>
+            <p>Tech Contributers of Prestige</p>
+        </div>
+        <div class="section-wrapper">
+            <div class="row g-4 justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/01.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Rajat Sharma</a> </h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <p>Completey conceplua high quality
+                                        nice markes rather than long term
+                                        impact human capital</p>
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/02.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Manish Singh </a> </h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+                                    <p>Completey conceplua high quality
+                                        nice markes rather than long term
+                                        impact human capital</p>
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/03.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Navalkhe Tejas</a> </h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <p>Completey conceplua high quality
+                                        nice markes rather than long term
+                                        impact human capital</p>
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/04.png') }}"
+                                    alt="speaker">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5><a href="speaker-details.html">Sourabh Sivare</a> </h5>
+                                        <p>Web Designer</p>
+                                    </div>
+                                    <div class="speaker-comp-logo">
+                                        <img src="{{ url_for('static', filename='assets/images/speakers/icons/04.png') }}"
+                                            alt="spkr-company">
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Speakers section end here -->
+
+<!-- ======= Sponsor sectin start here ======== -->
+<section class="sponsor-section padding-tb padding-b bg-image">
+    <div class="container">
+        <div class="section-header">
+            <h2>Event Sponsors</h2>
+            <p>Check Who Makes The Event Possible</p>
+        </div>
+        <div class="section-wrapper text-center">
+            <div class="all-sponsor">
+                <!--  -->
+
+                <!-- silver-sponsor -->
+                <h5 class="mt-4">Tech Fest Sponsor</h5>
+                <div class="silver-sponsor">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/codechef.jpg') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-2.png') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-3.png') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-4.png') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-5.png') }}"
+                                alt="sponsor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <a href="#" class="lab-btn"><span>
+                        Become a Sponsor
+                    </span></a> -->
+        </div>
+    </div>
+</section>
+<!-- ======= Sponsor sectin end here ======== -->
+
+<!-- ===== Pricing Plan Start here  ==== -->
+<section class="pricing-plan-section padding-tb padding-b shape-img">
+    <div class="container-fluid ml-5 mr-5">
+        <div class="section-header">
+            <h2>Our Key Events</h2>
+            <p>Choose Your Event That Fits You Best</p>
+        </div>
+        <div class="section-wrapper">
+            <div class="row g-3 justify-content-center ">
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="pricing-item blue-style">
+                        <div class="pricing-inner">
+                            <div class="pricing-header">
+                                <a href="">
+                                    <h3>Cultural Event</h3>
+                                </a>
+                                <p>Culture is the arts elevated to a set of beliefs</p>
+
+                            </div>
+                            <div class="pricing-content">
+                                <ul class="facilites">
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Inter College Dance Competition</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Inter College Singing Competition</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Fashion Show</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Treasure Hunt</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Flash Mob</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Classical Performance</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Drama</a>
+                                    </li>
+                                </ul>
+                                <div class="get-ticket">
+                                    <a href="#">
+                                        <ul>
+                                            <li class="vat">
+                                                <h4>₹50</h4>
+                                            </li>
+                                            <li class="icon"><i class="icofont-arrow-right"></i>
+                                            </li>
+                                            <li class="ticket-text">
+                                                <p>Get Ticket</p>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="pricing-item orange-style">
+                        <div class="pricing-inner">
+                            <div class="pricing-header">
+                                <h3>Sports Event</h3>
+                                <p>Champions keep playing until they get it right.</p>
+
+                            </div>
+                            <div class="pricing-content">
+                                <ul class="facilites">
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Inter College Kabaddi</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Inter College Football</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Inter College Cricket</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Inter College Volleyball</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Basketball</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Kho-Kho</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Carrom</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Badminton</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Women's Cricket</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Chess</a>
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> <a href="">Table Tennis</a>
+                                    </li>
+                                </ul>
+                                <div class="get-ticket">
+                                    <a href="#">
+                                        <ul>
+                                            <li class="vat">
+                                                <h4>₹50</h4>
+                                                <p>ex. VAT</p>
+                                            </li>
+                                            <li class="icon"><i class="icofont-arrow-right"></i>
+                                            </li>
+                                            <li class="ticket-text">
+                                                <p>Get Ticket</p>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="pricing-item purple-style">
+                        <div class="pricing-inner">
+                            <div class="pricing-header">
+                                <h3>Managerial Event</h3>
+                                <p>For VIP Seating</p>
+
+                            </div>
+                            <div class="pricing-content">
+                                <ul class="facilites">
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> Event Attendance
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> Networking Area Access
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> Tea And Coffee
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> Lunch
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> Free Wifi
+                                    </li>
+                                    <li class="facility-item">
+                                        <span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        </span> 3 Lottery Ticket
+                                    </li>
+                                </ul>
+                                <div class="get-ticket">
+                                    <a href="#">
+                                        <ul>
+                                            <li class="vat">
+                                                <h4>₹50</h4>
+                                                <p>ex. VAT</p>
+                                            </li>
+                                            <li class="icon"><i class="icofont-arrow-right"></i>
+                                            </li>
+                                            <li class="ticket-text">
+                                                <p>Get Ticket</p>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ===== Pricing Plan end here  ==== -->
+
+<!-- ===== Event Gift start here  ==== -->
+<section class="event-gift-section padding-tb padding-b bg-image">
+    <div class="container">
+        <div class="row flex-lg-row-reverse">
+            <div class="col-lg-6 col-12">
+                <div class="section-header">
+                    <h2>Event Prices</h2>
+                    <p>Our Complimentary Gifts For You</p>
+                </div>
+                <div class="section-wrapper">
+                    <div class="gift-content">
+                        <p>
+                            It is a long established fact that a reader will be distracted by theing
+                            readable content of a page when looking at its layout. The point info
+                            using Lorem Ipsum is that it has a more-or-less
+                        </p>
+                        <ul class="gift-list">
+                            <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </span> Exclusive T-shirt</li>
+                            <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </span> Lather Bag</li>
+                            <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </span> Mug</li>
+                            <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </span> Gift Hamper</li>
+                        </ul>
+                        <div class="register-button">
+                            <a href="registration.html" class="lab-btn"><span>Register Now</span> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="image-part">
+                    <img src="{{ url_for('static', filename='assets/images/gift/01.png') }}" alt="gift-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ===== Event Gift end here  ==== -->
+
+<!-- ===== News Section Start here  ==== -->
+<section class="news-section padding-tb padding-b shape-img">
+    <div class="container">
+        <div class="section-header">
+            <h2>Recent News</h2>
+            <p>Start Your Remarkable Journey</p>
+        </div>
+        <div class="section-wrapper">
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="news-item">
+                        <div class="news-inner">
+                            <div class="news-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/news/01.jpg') }}" alt="Image">
+                            </div>
+                            <div class="news-content">
+                                <h6><a href="blog-single.html">
+                                        How Marching For Science
+                                        Risks Politicizing It
+                                    </a>
+                                </h6>
+                                <p><span><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span> December 24, 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="news-item">
+                        <div class="news-inner">
+                            <div class="news-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/news/02.jpg') }}" alt="Image">
+                            </div>
+                            <div class="news-content">
+                                <h6><a href="blog-single.html">
+                                        How Marching For Science
+                                        Risks Politicizing It
+                                    </a>
+                                </h6>
+                                <p><span><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span> December 24, 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="news-item">
+                        <div class="news-inner">
+                            <div class="news-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/news/03.jpg') }}" alt="Image">
+                            </div>
+                            <div class="news-content">
+                                <h6><a href="blog-single.html">
+                                        How Marching For Science
+                                        Risks Politicizing It
+                                    </a>
+                                </h6>
+                                <p><span><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span> December 24, 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ===== News Section end here  ==== -->
 
 
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/fontawesome.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/circularProgressBar.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/functions.js"></script>
-</body>
+<!-- ===== Map  Section start here  ==== -->
+<div class="map-section">
+    <div class="container-fluid">
+        <div class="map-wrapper">
+            <iframe class="w-100"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.135402865302!2d75.88329351496297!3d22.76035578508646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396302a52ba04921%3A0x7fad922991d66926!2sPrestige%20Institute%20of%20Engineering%20Management%20%26%20Research!5e0!3m2!1sen!2sin!4v1648629164024!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+<!-- ===== Map  Section end here  ==== -->
 
-</html>
+
+<!-- ==== Newsletter  Section start here  ==== -->
+<section class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-wrapper">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3>Our Newsletter</h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter Your Email"
+                            aria-label="Enter Your Email" aria-describedby="button-addon2">
+                        <button class="lab-btn style-orange" type="button" id="button-addon2">Send Massage <i
+                                class="icofont-paper-plane"></i> </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- ==== Newsletter  Section end here  ==== -->
+
+{% endblock content %}
