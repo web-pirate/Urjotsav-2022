@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header Section Start Here -->
+<section class="page-header padding-tb">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="page-header-content-area">
+            <h4 class="ph-title">Login for Event</h4>
+            <ul class="lab-ul">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a class="active">login</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Login Section Section Starts Here -->
+<div class="login-section padding-tb">
+    <div class=" container">
+        <div class="account-wrapper">
+            <h3 class="title">Login</h3>
+            <form class="account-form">
+                <div class="form-group">
+                    <input type="text" placeholder="User Name" name="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" name="password">
+                </div>
+                <div class="form-group">
+                    <div class="d-flex justify-content-between flex-wrap pt-sm-2">
+                        <div class="checkgroup">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember">Remember Me</label>
+                        </div>
+                        <a href="#">Forget Password?</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="d-block lab-btn"><span>Submit Now</span></button>
+                </div>
+            </form>
+            <div class="account-bottom">
+                <span class="d-block cate pt-10">Don’t Have any Account? <a href="registration.html"> Sign
+                        Up</a></span>
+                <span class="or"><span>or</span></span>
+                <h5 class="subtitle">Login With Social Media</h5>
+                <ul class="social-media social-color lab-ul d-flex justify-content-center">
+                    <li>
+                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="pinterest"><i class="fab fa-pinterest"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Section Section Ends Here -->
+
+{% endblock content %}
