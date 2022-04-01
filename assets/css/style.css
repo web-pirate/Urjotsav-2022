@@ -3984,8 +3984,9 @@ ul li {
 /*================*** Header Section End Here     ***===================*/
 /*======== Banner css start here  =========*/
 .banner-section {
-  background: url(../images/banner/bg.webp);
+  background: url(../images/banner/bg-dark.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .banner-section .banner-wrapper {
   position: relative;
@@ -7135,3 +7136,8 @@ ul li {
 }
 
 /*# sourceMappingURL=style.css.map */
+/* Cultural.html */
+
+.table-head{
+  color: #f64482;
+}
