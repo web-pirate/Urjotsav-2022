@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-  <title>URJOTSAV 2K22-PIEMR,INDORE</title>
+  <title>URJOTSAV 2K22 - PIEMR, INDORE</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
   <!-- favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="assets/images/x-icon/01.png">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/x-icon/01.png') }}">
 
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/icofont.min.css">
-  <link rel="stylesheet" href="assets/css/lightcase.css">
-  <link rel="stylesheet" href="assets/css/swiper.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/icofont.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/lightcase.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
 </head>
 
 <body>
@@ -36,14 +36,14 @@
   <header class="header-section">
 
     <div class="container text-center">
-      <img src="assets/images/logo/logo1.png" alt="PIEMR LOGO">
+      <img src="{{ url_for('static', filename='assets/images/logo/logo1.png') }}" alt="PIEMR LOGO">
     </div>
     <div class="header-bottom">
       <div class="container">
         <div class="header-wrapper">
           <div class="logo">
             <a href="index.html">
-              <img src="assets/images/logo/logo.png" alt="logo">
+              <img src="{{ url_for('static', filename='assets/images/logo/logo.png') }}" alt="logo">
             </a>
           </div>
           <div class="menu-area">
@@ -91,7 +91,9 @@
   {% endblock content %}
 
   <!-- Footer Section start here -->
-  <footer class="footer-section padding-tb padding-b" style="background-image: url(assets/images/footer/bg.jpg);">
+
+  <footer class="footer-section padding-tb padding-b"
+    style="background-image: url('static/assets/images/footer/bg.jpg');">
     <div class="container">
       <div class="footer-content text-center">
         <!-- <a class="mb-2" href="index.html"><img src="assets/images/footer/logo.png" alt="eventoz"></a> -->
@@ -115,15 +117,15 @@
   <!-- scrollToTop ending here -->
 
 
-  <script src="assets/js/jquery.js"></script>
-  <script src="assets/js/fontawesome.min.js"></script>
-  <script src="assets/js/waypoints.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/swiper.min.js"></script>
-  <script src="assets/js/circularProgressBar.min.js"></script>
-  <script src="assets/js/isotope.pkgd.min.js"></script>
-  <script src="assets/js/lightcase.js"></script>
-  <script src="assets/js/functions.js"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/fontawesome.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/waypoints.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/swiper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/circularProgressBar.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/lightcase.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/functions.js') }}"></script>
 </body>
 
 </html>
