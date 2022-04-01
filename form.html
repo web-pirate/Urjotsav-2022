@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/lightcase.css">
     <link rel="stylesheet" href="assets/css/swiper.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -96,6 +97,25 @@
                 <h3 class="title">Fill this form</h3>
                 
                 <form class="account-form">
+
+
+                    <div class="form-group">
+                        <select class="from-select" id="options">
+                            <option value="0" disabled selected>Event</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="managerial">Managerial</option>
+                            <option value="technical">Technical</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="from-select" id="choices">
+                            <option value="0" disabled selected>Event</option>
+                        </select>
+                    </div>
+
+
                     <div class="form-group">
                         <input type="text" placeholder="User Name/Enrollment No." name="username">
                     </div>
@@ -200,6 +220,7 @@
     <script src="assets/js/isotope.pkgd.min.js"></script>
     <script src="assets/js/lightcase.js"></script>
     <script src="assets/js/functions.js"></script>
+    <script src="assets/js/option.js"></script>
 </body>
 
 </html>
