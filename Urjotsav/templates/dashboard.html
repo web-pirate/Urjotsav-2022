@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Header Section Start Here -->
+<section class="page-header bg_img padding-tb">
+    <div class="overlay"></div>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="page-header-content-area">
+            <h4 class="ph-title">Dashboard</h4>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Registration section start Here -->
+<div class="login-section padding-tb">
+    <div class="container">
+        <div class="profile">
+            <h3 class="title">Dipti Mam <span class="committee">Core Committee</span> </h3>
+
+            <section class="speakers-section pt-5 shape-img">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="speaker-item">
+                                    <div class="speaker-inner">
+                                        <div class="speaker-content">
+                                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                                <div class="row">
+                                                    <div class="speaker-infos left">
+                                                        <h5><a href="speaker-details.html">Email:</a> </h5>
+                                                        <h5><a href="speaker-details.html">manishsinghdewas@gmail.com
+                                                            </a> </h5>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="speaker-item">
+                                    <div class="speaker-inner">
+                                        <div class="speaker-content">
+                                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                                <div class="row">
+                                                    <div class="speaker-infos left">
+                                                        <h5><a href="speaker-details.html">Reward Points:</a> </h5>
+                                                        <h5><a href="speaker-details.html">36 </a> </h5>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="speaker-item">
+                                    <div class="speaker-inner">
+                                        <div class="speaker-content">
+                                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                                <div class="row">
+                                                    <div class="speaker-infos left">
+                                                        <h5><a href="speaker-details.html">Phone:</a> </h5>
+                                                        <h5><a href="speaker-details.html">+91 7000169166 </a> </h5>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="speaker-item">
+                                    <div class="speaker-inner">
+                                        <div class="speaker-content">
+                                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                                <div class="row">
+                                                    <div class="speaker-infos left">
+                                                        <h5><a href="speaker-details.html">Total Amount:</a> </h5>
+                                                        <h5><a href="speaker-details.html">₹750 </a> </h5>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="shop-cart padding-tb">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="cart-top">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Event Registration</th>
+                                        <th>Event Name</th>
+                                        <th>Price</th>
+                                        <th>Date</th>
+                                        <th>Venue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product-item">
+                                            <div class="p-content">
+                                                <a href="#">Cultural</a>
+                                            </div>
+                                        </td>
+                                        <td>Dance Competition</td>
+                                        <td>₹500</td>
+                                        <td>18<sup>th</sup> April 2022</td>
+                                        <td>Auditorium</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-item">
+                                            <div class="p-content">
+                                                <a href="#">Sports</a>
+                                            </div>
+                                        </td>
+                                        <td>Inter College Kabbadi</td>
+                                        <td>₹250</td>
+                                        <td>19<sup>th</sup> April 2022</td>
+                                        <td>BasketBall Cort</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration section end Here -->
+{% endblock content %}

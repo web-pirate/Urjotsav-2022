@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Header Section Start Here -->
+<section class="page-header bg_img padding-tb">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="page-header-content-area">
+            <h4 class="ph-title">Recent Event Photos</h4>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Gallary section start here-->
+<div class="gallery-section padding-tb">
+    <div class="container">
+        <ul class="filter-button-group lab-ul d-flex justify-content-center mb-4">
+            <li class="filter-btn is-checked" data-filter="*">Show All</li>
+            <li class="filter-btn" data-filter=".eid-ul-adha">Technical</li>
+            <li class="filter-btn" data-filter=".eid-ul-fitr">Managerial</li>
+            <li class="filter-btn" data-filter=".ramadan">Cultural</li>
+            <li class="filter-btn" data-filter=".shab-e-barat">Sports</li>
+        </ul>
+        <div class="grid pb-15">
+            <div class="grid-item eid-ul-adha eid-ul-fitr">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/01.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content p-2">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/01.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item ramadan">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/02.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/02.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item ramadan shab-e-barat">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/03.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/03.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item ramadan eid-ul-fitr">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/04.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/04.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item shab-e-barat eid-ul-fitr">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/05.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/05.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item eid-ul-fitr eid-ul-adha">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/06.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/06.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item ramadan shab-e-barat">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/09.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/09.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item ramadan eid-ul-fitr">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/08.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/08.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item ramadan eid-ul-adha">
+                <div class="grid-inner">
+                    <div class="grid-thumb">
+                        <img src="{{ url_for('static', filename='assets/images/gallery/mason/07.jpg') }}"
+                            alt="gallery-img">
+                    </div>
+                    <div class="grid-content">
+                        <a href="{{ url_for('static', filename='assets/images/gallery/mason/07.jpg') }}"
+                            data-rel="lightcase"><i class="icofont-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Gallary section end here-->
+{% endblock content %}

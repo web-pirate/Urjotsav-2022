@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Page Header Section Start Here -->
+<section class="page-header padding-tb">
+    <div class="overlay"></div>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="page-header-content-area">
+            <h4 class="ph-title">Forget Password Page</h4>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Login Section Section Starts Here -->
+<div class="login-section padding-tb">
+    <div class=" container">
+        <div class="account-wrapper">
+            <h3 class="title">Forget Password</h3>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for cat, msg in messages %}
+            <div class="alert alert-{{ cat }}">
+                {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form class="user" method='post'>
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-user is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.email(class="form-control form-control-user", id="email", placeholder="Email Address") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class='btn btn-primary btn-user btn-block') }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Login Section Section Ends Here -->
+
+{% endblock content %}

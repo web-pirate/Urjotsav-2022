@@ -15,8 +15,10 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128))
     enrollment_number = db.Column(db.String(128))
     email = db.Column(db.String(140), unique=True, nullable=False)
+    mobile_number = db.Column(db.String(140), unique=True, nullable=False)
     password = db.Column(db.String(1000), nullable=False)
     dept_name = db.Column(db.String(1000), nullable=False)
     branch = db.Column(db.String(1000), nullable=False)
@@ -50,3 +52,8 @@ class Events(db.Model):
 
 # class EventRegistration(db.Model):
 #     pass
+
+class DepartmentName(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    dept_name = db.Column(db.String(1000), nullable=False)
+    reward_points = db.Column(db.Integer, nullable=False)

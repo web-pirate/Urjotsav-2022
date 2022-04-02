@@ -9,5 +9,5 @@ class Config:
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
-    MAIL_USERNAME = 'mail@piemr.edu.in'
-    MAIL_PASSWORD = 'password'
+    MAIL_USERNAME = 'navalkhetejas18@gmail.com'
+    MAIL_PASSWORD = '#PythonProgramming'

@@ -21,14 +21,14 @@
 <body>
 
   <!-- preloader start here -->
-  <div class="preloader">
+  <!-- <div class="preloader">
     <div class="preloader-inner">
       <div class="preloader-icon">
         <span></span>
         <span></span>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- preloader ending here -->
 
 
@@ -55,22 +55,36 @@
               <li>
                 <a href="javascript:void(0)">Events</a>
                 <ul class="submenu">
-                  <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                  <li><a href="{{ url_for('main.register') }}">Sign Up</a></li>
-                  <li><a href="#">cultural</a></li>
-                  <li><a href="#">sport</a></li>
-                  <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
-
+                  <li><a href="#">Cultural</a></li>
+                  <li><a href="#">Managerial</a></li>
+                  <li><a href="#">Sports</a></li>
+                  <li><a href="#">Technical</a></li>
                 </ul>
               </li>
               <li><a href="{{ url_for('main.about') }}">About</a></li>
               <li><a href="{{ url_for('main.gallery') }}">Gallary</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('main.profile') }}" class="login"><i class="icofont-user"
+                style="border-radius: 2px;"></i>
+              <span>Profile</span>
+            </a>
+
+            <a href="{{ url_for('main.logout') }}" class="login"><i class="icofont-logout"
+                style="border-radius: 2px;"></i>
+              <span>Logout</span>
+            </a>
+            {% else %}
+            <a href="{{ url_for('main.login') }}" class="login"><i class="icofont-login"
+                style="border-radius: 2px;"></i>
+              <span>Login</span>
+            </a>
             <a href="{{ url_for('main.register') }}" class="signup"><i class="icofont-ticket"
                 style="border-radius: 2px;"></i>
               <span>Register</span>
             </a>
+            {% endif %}
 
             <!-- toggle icons -->
             <div class="header-bar d-lg-none">

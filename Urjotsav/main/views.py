@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
-from Urjotsav.main.forms import LoginForm, RequestResetForm, ResetPasswordForm
+from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
 from Urjotsav.models import User
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
@@ -30,7 +30,7 @@ def register():
         if request.form.get('password') == request.form.get('cpassword'):
             if not User.query.filter_by(email=request.form.get('email')).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
-                token = s.dumps({"email": request.form.get('email'), "enrollment_number": request.form.get('enrollment_number'), 
+                token = s.dumps({"name": request.form.get('name'), "email": request.form.get('email'), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), 
                 "branch": request.form.get('branch'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
                 send_confirm_email(email=request.form.get('email'), token=token)
@@ -59,7 +59,7 @@ def confirm_email(token):
         is_piemr = False
         if data['email'].lower().strip().split('@')[-1] == 'piemr.edu.in':
             is_piemr = True
-        user = User(enrollment_number=data["enrollment_number"], email=data["email"], password=data["password"], 
+        user = User(name=data['name'], enrollment_number=data["enrollment_number"], email=data["email"], mobile_number=data['Mobile Number'], password=data["password"], 
                     dept_name=data['dept_name'], branch=data['branch'], role='Student', reward_points=0, is_piemr=is_piemr)
         db.session.add(user)
         db.session.commit()
@@ -109,39 +109,44 @@ def login():
     """Login Route"""
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
-    form = LoginForm()
     if request.method == 'POST':
-        if form.validate_on_submit():
-            user = User.query.filter_by(email=form.email.data).first()
-            if user:
-                if user.password == form.password.data:
-                    login_user(user, remember=form.remember.data,
-                               duration=timedelta(weeks=3))
-                    next_page = request.args.get('next')
+        user = User.query.filter_by(email=request.form.get('email')).first()
+        print('\n\n',user.password)
+        print('\n\n',request.form.get('password'))
+        if user:
+            if user.password == request.form.get('password'):
+                login_user(user, remember=request.form.get('remember'),
+                            duration=timedelta(weeks=3))
+                next_page = request.args.get('next')
 
-                    flash("User logged in successfully!", "success")
-                    return redirect(next_page) if next_page else redirect(url_for('main.profile'))
-                else:
-                    flash("Please check you password. Password don't match!", "danger")
-                    return redirect(url_for('main.login'))
+                flash("User logged in successfully!", "success")
+                return redirect(next_page) if next_page else redirect(url_for('main.profile'))
             else:
-                flash(
-                    "You don't have an account. Please create now to login.", "info")
-                return redirect(url_for('main.register'))
-    return render_template('login.html', form=form)
+                flash("Please check you password. Password don't match!", "danger")
+                return redirect(url_for('main.login'))
+        else:
+            flash(
+                "You don't have an account. Please create now to login.", "info")
+            return redirect(url_for('main.register'))
+    return render_template('login.html')
 
 
 @main.route('/profile/', methods=['GET', 'POST'])
 @login_required
 def profile():
     """Profile Route"""
-    return "Profile Page"
+    return render_template('profile.html')
 
 
 @main.route('/gallery/')
 def gallery():
     """Gallery Route"""
-    return "Gallery Page"
+    return render_template('gallery.html')
+
+@main.route('/dashboard/')
+@login_required
+def dashboard():
+    return "Dashboard"
 
 
 @main.route('/logout/')
