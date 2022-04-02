@@ -25,6 +25,7 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     is_piemr = db.Column(db.Boolean, default=False)
+    registered_events = db.relationship('EventRegistration', backref='user', lazy='dynamic')
 
     def get_reset_token(self, expires_sec=600):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -44,7 +45,7 @@ class Events(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     event_type = db.Column(db.String(1000), nullable=False)
     event_name = db.Column(db.String(1000), nullable=False)
-    co_cordinators = db.Column(db.String(1000), nullable=False)
+    co_cordinators = db.Column(db.Text, nullable=False)
     event_date = db.Column(db.DateTime, default=datetime.now(tz), nullable=False)
     venue = db.Column(db.String(1000), nullable=False)
     in_entry_fees = db.Column(db.String(1000), nullable=False)
@@ -56,13 +57,24 @@ class EventRegistration(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     event_type = db.Column(db.String(1000), nullable=False)
     event_name = db.Column(db.String(1000), nullable=False)
-    price = db.Column(db.String(1000), nullable=False)
+    fees = db.Column(db.String(1000), nullable=False)
     date = db.Column(db.DateTime, default=datetime.now(tz))
     team_size = db.Column(db.Integer, nullable=False)
     team_members = db.Column(db.String(1000), nullable=False)
+    user_id = db.Column(db.Integer, nullable=False)
+    paid = db.Column(db.Boolean)
 
 
 class DepartmentName(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dept_name = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False)
+
+
+class Payments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.String(100))
+    payment_id = db.Column(db.String(100))
+    date = db.Column(db.DateTime, default=datetime.now(tz))
+    status = db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

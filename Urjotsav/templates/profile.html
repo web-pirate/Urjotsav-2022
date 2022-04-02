@@ -89,7 +89,7 @@
                                                 <div class="row">
                                                     <div class="speaker-infos left">
                                                         <h5>Total Amount:</h5>
-                                                        <h5>₹750</h5>
+                                                        <h5>₹ {{ total_amount }}</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,6 +106,7 @@
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
+                            {% if events[0] %}
                             <table>
                                 <thead>
                                     <tr>
@@ -117,49 +118,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="product-item">
-                                            <div class="p-content">
-                                                <a href="#">Cultural</a>
-                                            </div>
-                                        </td>
-                                        <td>Dance Competition</td>
-                                        <td>₹500</td>
-                                        <td>18<sup>th</sup> April 2022</td>
-                                        <td>Auditorium</td>
-                                    </tr>
-
-
                                     {% for event in events %}
                                     <tr>
                                         <td class="product-item">
                                             <div class="p-content">
-                                                <a href="#">Sports</a>
+                                                <a href="#">{{ event.event_type }}</a>
                                             </div>
                                         </td>
-                                        <td>Inter College Kabbadi</td>
-                                        <td>₹250</td>
-                                        <td>19<sup>th</sup> April 2022</td>
-                                        <td>BasketBall Cort</td>
-
+                                        <td>{{ event.event_name }}</td>
+                                        {% if current_user.is_piemr %}
+                                        <td>{{ event.in_entry_fees }}</td>
+                                        {% else %}
+                                        <td>{{ event.out_entry_fees }}</td>
+                                        {% endif %}
+                                        <td>{{ event.event_date }}</td>
+                                        <td>{{ event.venue }}</td>
                                     </tr>
                                     {% endfor %}
-
-                                    <tr>
-                                        <td class="product-item">
-                                            <div class="p-content">
-                                                <a href="#">Sports</a>
-                                            </div>
-                                        </td>
-                                        <td>Inter College Kabbadi</td>
-                                        <td>₹250</td>
-                                        <td>19<sup>th</sup> April 2022</td>
-                                        <td>BasketBall Cort</td>
-
-                                    </tr>
-
                                 </tbody>
                             </table>
+                            {% else %}
+                            <a href="#">Participate</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
