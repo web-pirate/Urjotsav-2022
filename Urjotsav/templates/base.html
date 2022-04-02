@@ -42,32 +42,32 @@
       <div class="container">
         <div class="header-wrapper">
           <div class="logo">
-            <a href="index.html">
+            <a href="{{ url_for('main.home') }}">
               <img src="{{ url_for('static', filename='assets/images/logo/logo.png') }}" alt="logo">
             </a>
           </div>
           <div class="menu-area">
             <ul class="menu">
               <li>
-                <a href="index.html">Home</a>
+                <a href="{{ url_for('main.home') }}">Home</a>
               </li>
 
               <li>
                 <a href="javascript:void(0)">Events</a>
                 <ul class="submenu">
-                  <li><a href="login.html">Login</a></li>
-                  <li><a href="registration.html">Sign Up</a></li>
-                  <li><a href="cultural.html">cultural</a></li>
-                  <li><a href="sports.html">sport</a></li>
-                  <li><a href="gallery.html">Gallery</a></li>
+                  <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                  <li><a href="{{ url_for('main.register') }}">Sign Up</a></li>
+                  <li><a href="#">cultural</a></li>
+                  <li><a href="#">sport</a></li>
+                  <li><a href="#">Gallery</a></li>
 
                 </ul>
               </li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="blog.html">Gallary</a></li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="{{ url_for('main.about') }}">About</a></li>
+              <li><a href="#">Gallary</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
-            <a href="registration.html" class="signup"><i class="icofont-ticket" style="border-radius: 2px;"></i>
+            <a href="{{ url_for('main.register') }}" class="signup"><i class="icofont-ticket" style="border-radius: 2px;"></i>
               <span>Register</span>
             </a>
 
