@@ -35,7 +35,19 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-            <form class="user" method='post'>
+
+
+            <!-- <form class="account-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter Your Email" name="email">
+                </div>
+                <div class="form-group">
+                    <button class="d-block lab-btn">Sent Reset Link</button>
+                </div>
+            </form> -->
+
+
+            <form class="account-form" method='post'>
                 {{ form.hidden_tag() }}
                 <div class="form-group">
                     {% if form.email.errors %}
@@ -49,8 +61,11 @@
                     {{ form.email(class="form-control form-control-user", id="email", placeholder="Email Address") }}
                     {% endif %}
                 </div>
+                <!-- <div class="form-group">
+                    {{ form.submit(class="d-block lab-btn my-btn") }}
+                </div> -->
                 <div class="form-group">
-                    {{ form.submit(class='btn btn-primary btn-user btn-block') }}
+                    <button class="d-block lab-btn">Sent Reset Link</button>
                 </div>
             </form>
         </div>

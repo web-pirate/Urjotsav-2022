@@ -42,16 +42,25 @@ class User(db.Model, UserMixin):
 
 class Events(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    event_type = db.Column(db.String(1000), nullable=False)
     event_name = db.Column(db.String(1000), nullable=False)
     co_cordinators = db.Column(db.String(1000), nullable=False)
     event_date = db.Column(db.DateTime, default=datetime.now(tz), nullable=False)
     venue = db.Column(db.String(1000), nullable=False)
-    in_entry_fess = db.Column(db.String(1000), nullable=False)
-    out_entry_fess = db.Column(db.String(1000), nullable=False)
+    in_entry_fees = db.Column(db.String(1000), nullable=False)
+    out_entry_fees = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.Text, nullable=False)
 
-# class EventRegistration(db.Model):
-#     pass
+
+class EventRegistration(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    event_type = db.Column(db.String(1000), nullable=False)
+    event_name = db.Column(db.String(1000), nullable=False)
+    price = db.Column(db.String(1000), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.now(tz))
+    team_size = db.Column(db.Integer, nullable=False)
+    team_members = db.Column(db.String(1000), nullable=False)
+
 
 class DepartmentName(db.Model):
     id = db.Column(db.Integer, primary_key=True)
