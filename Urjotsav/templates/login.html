@@ -9,7 +9,7 @@
         <div class="page-header-content-area">
             <h4 class="ph-title">Login for Event</h4>
             <ul class="lab-ul">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
                 <li><a href="#">Features</a></li>
                 <li><a class="active">login</a></li>
             </ul>
@@ -44,7 +44,7 @@
                 </div>
             </form>
             <div class="account-bottom">
-                <span class="d-block cate pt-10">Don’t Have any Account? <a href="registration.html"> Sign
+                <span class="d-block cate pt-10">Don’t Have any Account? <a href="{{ url_for('main.register') }}"> Sign
                         Up</a></span>
                 <span class="or"><span>or</span></span>
                 <h5 class="subtitle">Login With Social Media</h5>
