@@ -1,8 +1,36 @@
 // Map your choices to your option value
 var lookup = {
-   'cultural': ['Dance Competition', 'Option 1 - Choice 2', 'Option 1 - Choice 3'],
-   'managerial': ['Option 2 - Choice 1', 'Option 2 - Choice 2'],
-   'sports': ['Kabaddi', 'Kho-Kho'],
+   'cultural': [
+      'Dance Competition',
+      'Singing Compettion',
+      'Drama Competition',
+      'Fashion Show',
+      'Treasure Hunt',
+      'Flash Mob',
+   ],
+   'managerial': [
+      'Ad Mad Show',
+      'Debate',
+      'Logo Making',
+      'B-Plan',
+      'Case Study',
+      'Poster Painting',
+   ],
+   'sports': [
+      'Kabaddi',
+      'Kho-Kho',
+      'BasketBall',
+      'Vollyball',
+      'Football',
+      'Badmintion',
+   ],
+   'technical': [
+      'Drone Workshop',
+      'Circuit Design Competetion',
+      'Robot Arm Programming Comp.',
+      'Cyber Security Workshop',
+      'Areo Modeling Competition',
+   ],
 };
 
 // When an option is changed, search the above for matching choices
