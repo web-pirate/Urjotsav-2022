@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
-from Urjotsav.main.forms import LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm
+from Urjotsav.main.forms import LoginForm, RequestResetForm, ResetPasswordForm
 from Urjotsav.models import User
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
@@ -26,19 +26,29 @@ def register():
     """Registration Route"""
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
-    form = RegistrationForm()
     if request.method == 'POST':
-        if form.validate_on_submit():
-            if not User.query.filter_by(email=form.email.data).first():
+        if request.form.get('password') == request.form.get('cpassword'):
+            if not User.query.filter_by(email=request.form.get('email')).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
-                token = s.dumps({"email": form.email.data, "enrollment_number": form.enrollment_number.data, "branch": form.branch.data, "dept_name": form.dept_name.data, "password": form.password.data},
+                token = s.dumps({"email": request.form.get('email'), "enrollment_number": request.form.get('enrollment_number'), 
+                "branch": request.form.get('branch'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
-                send_confirm_email(email=form.email.data, token=token)
+                send_confirm_email(email=request.form.get('email'), token=token)
+                print('\n\n', request.form.get('branch'), request.form.get('dept_name'))
 
                 flash(
-                    f"An confirmation email has been sent to you on {form.email.data}!", "success")
+                    f"An confirmation email has been sent to you on {request.form.get('email')}!", "success")
                 return redirect(url_for('main.login'))
-    return render_template('registration.html', form=form)
+            else:
+                flash(
+                    f"You already have an account!", "info")
+                return redirect(url_for('main.login'))
+        else:
+            flash(
+                f"Please, check your password", "alert")
+            return redirect(url_for('main.register'))
+    return render_template('registration.html')
+
 
 # ------ Confirm Registration ------ #
 @main.route('/confirm_email/<token>/')
@@ -56,10 +66,11 @@ def confirm_email(token):
         login_user(user)
 
         flash("Your account has been created successfully!", "alert")
-        return redirect(url_for('main.home'))
+        return redirect(url_for('main.profile'))
     except (SignatureExpired, BadTimeSignature):
         flash("That is an invalid or expired token", "warning")
-        return redirect(url_for('users.register'))
+        return redirect(url_for('main.register'))
+
 
 # ------ Reset Password Request Route ------ #
 @main.route('/reset_password/', methods=['GET', 'POST'])
@@ -120,11 +131,17 @@ def login():
     return render_template('login.html', form=form)
 
 
-@main.route('/profile')
+@main.route('/profile/', methods=['GET', 'POST'])
 @login_required
 def profile():
     """Profile Route"""
     return "Profile Page"
+
+
+@main.route('/gallery/')
+def gallery():
+    """Gallery Route"""
+    return "Gallery Page"
 
 
 @main.route('/logout/')

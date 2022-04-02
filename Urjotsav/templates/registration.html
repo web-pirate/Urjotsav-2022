@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
 
 
@@ -12,7 +10,6 @@
             <h4 class="ph-title">Registration Page</h4>
             <ul class="lab-ul">
                 <li><a href="{{ url_for('main.home') }}">Home</a></li>
-                <li><a href="#">Features</a></li>
                 <li><a class="active">Registration</a></li>
             </ul>
         </div>
@@ -25,10 +22,18 @@
     <div class="container">
         <div class="account-wrapper">
             <h3 class="title">Register Now</h3>
-
-            <form class="account-form">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for cat, msg in messages %}
+            <div class="alert alert-{{ cat }}">
+                {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form class="account-form" method="post" action="{{ url_for('main.register') }}">
                 <div class="form-group">
-                    <input type="text" placeholder="User Name" name="username">
+                    <input type="text" placeholder="Enrollment Number" name="enrollment_number">
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder="Email" name="email">
@@ -37,24 +42,24 @@
                     <input type="password" placeholder="Password" name="password">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Confirm Password" name="password" class="relative">
+                    <input type="password" placeholder="Confirm Password" name="cpassword" class="relative">
                 </div>
                 <div class="form-group">
-                    <select class="from-select">
+                    <select class="from-select" name="dept_name">
                         <option value="0" disabled selected>Department</option>
-                        <option value="saab">Engineering</option>
-                        <option value="saab">Management</option>
-                        <option value="saab">Law</option>
-                        <option value="saab">Other</option>
+                        <option value="Engineering" name="dept_name">Engineering</option>
+                        <option value="Management" name="dept_name">Management</option>
+                        <option value="Law" name="dept_name">Law</option>
+                        <option value="Other" name="dept_name">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select class="from-select">
+                    <select class="from-select" name="branch">
                         <option value="0" disabled selected>Branch</option>
-                        <option value="saab">Computer Science Engineering</option>
-                        <option value="saab">Mechanical Engineering</option>
-                        <option value="saab">Civil Engineering</option>
-                        <option value="saab">Other</option>
+                        <option value="Computer Science Engineering" name="branch">Computer Science Engineering</option>
+                        <option value="Mechanical Engineering" name="branch">Mechanical Engineering</option>
+                        <option value="Civil Engineering" name="branch">Civil Engineering</option>
+                        <option value="Other" name="branch">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -62,26 +67,8 @@
                 </div>
             </form>
             <div class="account-bottom">
-                <span class="d-block cate pt-10">Are you a member? <a href="login.html">Login</a></span>
-                <span class="or"><span>or</span></span>
-                <h5 class="subtitle">Register With Social Media</h5>
-                <ul class="social-media social-color justify-content-center d-flex lab-ul">
-                    <li>
-                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="pinterest"><i class="fab fa-pinterest"></i></a>
-                    </li>
-                </ul>
+                <span class="d-block cate pt-10">Are you a member? <a
+                        href="{{ url_for('main.login') }}">Login</a></span>
             </div>
         </div>
     </div>
