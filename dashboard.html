@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/lightcase.css">
     <link rel="stylesheet" href="assets/css/swiper.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -89,13 +90,13 @@
     <div class="login-section padding-tb">
         <div class="container">
             <div class="profile">
-                <h3 class="title">Dipti Mam <span class="committee">Core Committee</span> </h3>
+                <h3 class="title">Dipti Mam <span class="committee">(Core Committee)</span> </h3>
 
                 <section class="speakers-section pt-5 shape-img">
                     <div class="container">
                         <div class="section-wrapper">
                             <div class="row g-4 justify-content-center">
-                                <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="col-xl-3 col-lg-8 col-12">
                                     <div class="speaker-item">
                                         <div class="speaker-inner">
                                             <div class="speaker-content">
@@ -103,9 +104,8 @@
                                                     class="spkr-content-title d-flex flex-wrap justify-content-between">
                                                     <div class="row">
                                                         <div class="speaker-infos left">
-                                                            <h5><a href="speaker-details.html">Email:</a> </h5>
-                                                            <h5><a href="speaker-details.html">manishsinghdewas@gmail.com
-                                                                </a> </h5>
+                                                            <h5><a href="speaker-details.html">Cultural:</a> </h5>
+                                                            <h5><a href="speaker-details.html">56</a> </h5>
 
                                                         </div>
                                                     </div>
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="col-xl-3 col-lg-8 col-12">
                                     <div class="speaker-item">
                                         <div class="speaker-inner">
                                             <div class="speaker-content">
@@ -123,7 +123,7 @@
                                                     class="spkr-content-title d-flex flex-wrap justify-content-between">
                                                     <div class="row">
                                                         <div class="speaker-infos left">
-                                                            <h5><a href="speaker-details.html">Reward Points:</a> </h5>
+                                                            <h5><a href="speaker-details.html">Managerial</a> </h5>
                                                             <h5><a href="speaker-details.html">36 </a> </h5>
 
                                                         </div>
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="col-xl-3 col-lg-8 col-12">
                                     <div class="speaker-item">
                                         <div class="speaker-inner">
                                             <div class="speaker-content">
@@ -142,8 +142,8 @@
                                                     class="spkr-content-title d-flex flex-wrap justify-content-between">
                                                     <div class="row">
                                                         <div class="speaker-infos left">
-                                                            <h5><a href="speaker-details.html">Phone:</a> </h5>
-                                                            <h5><a href="speaker-details.html">+91 7000169166 </a> </h5>
+                                                            <h5><a href="speaker-details.html">Techinical:</a> </h5>
+                                                            <h5><a href="speaker-details.html">43</a> </h5>
 
                                                         </div>
                                                     </div>
@@ -153,7 +153,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6 col-lg-8 col-12">
+                                <div class="col-xl-3 col-lg-8 col-12">
                                     <div class="speaker-item">
                                         <div class="speaker-inner">
                                             <div class="speaker-content">
@@ -161,8 +161,10 @@
                                                     class="spkr-content-title d-flex flex-wrap justify-content-between">
                                                     <div class="row">
                                                         <div class="speaker-infos left">
-                                                            <h5><a href="speaker-details.html">Total Amount:</a> </h5>
-                                                            <h5><a href="speaker-details.html">₹750 </a> </h5>
+                                                            <!-- <h5><a href="speaker-details.html">Total Amount Recieved:</a> </h5> -->
+                                                            <h5><a href="speaker-details.html">Sports</a> </h5>
+
+                                                            <h5><a href="speaker-details.html">150</a> </h5>
 
                                                         </div>
                                                     </div>
@@ -176,18 +178,63 @@
                         </div>
                     </div>
                 </section>
-                <div class="shop-cart padding-tb">
+
+                <!-- Charts Section -->
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
+                
+                <script>
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Cultural', 'Managerial', 'Technical', 'Sports'],
+                            datasets: [{
+                                label: '# of Registration',
+                                data: [56, 36, 43, 56],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+
+                <!-- Charts End -->
+
+
+                <div class="shop-cart padding-tb w-100 ">
                     <div class="container">
                         <div class="section-wrapper">
                             <div class="cart-top">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Event Registration</th>
-                                            <th>Event Name</th>
-                                            <th>Price</th>
-                                            <th>Date</th>
-                                            <th>Venue</th>
+                                            <th>Event Category</th>
+                                            <th>Total Amount Collected</th>
+                                            <th>Team Wise Amount Collected</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -197,10 +244,26 @@
                                                     <a href="#">Cultural</a>
                                                 </div>
                                             </td>
-                                            <td>Dance Competition</td>
-                                            <td>₹500</td>
-                                            <td>18<sup>th</sup> April 2022</td>
-                                            <td>Auditorium</td>
+                                            <td>₹5000</td>
+                                            <td>₹3500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-item">
+                                                <div class="p-content">
+                                                    <a href="#">Managerial</a>
+                                                </div>
+                                            </td>
+                                            <td>₹2250</td>
+                                            <td>₹1250</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-item">
+                                                <div class="p-content">
+                                                    <a href="#">Techinical</a>
+                                                </div>
+                                            </td>
+                                            <td>₹2250</td>
+                                            <td>₹1250</td>
                                         </tr>
                                         <tr>
                                             <td class="product-item">
@@ -208,10 +271,9 @@
                                                     <a href="#">Sports</a>
                                                 </div>
                                             </td>
-                                            <td>Inter College Kabbadi</td>
-                                            <td>₹250</td>
-                                            <td>19<sup>th</sup> April 2022</td>
-                                            <td>BasketBall Cort</td>
+                                            <td>₹2250</td>
+                                            <td>₹1250</td>
+                                            
 
                                         </tr>
 
@@ -221,6 +283,68 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- Branch Wise  -->
+
+                <div class="shop-cart w-100 ">
+                    <div class="container">
+                        <div class="section-wrapper">
+                            <div class="cart-top">
+                                <h3 class="title">All Events <span class="committee">Branch Wise</span> </h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Branch Name</th>
+                                            <th>Total Registration </th>
+                                            <th>Cultural </th>
+                                            <th>Managerial</th>
+                                            <th>Techinical</th>
+                                            <th>Sports</th>
+                                            <th>Total Amount Collected</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="product-item">
+                                                <div class="p-content">
+                                                    <a href="#">Computer</a>
+                                                </div>
+                                            </td>
+                                            <td>350</td>
+                                            <td>150</td>
+                                            <td>50</td>
+                                            <td>75</td>
+                                            <td>40</td>
+
+                                            <td>₹3500</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="product-item">
+                                                <div class="p-content">
+                                                    <a href="#">Mechanical</a>
+                                                </div>
+                                            </td>
+                                            <td>350</td>
+                                            <td>150</td>
+                                            <td>50</td>
+                                            <td>75</td>
+                                            <td>40</td>
+                                        
+                                            <td>₹3500</td>
+                                        </tr>
+                
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
