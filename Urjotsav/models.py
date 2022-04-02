@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     branch = db.Column(db.String(1000), nullable=False)
     role = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
+    is_piemr = db.Column(db.Boolean, default=False)
 
     def get_reset_token(self, expires_sec=600):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)

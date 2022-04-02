@@ -3,7 +3,7 @@ from Urjotsav.main.forms import LoginForm, RegistrationForm, RequestResetForm, R
 from Urjotsav.models import User
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
-from datetime import datetime, timedelta
+from datetime import timedelta
 from itsdangerous import URLSafeTimedSerializer as URLSerializer
 from itsdangerous import SignatureExpired, BadTimeSignature
 from Urjotsav.main.utils import send_confirm_email, send_reset_email
@@ -40,6 +40,26 @@ def register():
                 return redirect(url_for('main.login'))
     return render_template('registration.html', form=form)
 
+# ------ Confirm Registration ------ #
+@main.route('/confirm_email/<token>/')
+def confirm_email(token):
+    s = URLSerializer(current_app.config['SECRET_KEY'])
+    try:
+        data = s.loads(token, salt="send-email-confirmation", max_age=600)
+        is_piemr = False
+        if data['email'].lower().strip().split('@')[-1] == 'piemr.edu.in':
+            is_piemr = True
+        user = User(enrollment_number=data["enrollment_number"], email=data["email"], password=data["password"], 
+                    dept_name=data['dept_name'], branch=data['branch'], role='Student', reward_points=0, is_piemr=is_piemr)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+
+        flash("Your account has been created successfully!", "alert")
+        return redirect(url_for('main.home'))
+    except (SignatureExpired, BadTimeSignature):
+        flash("That is an invalid or expired token", "warning")
+        return redirect(url_for('users.register'))
 
 # ------ Reset Password Request Route ------ #
 @main.route('/reset_password/', methods=['GET', 'POST'])
@@ -85,7 +105,7 @@ def login():
             if user:
                 if user.password == form.password.data:
                     login_user(user, remember=form.remember.data,
-                               duration=timedelta(weeks=50))
+                               duration=timedelta(weeks=3))
                     next_page = request.args.get('next')
 
                     flash("User logged in successfully!", "success")
@@ -100,9 +120,17 @@ def login():
     return render_template('login.html', form=form)
 
 
+@main.route('/profile')
+@login_required
+def profile():
+    """Profile Route"""
+    return "Profile Page"
+
+
 @main.route('/logout/')
 @login_required
 def logout():
     """Logout Route"""
     logout_user()
-    return redirect(url_for('main.home'))
+    flash("Logout successfully!", "success")
+    return redirect(url_for('main.login'))
