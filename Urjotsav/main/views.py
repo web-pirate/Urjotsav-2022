@@ -1,15 +1,16 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
-from Urjotsav.models import User, EventRegistration, Events
-from Urjotsav.models import User, EventRegistration, Events
+from Urjotsav.models import User, EventRegistration, Events, Department
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
-from datetime import timedelta
+from datetime import timedelta, datetime
+import pytz
 from itsdangerous import URLSafeTimedSerializer as URLSerializer
 from itsdangerous import SignatureExpired, BadTimeSignature
 from Urjotsav.main.utils import send_confirm_email, send_reset_email
 
 main = Blueprint('main', __name__)
+tz = pytz.timezone('Asia/Calcutta')
 
 @main.route('/')
 def home():
@@ -116,7 +117,6 @@ def login():
                 login_user(user, remember=request.form.get('remember'),
                             duration=timedelta(weeks=3))
                 next_page = request.args.get('next')
-
                 flash("User logged in successfully!", "success")
                 return redirect(next_page) if next_page else redirect(url_for('main.profile'))
             else:
@@ -165,12 +165,37 @@ def event(event_type):
     return render_template('event.html', events=events, current_event=current_event)
 
 
-@main.route('/event_registration/', methods=['GET', 'POST'])
+@main.route('/event_registration/<event_name>/', methods=['GET', 'POST'])
 @login_required
-def event_registration():
+def event_registration(event_name):
     """Event Registration"""
+    if request.method == 'POST':
+        is_already_registered = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(event_name=event_name).first()
+        print('\n\n', is_already_registered,'\n\n')
+        if not is_already_registered:
+            team_size = request.form.get('groupNo')
+            team_members = request.form.get('groupName')
+            events = Events.query.filter_by(event_name=event_name).first()
+            event_type = events.event_type
+            if current_user.is_piemr:
+                fees = events.in_entry_fees
+            else:
+                fees = events.out_entry_fees
+            date = datetime.now(tz).date()
+            venue = events.venue
 
-    return render_template('event_registration.html')
+            eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees,date=date,venue=venue,team_size=team_size, team_members=team_members, paid=0, user_id=current_user.id)
+            db.session.add(eve)
+            dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
+            current_user.reward_points += events.reward_points
+            dept.reward_points += events.reward_points
+            db.session.commit()
+            # flash("", "success")
+            return f"{event_name}"
+        else:
+            flash("Already Registered for this event!", "warning")
+            return redirect(url_for("main.profile"))
+    return render_template('event_register.html', event_name=event_name)
 
 
 

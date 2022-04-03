@@ -45,15 +45,13 @@
                             </thead>
                             <tbody>
 
-
-
                                 {% for event in events %}
                                 <tr>
                                     <th scope="row" style="text-align:center;">{{ loop.index }}
                                     </th>
-                                    <td>{{ event.event_name }}</td>
-                                    <td>{{ event.co_cordinators }}</td>
-                                    <td>{{ event.event_date }}</td>
+                                    <td>{{ event.event_name | title }}</td>
+                                    <td>{{ event.co_cordinators | title }}</td>
+                                    <td>{{ event.event_date.date() }}</td>
                                     <td>{{ event.venue }}</td>
                                     {% if current_user.is_authenticated and current_user.is_piemr %}
                                     <td>₹ {{ event.in_entry_fees }}</td>
@@ -61,7 +59,20 @@
                                     <td>₹ {{ event.out_entry_fees }}</td>
                                     {% endif %}
                                     <td>{{ event.prize }}</td>
-                                    <td><a href="{{ url_for('main.event_registration') }}">Register</a></td>
+                                    {% set event_name = event.event_name %}
+                                    <td>
+                                        {% if current_user.is_authenticated %}
+                                        <div class="about-btn-grp btn-sm">
+                                            <a href="{{ url_for('main.event_registration', event_name=event_name ) }}"
+                                                class="lab-btn style-orange"><span>Register</span> </a>
+                                        </div>
+                                        {% else %}
+                                        <div class="about-btn-grp btn-sm">
+                                            <a href="{{ url_for('main.event_registration', event_name=event_name ) }}"
+                                                class="lab-btn style-orange" disabled><span>Register</span> </a>
+                                        </div>
+                                        {% endif %}
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
