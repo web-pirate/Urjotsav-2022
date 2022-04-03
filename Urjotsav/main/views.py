@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
-from Urjotsav.models import User, EventRegistration, Events
-from Urjotsav.models import User, EventRegistration, Events
+from Urjotsav.models import User, EventRegistration, Events, Department
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
 from datetime import timedelta, datetime
@@ -155,13 +154,13 @@ def event(event_type):
     """All Event Route"""
     events = Events.query.filter_by(event_type=event_type).all()
     current_event = ''
-    if event_type == "Cultural":
+    if event_type == "cultural":
         current_event = "Cultural"
-    elif event_type == "Managerial":
+    elif event_type == "managerial":
         current_event = "Managerial"
-    elif event_type == "Sports":
+    elif event_type == "sports":
         current_event = "Sports"
-    elif event_type == "Technical":
+    elif event_type == "technical":
         current_event = "Technical"
     return render_template('event.html', events=events, current_event=current_event)
 
@@ -171,8 +170,9 @@ def event(event_type):
 def event_registration(event_name):
     """Event Registration"""
     if request.method == 'POST':
-        is_alreay_registered = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(event_name=event_name).first()
-        if not is_alreay_registered:
+        is_already_registered = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(event_name=event_name).first()
+        print('\n\n', is_already_registered,'\n\n')
+        if not is_already_registered:
             team_size = request.form.get('groupNo')
             team_members = request.form.get('groupName')
             events = Events.query.filter_by(event_name=event_name).first()
@@ -186,7 +186,9 @@ def event_registration(event_name):
 
             eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees,date=date,venue=venue,team_size=team_size, team_members=team_members, paid=0, user_id=current_user.id)
             db.session.add(eve)
+            dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
             current_user.reward_points += events.reward_points
+            dept.reward_points += events.reward_points
             db.session.commit()
             # flash("", "success")
             return f"{event_name}"
