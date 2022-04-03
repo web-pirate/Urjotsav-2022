@@ -51,6 +51,7 @@ class Events(db.Model):
     venue = db.Column(db.String(1000), nullable=False)
     in_entry_fees = db.Column(db.String(1000), nullable=False)
     out_entry_fees = db.Column(db.String(1000), nullable=False)
+    reward_points = db.Column(db.Integer, nullable=False, default=0)
     prize = db.Column(db.Text, nullable=False)
 
 
