@@ -31,6 +31,10 @@ var lookup = {
       'Cyber Security Workshop',
       'Areo Modeling Competition',
    ],
+   'engineering': [
+      'Computer Science Eng.',
+      'Mechanical Eng.',
+   ],
 };
 
 // When an option is changed, search the above for matching choices
