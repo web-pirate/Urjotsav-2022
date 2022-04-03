@@ -55,10 +55,10 @@
               <li>
                 <a href="javascript:void(0)">Events</a>
                 <ul class="submenu">
-                  <li><a href="#">Cultural</a></li>
-                  <li><a href="#">Managerial</a></li>
-                  <li><a href="#">Sports</a></li>
-                  <li><a href="#">Technical</a></li>
+                  <li><a href="{{ url_for('main.event', event_type='cultural') }}">Cultural</a></li>
+                  <li><a href="{{ url_for('main.event', event_type='managerial') }}">Managerial</a></li>
+                  <li><a href="{{ url_for('main.event', event_type='sports') }}">Sports</a></li>
+                  <li><a href="{{ url_for('main.event', event_type='technical') }}">Technical</a></li>
                 </ul>
               </li>
               <li><a href="{{ url_for('main.about') }}">About</a></li>
@@ -66,10 +66,17 @@
               <li><a href="#">Contact</a></li>
             </ul>
             {% if current_user.is_authenticated %}
+            {% if current_user.role == "Student" %}
             <a href="{{ url_for('main.profile') }}" class="login"><i class="icofont-user"
                 style="border-radius: 2px;"></i>
               <span>Profile</span>
             </a>
+            {% else %}
+            <a href="{{ url_for('main.dashboard') }}" class="login"><i class="icofont-user"
+                style="border-radius: 2px;"></i>
+              <span>Dashboard</span>
+            </a>
+            {% endif %}
 
             <a href="{{ url_for('main.logout') }}" class="login"><i class="icofont-logout"
                 style="border-radius: 2px;"></i>
@@ -110,7 +117,7 @@
 
   <footer class="footer-section padding-tb padding-b"
     style="background-image: url('static/assets/images/footer/bg.jpg');">
-    <div class="container">
+    <div class="container" style="display: flex;">
       <div class="footer-content text-center">
         <!-- <a class="mb-2" href="index.html"><img src="assets/images/footer/logo.png" alt="eventoz"></a> -->
         <!-- <h3 class="mb-4">eventoz Eventsite</h3> -->
@@ -122,6 +129,12 @@
           <li><a href="https://in.linkedin.com/school/piemr/" target="_blank"><i class="icofont-linkedin"></i></a></li>
         </ul>
       </div>
+      <br>
+
+      <div class="footer-content text-center">
+        aaaa
+      </div>
+
     </div>
   </footer>
   <!-- Footer Section end here -->

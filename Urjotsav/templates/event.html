@@ -19,6 +19,7 @@
 
 <!-- Code Section -->
 <section class="speakers-section padding-tb padding-b shape-img ">
+    {% if events[0] %}
     <div class="container-fluid col-md-12 col-sm-12">
         <div class="section-header">
             <h2>Event Details</h2>
@@ -52,13 +53,18 @@
                         {% endif %}
                         {% endif %}
                         <td>₹ {{ event.out_entry_fees }}</td>
-                        <td>{{ event.price }}</td>
+                        <td>{{ event.prize }}</td>
+                        <td><a href="{{ url_for('main.event_registration') }}">Register</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+    {% else %}
+    <h1 style="text-align: center;">Coming soon!</h1>
+    </h5>
+    {% endif %}
 </section>
 
 {% endblock content %}

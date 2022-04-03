@@ -51,7 +51,7 @@ class Events(db.Model):
     venue = db.Column(db.String(1000), nullable=False)
     in_entry_fees = db.Column(db.String(1000), nullable=False)
     out_entry_fees = db.Column(db.String(1000), nullable=False)
-    price = db.Column(db.Text, nullable=False)
+    prize = db.Column(db.Text, nullable=False)
 
 
 class EventRegistration(db.Model):
@@ -60,6 +60,7 @@ class EventRegistration(db.Model):
     event_name = db.Column(db.String(1000), nullable=False)
     fees = db.Column(db.String(1000), nullable=False)
     date = db.Column(db.DateTime, default=datetime.now(tz))
+    venue = db.Column(db.String(1000), nullable=False)
     team_size = db.Column(db.Integer, nullable=False)
     team_members = db.Column(db.String(1000), nullable=False)
     paid = db.Column(db.Boolean)

@@ -35,7 +35,6 @@ def register():
                 "branch": request.form.get('branch'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
                 send_confirm_email(email=request.form.get('email'), token=token)
-                print('\n\n', request.form.get('branch'), request.form.get('dept_name'))
 
                 flash(
                     f"An confirmation email has been sent to you on {request.form.get('email')}!", "success")
@@ -66,7 +65,7 @@ def confirm_email(token):
         db.session.commit()
         login_user(user)
 
-        flash("Your account has been created successfully!", "alert")
+        flash("Your account has been created successfully!", "success")
         return redirect(url_for('main.profile'))
     except (SignatureExpired, BadTimeSignature):
         flash("That is an invalid or expired token", "warning")
@@ -177,7 +176,8 @@ def gallery():
 @main.route('/dashboard/')
 @login_required
 def dashboard():
-    return "Dashboard"
+    """Dashboard Route"""
+    return render_template('dashboard.html')
 
 
 @main.route('/logout/')

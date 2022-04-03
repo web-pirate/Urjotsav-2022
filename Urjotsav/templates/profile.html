@@ -102,6 +102,59 @@
                     </div>
                 </div>
             </section>
+
+
+            <div class="shop-cart padding-tb">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="cart-top">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Event Registration</th>
+                                        <th>Event Name</th>
+                                        <th>Name of Participants</th>
+                                        <th>Price</th>
+                                        <th>Date</th>
+                                        <th>Venue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product-item">
+                                            <div class="p-content">
+                                                <a href="#">Cultural</a>
+                                            </div>
+                                        </td>
+                                        <td>Dance Competition</td>
+                                        <td>Manish <br>Tejas <br> Kshitiz <br>Manish <br>Tejas <br> Kshitiz</td>
+                                        <td>₹500</td>
+                                        <td>18<sup>th</sup> April 2022</td>
+                                        <td>Auditorium</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-item">
+                                            <div class="p-content">
+                                                <a href="#">Sports</a>
+                                            </div>
+                                        </td>
+                                        <td>Inter College Kabbadi</td>
+                                        <td>Rajat </td>
+                                        <td>₹250</td>
+                                        <td>19<sup>th</sup> April 2022</td>
+                                        <td>BasketBall Cort</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="shop-cart padding-tb">
                 <div class="container">
                     <div class="section-wrapper">
@@ -112,7 +165,8 @@
                                     <tr>
                                         <th>Event Registration</th>
                                         <th>Event Name</th>
-                                        <th>Price</th>
+                                        <th>Name of Participants</th>
+                                        <th>Fees</th>
                                         <th>Date</th>
                                         <th>Venue</th>
                                     </tr>
@@ -126,6 +180,7 @@
                                             </div>
                                         </td>
                                         <td>{{ event.event_name }}</td>
+                                        <td>{{ event.team_members }}</td>
                                         {% if current_user.is_piemr %}
                                         <td>{{ event.in_entry_fees }}</td>
                                         {% else %}
@@ -138,7 +193,13 @@
                                 </tbody>
                             </table>
                             {% else %}
-                            <a href="#">Participate</a>
+
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <button class="d-block lab-btn"><a href="/#events_list"
+                                        style="color: white;">Participate Now</a></button>
+                            </div>
+
+
                             {% endif %}
                         </div>
                     </div>

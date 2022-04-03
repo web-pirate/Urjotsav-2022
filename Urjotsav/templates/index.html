@@ -14,10 +14,15 @@
                             (PIEMR)</h1>
                         <!-- <p>Be the witness of marvalous event <br>
                                 Call us For More info.</p> -->
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.profile') }}" class="lab-btn mt-3"><span><i class="icofont-tasks"></i>
+                                Profile</span> </a>
+                        {% else %}
                         <a href="{{ url_for('main.register') }}" class="lab-btn mt-3"><span><i
                                     class="icofont-tasks"></i>
                                 Register
                                 Now</span> </a>
+                        {% endif %}
                     </div>
                 </div>
                 <!-- <div class="col-lg-6 col-12">
@@ -63,10 +68,18 @@
                     </p>
 
                     <div class="about-btn-grp">
+
+
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.profile') }}" class="lab-btn style-orange "><span><i
+                                    class="icofont-tasks"></i>
+                                Profile</span> </a>
+                        {% else %}
                         <a href="{{ url_for('main.register') }}" class="lab-btn style-orange "><span><i
                                     class="icofont-tasks"></i>
                                 Register
                                 Now</span> </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -247,7 +260,7 @@
 <!-- ======= Sponsor sectin end here ======== -->
 
 <!-- ===== Pricing Plan Start here  ==== -->
-<section class="pricing-plan-section padding-tb padding-b shape-img">
+<section class="pricing-plan-section padding-tb padding-b shape-img" id="events_list">
     <div class="container-fluid ml-5 mr-5">
         <div class="section-header">
             <h2>Our Key Events</h2>
@@ -304,13 +317,8 @@
                                     </li>
                                 </ul>
                                 <div class="get-ticket">
-                                    <a href="#">
+                                    <a href="{{ url_for('main.event', event_type='cultural') }}">
                                         <ul>
-                                            <li class="vat">
-                                                <h4>₹50</h4>
-                                            </li>
-                                            <li class="icon"><i class="icofont-arrow-right"></i>
-                                            </li>
                                             <li class="ticket-text">
                                                 <p>Get Ticket</p>
                                             </li>
@@ -373,14 +381,8 @@
 
                                 </ul>
                                 <div class="get-ticket">
-                                    <a href="#">
+                                    <a href="{{ url_for('main.event', event_type='managerial') }}">
                                         <ul>
-                                            <li class="vat">
-                                                <h4>₹50</h4>
-                                                <p>ex. VAT</p>
-                                            </li>
-                                            <li class="icon"><i class="icofont-arrow-right"></i>
-                                            </li>
                                             <li class="ticket-text">
                                                 <p>Get Ticket</p>
                                             </li>
@@ -439,14 +441,8 @@
 
                                 </ul>
                                 <div class="get-ticket">
-                                    <a href="#">
+                                    <a href="{{ url_for('main.event', event_type='sports') }}">
                                         <ul>
-                                            <li class="vat">
-                                                <h4>₹50</h4>
-                                                <p>ex. VAT</p>
-                                            </li>
-                                            <li class="icon"><i class="icofont-arrow-right"></i>
-                                            </li>
                                             <li class="ticket-text">
                                                 <p>Get Ticket</p>
                                             </li>
@@ -475,7 +471,8 @@
                                     </li>
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </span> <a href="{{ url_for('main.event', event_type='technical') }}">Robotic
+                                        </span> <a href="{{ url_for('main.event', event_type='technical') }}"
+                                            style="font-size: 15px;">Robotic
                                             Arm Programming Competion</a>
                                     </li>
                                     <li class="facility-item">
@@ -511,14 +508,8 @@
 
                                 </ul>
                                 <div class="get-ticket">
-                                    <a href="#">
+                                    <a href="{{ url_for('main.event', event_type='technical') }}">
                                         <ul>
-                                            <li class="vat">
-                                                <h4>₹50</h4>
-                                                <p>ex. VAT</p>
-                                            </li>
-                                            <li class="icon"><i class="icofont-arrow-right"></i>
-                                            </li>
                                             <li class="ticket-text">
                                                 <p>Get Ticket</p>
                                             </li>
@@ -547,9 +538,8 @@
                 <div class="section-wrapper">
                     <div class="gift-content">
                         <p>
-                            It is a long established fact that a reader will be distracted by theing
-                            readable content of a page when looking at its layout. The point info
-                            using Lorem Ipsum is that it has a more-or-less
+                            The secret of winning any prize is knowing that your own treasure and potential is equal to
+                            it... and worthy of it.
                         </p>
                         <ul class="gift-list">
                             <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
@@ -561,9 +551,17 @@
                             <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </span> Gift Hamper</li>
                         </ul>
+
+                        {% if current_user.is_authenticated %}
+                        <div class="register-button">
+                            <a href="{{ url_for('main.profile') }}" class="lab-btn"><span>Profile</span></a>
+                        </div>
+                        {% else %}
                         <div class="register-button">
                             <a href="{{ url_for('main.register') }}" class="lab-btn"><span>Register Now</span> </a>
                         </div>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
