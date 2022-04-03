@@ -111,8 +111,6 @@ def login():
         return redirect(url_for('main.profile'))
     if request.method == 'POST':
         user = User.query.filter_by(email=request.form.get('email')).first()
-        print('\n\n',user.password)
-        print('\n\n',request.form.get('password'))
         if user:
             if user.password == request.form.get('password'):
                 login_user(user, remember=request.form.get('remember'),
@@ -129,6 +127,15 @@ def login():
                 "You don't have an account. Please create now to login.", "info")
             return redirect(url_for('main.register'))
     return render_template('login.html')
+
+
+@main.route('/logout/')
+@login_required
+def logout():
+    """Logout Route"""
+    logout_user()
+    flash("Logout successfully!", "success")
+    return redirect(url_for('main.login'))
 
 
 @main.route('/profile/')
@@ -179,11 +186,3 @@ def dashboard():
     """Dashboard Route"""
     return render_template('dashboard.html')
 
-
-@main.route('/logout/')
-@login_required
-def logout():
-    """Logout Route"""
-    logout_user()
-    flash("Logout successfully!", "success")
-    return redirect(url_for('main.login'))

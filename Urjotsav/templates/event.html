@@ -24,41 +24,51 @@
         <div class="section-header">
             <h2>Event Details</h2>
         </div>
-        <div class="container-fluid w-75">
-            <table class="table table-hover">
-                <thead>
-                    <tr class="table-head">
-                        <th scope="col">S.No</th>
-                        <th scope="col">Event</th>
-                        <th scope="col">Faculity Co-ordinaters</th>
-                        <th scope="col">Event Date</th>
-                        <th scope="col">Venue</th>
-                        <th scope="col">Entry Fees</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for event in events %}
-                    <tr>
-                        <th scope="row">{{ loop.index }}</th>
-                        <td>{{ event.event_name }}</td>
-                        <td>{{ event.co_cordinators }}</td>
-                        <td>{{ event.event_date }}</td>
-                        <td>{{ event.venue }}</td>
-                        {% if current_user.is_authenticated %}
-                        {% if current_user.is_piemr %}
-                        <td>₹ {{ event.in_entry_fees }}</td>
-                        {% else %}
-                        <td>₹ {{ event.out_entry_fees }}</td>
-                        {% endif %}
-                        {% endif %}
-                        <td>₹ {{ event.out_entry_fees }}</td>
-                        <td>{{ event.prize }}</td>
-                        <td><a href="{{ url_for('main.event_registration') }}">Register</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+
+
+        <div class="shop-cart padding-tb">
+            <div class="container">
+                <div class="section-wrapper">
+                    <div class="cart-top">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Event</th>
+                                    <th>Faculity Co-ordinaters</th>
+                                    <th>Event Date</th>
+                                    <th>Venue</th>
+                                    <th>Entry Fees</th>
+                                    <th>Prize</th>
+                                    <th>Registration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                                {% for event in events %}
+                                <tr>
+                                    <th scope="row" style="text-align:center;">{{ loop.index }}
+                                    </th>
+                                    <td>{{ event.event_name }}</td>
+                                    <td>{{ event.co_cordinators }}</td>
+                                    <td>{{ event.event_date }}</td>
+                                    <td>{{ event.venue }}</td>
+                                    {% if current_user.is_authenticated and current_user.is_piemr %}
+                                    <td>₹ {{ event.in_entry_fees }}</td>
+                                    {% else %}
+                                    <td>₹ {{ event.out_entry_fees }}</td>
+                                    {% endif %}
+                                    <td>{{ event.prize }}</td>
+                                    <td><a href="{{ url_for('main.event_registration') }}">Register</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     {% else %}
