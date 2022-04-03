@@ -16,6 +16,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/lightcase.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/swiper.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+  {% block metas %}
+
+  {% endblock metas %}
+
 </head>
 
 <body>
@@ -71,8 +76,13 @@
                 style="border-radius: 2px;"></i>
               <span>Profile</span>
             </a>
-            {% else %}
+            {% elif current_user.role == "Co-ordinator" %}
             <a href="{{ url_for('main.dashboard') }}" class="login"><i class="icofont-user"
+                style="border-radius: 2px;"></i>
+              <span>Dashboard</span>
+            </a>
+            {% elif current_user.role == "Core" %}
+            <a href="{{ url_for('main.core_dashboard') }}" class="login"><i class="icofont-user"
                 style="border-radius: 2px;"></i>
               <span>Dashboard</span>
             </a>
@@ -118,19 +128,19 @@
 
 
 
- <footer class="footer-section padding-tb padding-b d-flex "
-    style="background-image: url(static/assets/images/footer/bg.jpg);">
+  <footer class="footer-section padding-tb padding-b d-flex "
+    style="background-image: url('static/assets/images/footer/bg.jpg');">
     <div class="container ">
-      <div class=" footer-contant" >
-        <h5 class="text-white">contact details</h5>    
-     <ul>
-         <li><i class="icofont-phone">- 0731-4013333</i></li>
-         <li><i class="icofont-email">- info@piemr.edu.in</i></li>
-     </ul>
-     </div>
-     
+      <div class=" footer-contant">
+        <h5 class="text-white">contact details</h5>
+        <ul>
+          <li><i class="icofont-phone">- 0731-4013333</i></li>
+          <li><i class="icofont-email">- info@piemr.edu.in</i></li>
+        </ul>
+      </div>
+
       <div class="footer-content text-center">
-         <!-- <a class="mb-2" href="index.html"><img src="assets/images/footer/logo.png" alt="eventoz"></a> 
+        <!-- <a class="mb-2" href="index.html"><img src="assets/images/footer/logo.png" alt="eventoz"></a> 
          <h3 class="mb-4">eventoz Eventsite</h3> -->
 
         <ul class="social-icons justify-content-end">
@@ -141,10 +151,6 @@
           <li><a href="https://in.linkedin.com/school/piemr/" target="_blank"><i class="icofont-linkedin"></i></a></li>
         </ul>
       </div>
-
-
-     
-
     </div>
   </footer>
 

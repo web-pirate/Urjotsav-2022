@@ -16,16 +16,16 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
-    enrollment_number = db.Column(db.String(128))
+    enrollment_number = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(140), unique=True, nullable=False)
     mobile_number = db.Column(db.String(140), unique=True, nullable=False)
     password = db.Column(db.String(1000), nullable=False)
     dept_name = db.Column(db.String(1000), nullable=False)
-    branch = db.Column(db.String(1000), nullable=False)
     role = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     is_piemr = db.Column(db.Boolean, default=False)
     registered_events = db.relationship('EventRegistration', backref='user', lazy='dynamic')
+    main_co_ordinators = db.relationship('Events', backref='user', lazy='dynamic')
     payments = db.relationship('Payments', backref='user', lazy='dynamic')
 
     def get_reset_token(self, expires_sec=600):
@@ -53,6 +53,7 @@ class Events(db.Model):
     out_entry_fees = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     prize = db.Column(db.Text, nullable=False)
+    main_co_ordinator = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class EventRegistration(db.Model):
@@ -62,9 +63,12 @@ class EventRegistration(db.Model):
     fees = db.Column(db.String(1000), nullable=False)
     date = db.Column(db.DateTime, default=datetime.now(tz))
     venue = db.Column(db.String(1000), nullable=False)
+    team_leader = db.Column(db.String(1000), nullable=False)
+    mobile_number = db.Column(db.String(1000), nullable=False)
     team_size = db.Column(db.Integer, nullable=False)
     team_members = db.Column(db.String(1000), nullable=False)
     paid = db.Column(db.Boolean)
+    pay_id = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
