@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header Section Start Here -->
+<section class="page-header bg_img padding-tb">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="page-header-content-area">
+            <h4 class="ph-title">Event Confirmation Form Page</h4>
+            <ul class="lab-ul">
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                <li><a class="active">Event Registration</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Registration section start Here -->
+<div class="login-section padding-tb">
+    <div class="container">
+        <div class="account-wrapper">
+            <h3 class="title">Fill this form</h3>
+
+            <form class="account-form" method="post" action="{{ url_for('event_registration') }}">
+
+
+                <div class="form-group">
+                    <select class="from-select" id="options">
+                        <option value="0" disabled selected>Event Type</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="managerial">Managerial</option>
+                        <option value="technical">Technical</option>
+                        <option value="sports">Sports</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <select class="from-select" id="choices">
+                        <option value="0" disabled selected>Event</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="number" placeholder="No. Of Participants" name="groupNo">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control textarea" name="groupName" placeholder="Name of Participants Seperated by Comma (Tejas, Kshitij, Manish,
+                    Rajat)" cols="30" rows="10">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <button class="d-block lab-btn" type="submit"><span>Save and Pay</span></button>
+                </div>
+            </form>
+
+            <div class="account-bottom">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration section end Here -->
+
+{% endblock content %}

@@ -7,10 +7,10 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="page-header-content-area">
-            <h4 class="ph-title">Sports Event</h4>
+            <h4 class="ph-title">{{ current_event }} Event</h4>
             <ul class="lab-ul">
                 <li><a href="{{ url_for('main.home') }}">Home</a></li>
-                <li><a class="active">Sports Event</a></li>
+                <li><a class="active">{{ current_event }} Event</a></li>
             </ul>
         </div>
     </div>
@@ -21,7 +21,7 @@
 <section class="speakers-section padding-tb padding-b shape-img ">
     <div class="container-fluid col-md-12 col-sm-12">
         <div class="section-header">
-            <h2>Sports Event Faculity Coordinaters</h2>
+            <h2>Event Details</h2>
         </div>
         <div class="container-fluid w-75">
             <table class="table table-hover">
@@ -30,7 +30,6 @@
                         <th scope="col">S.No</th>
                         <th scope="col">Event</th>
                         <th scope="col">Faculity Co-ordinaters</th>
-                        <!-- <th scope="col">Student Co-ordinaters</th> -->
                         <th scope="col">Event Date</th>
                         <th scope="col">Venue</th>
                         <th scope="col">Entry Fees</th>
@@ -38,108 +37,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for event in events %}
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Inter College Kabaddi</td>
-                        <td>Prof. P.K. Suman <br>Prof. Mahendra Singh Thakur<br>Mr. Abhishek Chourasiya</td>
-                        <!-- <td>Mukul Patel-8319828426 <br> Aman Patel-6268373080 <br> Tikam Meda-9753030046</td> -->
-                        <td>16<sup>th</sup>April 2022</td>
-                        <td>Basketball Cort</td>
-                        <td>₹800/-</td>
-                        <td>Winner-3100 <br>Runner Up-1500</td>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ event.event_name }}</td>
+                        <td>{{ event.co_cordinators }}</td>
+                        <td>{{ event.event_date }}</td>
+                        <td>{{ event.venue }}</td>
+                        {% if current_user.is_authenticated %}
+                        {% if current_user.is_piemr %}
+                        <td>₹ {{ event.in_entry_fees }}</td>
+                        {% else %}
+                        <td>₹ {{ event.out_entry_fees }}</td>
+                        {% endif %}
+                        {% endif %}
+                        <td>₹ {{ event.out_entry_fees }}</td>
+                        <td>{{ event.price }}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Inter College Football</td>
-                        <td>Prof. Ayush Patidar <br>Prof. Vishal Shah</td>
-                        <!-- <td>Mukul Patel-8319828426 <br> Aman Patel-6268373080 <br> Tikam Meda-9753030046</td> -->
-                        <td>16<sup>th</sup>April 2022</td>
-                        <td>Piemr Ground</td>
-                        <td>₹800/-</td>
-                        <td>Winner-3100 <br>Runner Up-1500</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Inter College Cricket</td>
-                        <td>Prof. Suyog Munshi <br>Prof. P.K. Suman <br>Prof. Anshul Shrivastava</td>
-                        <td>17<sup>th</sup>April 2022</td>
-                        <td>Atal Khel Parisar</td>
-                        <td>₹1100/-</td>
-                        <td>Winner-5100 <br>Runner Up-2100</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Inter college Volleyball</td>
-                        <td>Prof. P.K. Suman<br>Prof. Jeevan Kittur <br>Prof. Ayush Patidar</td>
-                        <td>17<sup>th</sup>April 2022</td>
-                        <td>Piemr Ground</td>
-                        <td>₹800/-</td>
-                        <td>Winner-3100 <br>Runner Up-1500</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Basketball</td>
-                        <td>Mr. Vikram Hansari</td>
-                        <td>18<sup>th</sup>April 2022</td>
-                        <td>Basketball Cort</td>
-                        <td>₹50/-</td>
-                        <td>Shield</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Kho-Kho</td>
-                        <td>Prof. Priyanka Tiwari</td>
-                        <td>18<sup>th</sup>April 2022</td>
-                        <td>Piemr Ground</td>
-                        <td>₹50/-</td>
-                        <td>Shield</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Carrom</td>
-                        <td>Aditya Agrawal</td>
-                        <td>18<sup>th</sup>April 2022</td>
-                        <td>Sports Room</td>
-                        <td>₹20/-</td>
-                        <td>Shield</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Badminton</td>
-                        <td>Yash Shah</td>
-                        <td>18<sup>th</sup>April 2022</td>
-                        <td>PIMR, UG Campus</td>
-                        <td>₹20/-</td>
-                        <td>Shield</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Women's Cricket</td>
-                        <td>Prof. P.K. Suman</td>
-                        <td>19<sup>th</sup>April 2022</td>
-                        <td>Basketball Cort</td>
-                        <td>₹50/-</td>
-                        <td>Shield</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Chess</td>
-                        <td>Ayush Patidar <br>Anand Khuswah</td>
-                        <td>19<sup>th</sup>April 2022</td>
-                        <td>Sports Room</td>
-                        <td>₹20/-</td>
-                        <td>Shield</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Table Tennis</td>
-                        <td>Jeevan Kittur</td>
-                        <td>19<sup>th</sup>April 2022</td>
-                        <td>Sports Room</td>
-                        <td>₹20/-</td>
-                        <td>Shield</td>
-                    </tr>
-
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

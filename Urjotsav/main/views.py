@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
-from Urjotsav.models import User, EventRegistration
+from Urjotsav.models import User, EventRegistration, Events
+from Urjotsav.models import User, EventRegistration, Events
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
 from datetime import timedelta
@@ -140,6 +141,31 @@ def profile():
     for event in events:
         total_amount += int(event.fees)
     return render_template('profile.html', events=events, total_amount=total_amount)
+
+
+@main.route('/event/<event_type>/')
+def event(event_type):
+    """All Event Route"""
+    events = Events.query.filter_by(event_type=event_type).all()
+    current_event = ''
+    if event_type == "cultural":
+        current_event = "Cultural"
+    elif event_type == "managerial":
+        current_event = "Managerial"
+    elif event_type == "sports":
+        current_event = "Sports"
+    elif event_type == "technical":
+        current_event = "Technical"
+    return render_template('event.html', events=events, current_event=current_event)
+
+
+@main.route('/event_registration/', methods=['GET', 'POST'])
+@login_required
+def event_registration():
+    """Event Registration"""
+
+    return render_template('event_registration.html')
+
 
 
 @main.route('/gallery/')

@@ -26,6 +26,7 @@ class User(db.Model, UserMixin):
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     is_piemr = db.Column(db.Boolean, default=False)
     registered_events = db.relationship('EventRegistration', backref='user', lazy='dynamic')
+    payments = db.relationship('Payments', backref='user', lazy='dynamic')
 
     def get_reset_token(self, expires_sec=600):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -61,11 +62,11 @@ class EventRegistration(db.Model):
     date = db.Column(db.DateTime, default=datetime.now(tz))
     team_size = db.Column(db.Integer, nullable=False)
     team_members = db.Column(db.String(1000), nullable=False)
-    user_id = db.Column(db.Integer, nullable=False)
     paid = db.Column(db.Boolean)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
-class DepartmentName(db.Model):
+class Department(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dept_name = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False)
