@@ -246,7 +246,6 @@ def core_dashboard():
     if current_user.role != "Core":
         return redirect(url_for('main.dashboard'))
 
-    events = EventRegistration.query.all()
     sports = len(EventRegistration.query.filter_by(event_type='sports').all())
     cultural = len(EventRegistration.query.filter_by(event_type='cultural').all())
     managerial = len(EventRegistration.query.filter_by(event_type='managerial').all())
@@ -274,3 +273,15 @@ def core_dashboard():
     
     return render_template('dashboard.html', sports=sports, cultural=cultural, managerial=managerial, 
     technical=technical, depts=depts, sports_amount=sports_amount, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
+
+
+@main.route('/core_dashboard/<event_type>/')
+@login_required
+def event_wise_data(event_type):
+    """Event-wise Route"""
+    if current_user.role != "Core":
+        return redirect(url_for('main.dashboard'))
+
+    events = EventRegistration.query.filter_by(event_type=event_type).filter_by(paid=1).all()
+
+    return render_template('core-committee.html', events=events, event_type=event_type)
