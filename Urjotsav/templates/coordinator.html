@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% block content %}
+
 
 <!-- Page Header Section Start Here -->
 <section class="page-header bg_img padding-tb">
@@ -15,7 +17,7 @@
         {% endif %}
         {% endwith %}
         <div class="page-header-content-area">
-            <h4 class="ph-title">User Profile</h4>
+            <h4 class="ph-title">Co-ordinators</h4>
         </div>
     </div>
 </section>
@@ -26,6 +28,7 @@
     <div class="container">
         <div class="profile">
             <h3 class="title">{{ current_user.name }}</h3>
+
             <section class="speakers-section pt-5 shape-img">
                 <div class="container">
                     <div class="section-wrapper">
@@ -37,42 +40,9 @@
                                             <div class="spkr-content-title d-flex flex-wrap justify-content-between">
                                                 <div class="row">
                                                     <div class="speaker-infos left">
-                                                        <h5>Email: </h5>
-                                                        <h5>{{ current_user.email }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                                        <h5>Total Registrations:</h5>
+                                                        <h5>{{ total_found }}</h5>
 
-                            <div class="col-xl-6 col-lg-8 col-12">
-                                <div class="speaker-item">
-                                    <div class="speaker-inner">
-                                        <div class="speaker-content">
-                                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                                <div class="row">
-                                                    <div class="speaker-infos left">
-                                                        <h5>Reward Points:</h5>
-                                                        <h5>{{ current_user.reward_points }} </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-lg-8 col-12">
-                                <div class="speaker-item">
-                                    <div class="speaker-inner">
-                                        <div class="speaker-content">
-                                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                                <div class="row">
-                                                    <div class="speaker-infos left">
-                                                        <h5>Phone:</h5>
-                                                        <h5>+91 {{ current_user.mobile_number }} </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,62 +59,66 @@
                                                 <div class="row">
                                                     <div class="speaker-infos left">
                                                         <h5>Total Amount:</h5>
-                                                        <h5>₹ {{ total_amount }}</h5>
+                                                        <h5>₹ {{ total_amount }} </h5>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                </div>
             </section>
-
             <div class="shop-cart padding-tb">
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
-                            {% if events[0] %}
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Event Type</th>
-                                        <th>Event Name</th>
-                                        <th>Name of Participants</th>
+                                        <th>Team Leader</th>
+                                        <th>Mobile Number</th>
+                                        <th>Team Size</th>
+                                        <th>Team Members</th>
                                         <th>Fees</th>
                                         <th>Date</th>
-                                        <th>Venue</th>
+                                        <th>Paid</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     {% for event in events %}
                                     <tr>
                                         <td class="product-item">
-                                            <div class="p-content" style="font-weight: bolder;">
-                                                {{ event.event_type | title }}
+                                            <div class="p-content">
+                                                <h5>{{ event.team_leader }}</h5>
                                             </div>
                                         </td>
-                                        <td>{{ event.event_name | title }}</td>
-                                        <td>{{ event.team_members | title }}</td>
-                                        <td>{{ event.fees }}</td>
+                                        <td>{{ event.mobile_number }}</td>
+                                        <td>{{ event.team_size }}</td>
+                                        <td>{{ event.team_members }}</td>
+                                        <td>₹ {{ event.fees }}</td>
                                         <td>{{ event.date.date() }}</td>
-                                        <td>{{ event.venue | title }}</td>
+                                        <td>
+                                            {% if event.paid %}
+                                            <div class="about-btn-grp btn-sm">
+                                                <button class="lab-btn style-orange" disabled>Paid</button>
+                                            </div>
+                                            {% else %}
+                                            <form action="{{ url_for('main.payment_success') }}" method="put">
+                                                <div class="about-btn-grp btn-sm">
+                                                    <input type="text" value="{{ event.id }}" name="event_id" hidden>
+                                                    <button type="submit" class="lab-btn style-orange">Approve</button>
+                                                </div>
+                                            </form>
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
-                            {% else %}
-
-                            <div style="display: flex; align-items: center; justify-content: center;">
-                                <button class="d-block lab-btn"><a href="/#events_list"
-                                        style="color: white;">Participate Now</a></button>
-                            </div>
-
-
-                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -153,4 +127,5 @@
     </div>
 </div>
 <!-- Registration section end Here -->
+
 {% endblock content %}

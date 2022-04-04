@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
-from Urjotsav.models import User, EventRegistration, Events, Department
+from Urjotsav.models import User, EventRegistration, Events, Department, Payments
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
 from datetime import timedelta, datetime
 import pytz
 from itsdangerous import URLSafeTimedSerializer as URLSerializer
 from itsdangerous import SignatureExpired, BadTimeSignature
+import random
+import string
 from Urjotsav.main.utils import send_confirm_email, send_reset_email
 
 main = Blueprint('main', __name__)
@@ -30,10 +32,9 @@ def register():
         return redirect(url_for('main.profile'))
     if request.method == 'POST':
         if request.form.get('password') == request.form.get('cpassword'):
-            if not User.query.filter_by(email=request.form.get('email')).first():
+            if not User.query.filter_by(email=request.form.get('email')).first() or not User.query.filter_by(email=request.form.get('mobile_number')).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
-                token = s.dumps({"name": request.form.get('name'), "email": request.form.get('email'), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), 
-                "branch": request.form.get('branch'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
+                token = s.dumps({"name": request.form.get('name'), "email": request.form.get('email'), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
                 send_confirm_email(email=request.form.get('email'), token=token)
 
@@ -42,7 +43,7 @@ def register():
                 return redirect(url_for('main.login'))
             else:
                 flash(
-                    f"You already have an account!", "info")
+                    f"You already have an account! Either Email or EnrollmentNumber or Mobile Number is already in use.", "info")
                 return redirect(url_for('main.login'))
         else:
             flash(
@@ -61,7 +62,7 @@ def confirm_email(token):
         if data['email'].lower().strip().split('@')[-1] == 'piemr.edu.in':
             is_piemr = True
         user = User(name=data['name'], enrollment_number=data["enrollment_number"], email=data["email"], mobile_number=data['Mobile Number'], password=data["password"], 
-                    dept_name=data['dept_name'], branch=data['branch'], role='Student', reward_points=0, is_piemr=is_piemr)
+                    dept_name=data['dept_name'], role='Student', reward_points=0, is_piemr=is_piemr)
         db.session.add(user)
         db.session.commit()
         login_user(user)
@@ -138,12 +139,14 @@ def logout():
     return redirect(url_for('main.login'))
 
 
-@main.route('/profile/')
+@main.route('/profile/', methods=['GET', 'POST'])
 @login_required
 def profile():
     """Profile Route"""
+    if current_user.role != "Student":
+        return redirect(url_for('main.dashboard'))
     total_amount = 0
-    events = EventRegistration.query.filter_by(user_id=current_user.id).all()
+    events = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(paid=1).all()
     for event in events:
         total_amount += int(event.fees)
     return render_template('profile.html', events=events, total_amount=total_amount)
@@ -181,11 +184,16 @@ def event_registration(event_name):
                 fees = events.in_entry_fees
             else:
                 fees = events.out_entry_fees
-            date = datetime.now(tz).date()
+            date = events.event_date.date()
             venue = events.venue
 
-            eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees,date=date,venue=venue,team_size=team_size, team_members=team_members, paid=0, user_id=current_user.id)
+            pay_id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=15))
+            pay = Payments(amount=fees, payment_id=pay_id, date=datetime.now(tz), status='Processing', user_id=current_user.id)
+            eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees, date=date, venue=venue, 
+            team_size=team_size, team_members=team_members, paid=0, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
+            user_id=current_user.id)
             db.session.add(eve)
+            db.session.add(pay)
             dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
             current_user.reward_points += events.reward_points
             dept.reward_points += events.reward_points
@@ -193,10 +201,21 @@ def event_registration(event_name):
             # flash("", "success")
             return f"{event_name}"
         else:
-            flash("Already Registered for this event!", "warning")
+            flash("Already Registered for this event!", "info")
             return redirect(url_for("main.profile"))
     return render_template('event_register.html', event_name=event_name)
 
+
+@main.route('/payment_success/', methods=['PUT'])
+def payment_success():
+    event_id = request.form.get('event_id')
+    eve = EventRegistration.query.filter_by(id=event_id).first()
+    pay = Payments.query.filter_by(payment_id=eve.pay_id).first()
+    eve.paid = 1
+    pay.status = "Success"
+    db.session.commit()
+    flash("Set To Payment Received", "success")
+    return redirect(url_for('main.dashboard'))
 
 
 @main.route('/gallery/')
@@ -209,5 +228,49 @@ def gallery():
 @login_required
 def dashboard():
     """Dashboard Route"""
-    return render_template('dashboard.html')
+    if current_user.role != "Co-ordinator":
+        return redirect(url_for('main.core_dashboard'))
+    co_ordinator = Events.query.filter_by(main_co_ordinator=current_user.id).first()
+    events = EventRegistration.query.filter_by(event_name=co_ordinator.event_name).all()
+    total_found = len(events)
+    total_amount = 0
+    for event in events:
+        total_amount += int(event.fees)
+    return render_template('coordinator.html', events=events, total_found=total_found, total_amount=total_amount)
 
+
+@main.route('/core_dashboard/')
+@login_required
+def core_dashboard():
+    """Core Dashboard Route"""
+    if current_user.role != "Core":
+        return redirect(url_for('main.dashboard'))
+
+    events = EventRegistration.query.all()
+    sports = len(EventRegistration.query.filter_by(event_type='sports').all())
+    cultural = len(EventRegistration.query.filter_by(event_type='cultural').all())
+    managerial = len(EventRegistration.query.filter_by(event_type='managerial').all())
+    technical = len(EventRegistration.query.filter_by(event_type='technical').all())
+    depts = Department.query.all()
+    
+    sports_eve = EventRegistration.query.filter_by(event_type="sports").all()
+    cultural_eve = EventRegistration.query.filter_by(event_type="cultural").all()
+    managerial_eve = EventRegistration.query.filter_by(event_type="managerial").all()
+    technical_eve = EventRegistration.query.filter_by(event_type="technical").all()
+
+    sports_amount = 0
+    cultural_amount = 0
+    managerial_amount = 0
+    technical_amount = 0
+
+    for event in sports_eve:
+        sports_amount += int(event.fees)
+    for event in cultural_eve:
+        cultural_amount += int(event.fees)
+    for event in managerial_eve:
+        managerial_amount += int(event.fees)
+    for event in technical_eve:
+        technical_amount += int(event.fees)
+    
+    return render_template('dashboard.html', sports=sports, cultural=cultural, managerial=managerial, 
+    technical=technical, depts=depts, sports_amount=sports_amount, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
