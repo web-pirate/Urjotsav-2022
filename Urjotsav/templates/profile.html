@@ -116,6 +116,7 @@
                                         <th>Name of Participants</th>
                                         <th>Fees</th>
                                         <th>Date</th>
+                                        <th>Status</th>
                                         <th>Venue</th>
                                     </tr>
                                 </thead>
@@ -131,6 +132,11 @@
                                         <td>{{ event.team_members | title }}</td>
                                         <td>{{ event.fees }}</td>
                                         <td>{{ event.date.date() }}</td>
+                                        {% if event.paid %}
+                                        <td>Approved</td>
+                                        {% else %}
+                                        <td>Processing</td>
+                                        {% endif %}
                                         <td>{{ event.venue | title }}</td>
                                     </tr>
                                     {% endfor %}

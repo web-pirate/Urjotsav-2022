@@ -146,7 +146,7 @@ def profile():
     if current_user.role != "Student":
         return redirect(url_for('main.dashboard'))
     total_amount = 0
-    events = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(paid=1).all()
+    events = EventRegistration.query.filter_by(user_id=current_user.id).all()
     for event in events:
         total_amount += int(event.fees)
     return render_template('profile.html', events=events, total_amount=total_amount)
@@ -175,41 +175,42 @@ def event_registration(event_name):
     if request.method == 'POST':
         is_already_registered = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(event_name=event_name).first()
         print('\n\n', is_already_registered,'\n\n')
-        if not is_already_registered:
-            team_size = request.form.get('groupNo')
-            team_members = request.form.get('groupName')
-            events = Events.query.filter_by(event_name=event_name).first()
-            event_type = events.event_type
-            if current_user.is_piemr:
-                fees = events.in_entry_fees
-            else:
-                fees = events.out_entry_fees
-            date = events.event_date.date()
-            venue = events.venue
-
-            pay_id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=15))
-            pay = Payments(amount=fees, payment_id=pay_id, date=datetime.now(tz), status='Processing', user_id=current_user.id)
-            eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees, date=date, venue=venue, 
-            team_size=team_size, team_members=team_members, paid=0, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
-            user_id=current_user.id)
-            db.session.add(eve)
-            db.session.add(pay)
-            dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
-            current_user.reward_points += events.reward_points
-            dept.reward_points += events.reward_points
-            db.session.commit()
-            # flash("", "success")
-            return f"{event_name}"
+        # if not is_already_registered:
+        team_size = request.form.get('groupNo')
+        team_members = request.form.get('groupName')
+        events = Events.query.filter_by(event_name=event_name).first()
+        event_type = events.event_type
+        if current_user.is_piemr:
+            fees = events.in_entry_fees
         else:
-            flash("Already Registered for this event!", "info")
-            return redirect(url_for("main.profile"))
+            fees = events.out_entry_fees
+        date = events.event_date.date()
+        venue = events.venue
+
+        pay_id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=15))
+        pay = Payments(amount=fees, payment_id=pay_id, date=datetime.now(tz), status='Processing', user_id=current_user.id)
+        eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees, date=date, venue=venue, 
+        team_size=team_size, team_members=team_members, paid=0, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
+        user_id=current_user.id)
+        db.session.add(eve)
+        db.session.add(pay)
+        dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
+        current_user.reward_points += events.reward_points
+        dept.reward_points += events.reward_points
+        db.session.commit()
+        # flash("", "success")
+        return f"{event_name}"
+        # else:
+        #     flash("Already Registered for this event!", "info")
+        #     return redirect(url_for("main.profile"))
     return render_template('event_register.html', event_name=event_name)
 
 
-@main.route('/payment_success/', methods=['PUT'])
+@main.route('/payment_success/', methods=['POST'])
+@login_required
 def payment_success():
     event_id = request.form.get('event_id')
-    eve = EventRegistration.query.filter_by(id=event_id).first()
+    eve = EventRegistration.query.filter_by(pay_id=event_id).first()
     pay = Payments.query.filter_by(payment_id=eve.pay_id).first()
     eve.paid = 1
     pay.status = "Success"

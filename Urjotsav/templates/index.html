@@ -9,14 +9,25 @@
             <div class="row gy-5 align-items-center">
                 <div class="col-lg-12 col-12">
                     <div class="banner-content text-center">
-                        <h1 class="mb-0"> <span style="color: #f64482;">URJOSTSAV</span> is annual technical &
-                            cultural fest of the <br> Prestige Institute of Engineering Management & Research
-                            (PIEMR)</h1>
+                        <h1 class="mb-0"> <span style="color: #f64482;">URJOSTSAV</span> is Annual, Technical &
+                            Cultural Fest of the <br> Prestige Institute of Engineering Management & Research
+                            (PIEMR, INDORE)</h1>
                         <!-- <p>Be the witness of marvalous event <br>
                                 Call us For More info.</p> -->
+
                         {% if current_user.is_authenticated %}
+                        {% if current_user.role == "Student" %}
                         <a href="{{ url_for('main.profile') }}" class="lab-btn mt-3"><span><i class="icofont-tasks"></i>
                                 Profile</span> </a>
+                        {% elif current_user.role == "Co-ordinator" %}
+                        <a href="{{ url_for('main.dashboard') }}" class="lab-btn mt-3"><span><i
+                                    class="icofont-tasks"></i>
+                                Dashboard</span> </a>
+                        {% elif current_user.role == "Core" %}
+                        <a href="{{ url_for('main.core_dashboard') }}" class="lab-btn mt-3"><span><i
+                                    class="icofont-tasks"></i>
+                                Dashboard</span> </a>
+                        {% endif %}
                         {% else %}
                         <a href="{{ url_for('main.register') }}" class="lab-btn mt-3"><span><i
                                     class="icofont-tasks"></i>
@@ -68,12 +79,20 @@
                     </p>
 
                     <div class="about-btn-grp">
-
-
                         {% if current_user.is_authenticated %}
+                        {% if current_user.role == "Student" %}
                         <a href="{{ url_for('main.profile') }}" class="lab-btn style-orange "><span><i
                                     class="icofont-tasks"></i>
                                 Profile</span> </a>
+                        {% elif current_user.role == "Co-ordinator" %}
+                        <a href="{{ url_for('main.dashboard') }}" class="lab-btn style-orange "><span><i
+                                    class="icofont-tasks"></i>
+                                Dashboard</span> </a>
+                        {% elif current_user.role == "Core" %}
+                        <a href="{{ url_for('main.core_dashboard') }}" class="lab-btn style-orange "><span><i
+                                    class="icofont-tasks"></i>
+                                Dashboard</span> </a>
+                        {% endif %}
                         {% else %}
                         <a href="{{ url_for('main.register') }}" class="lab-btn style-orange "><span><i
                                     class="icofont-tasks"></i>
@@ -553,9 +572,19 @@
                         </ul>
 
                         {% if current_user.is_authenticated %}
+                        {% if current_user.role == "Student" %}
                         <div class="register-button">
                             <a href="{{ url_for('main.profile') }}" class="lab-btn"><span>Profile</span></a>
                         </div>
+                        {% elif current_user.role == "Co-ordinator" %}
+                        <div class="register-button">
+                            <a href="{{ url_for('main.dashboard') }}" class="lab-btn"><span>Dashboard</span></a>
+                        </div>
+                        {% elif current_user.role == "Core" %}
+                        <div class="register-button">
+                            <a href="{{ url_for('main.core_dashboard') }}" class="lab-btn"><span>Dashboard</span></a>
+                        </div>
+                        {% endif %}
                         {% else %}
                         <div class="register-button">
                             <a href="{{ url_for('main.register') }}" class="lab-btn"><span>Register Now</span> </a>

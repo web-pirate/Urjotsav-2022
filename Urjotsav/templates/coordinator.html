@@ -103,13 +103,12 @@
                                         <td>{{ event.date.date() }}</td>
                                         <td>
                                             {% if event.paid %}
-                                            <div class="about-btn-grp btn-sm">
-                                                <button class="lab-btn style-orange" disabled>Paid</button>
-                                            </div>
+                                            Paid
                                             {% else %}
-                                            <form action="{{ url_for('main.payment_success') }}" method="put">
+                                            <form action="{{ url_for('main.payment_success') }}" method="post">
                                                 <div class="about-btn-grp btn-sm">
-                                                    <input type="text" value="{{ event.id }}" name="event_id" hidden>
+                                                    <input type="text" value="{{ event.pay_id }}" name="event_id"
+                                                        hidden>
                                                     <button type="submit" class="lab-btn style-orange">Approve</button>
                                                 </div>
                                             </form>

@@ -7,7 +7,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="page-header-content-area">
-            <h4 class="ph-title">{{ event_type }}</h4>
+            <h4 class="ph-title">{{ event_type | title }}</h4>
         </div>
     </div>
 </section>
@@ -22,7 +22,10 @@
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
-                            <h3 class="title">Registered Students <span class="committee">{{ event_type }}</span> </h3>
+                            <h3 class="title">Registered Students <span class="committee">(Paid Registrations)</span>
+                            </h3>
+
+                            {% if events[0] %}
                             <table>
                                 <thead>
                                     <tr>
@@ -45,19 +48,22 @@
                                                 {{ loop.index }}.
                                             </div>
                                         </td>
-                                        <td>{{ event.team_leader }}</td>
-                                        <td>{{ event.mobile_number }}</td>
-                                        <td>{{ event.team_members }}</td>
-                                        <td>{{ event.event_name }}</td>
+                                        <td>{{ event.team_leader | title }}</td>
+                                        <td>{{ event.mobile_number | title }}</td>
+                                        <td>{{ event.team_members | title }}</td>
+                                        <td>{{ event.event_name | title }}</td>
                                         <td>{{ event.date.date() }}</td>
-                                        <td>₹ {{ event.fees }}</td>
-                                        {% if event.paid %}
+                                        <td>₹ {{ event.fees | title }}</td>
+                                        {% if event.paid | title %}
                                         <td>Yes</td>
                                         {% endif %}
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
+                            {% else %}
+                            No Registrations
+                            {% endif %}
                         </div>
                     </div>
                 </div>
