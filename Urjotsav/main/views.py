@@ -9,7 +9,7 @@ from itsdangerous import URLSafeTimedSerializer as URLSerializer
 from itsdangerous import SignatureExpired, BadTimeSignature
 import random
 import string
-from Urjotsav.main.utils import send_confirm_email, send_reset_email, send_event_registration_link
+from Urjotsav.main.utils import send_confirm_email, send_reset_email, send_event_registration_link, send_event_registration_link_co_ordinator
 
 main = Blueprint('main', __name__)
 tz = pytz.timezone('Asia/Calcutta')
@@ -180,6 +180,8 @@ def event_registration(event_name):
         if not is_already_registered:
             team_size = request.form.get('groupNo')
             events = Events.query.filter_by(event_name=event_name).first()
+            main_co_ordinator = events.main_co_ordinator
+            user = User.query.filter_by(id=main_co_ordinator).first()
             event_type = events.event_type
             if current_user.is_piemr:
                 fees = events.in_entry_fees
@@ -191,21 +193,19 @@ def event_registration(event_name):
             pay_id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=25))
             pay = Payments(amount=fees, payment_id=pay_id, date=datetime.now(tz), status='Processing', user_id=current_user.id)
             eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees, date=date, venue=venue, 
-            team_size=team_size, team_members=current_user.name, paid=0, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
+            team_size=team_size, team_members=current_user.name, team_members_id=current_user.id, paid=0, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
             user_id=current_user.id)
             db.session.add(eve)
             db.session.add(pay)
-            registration_link = url_for('main.event_registration_team_members', event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
             dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
             current_user.reward_points += events.reward_points
             dept.reward_points += events.reward_points
             db.session.commit()
+            qr_code = events.qr_code
             send_event_registration_link(email=current_user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
+            send_event_registration_link_co_ordinator()
             flash(f"Registration for {event_name.title()} is successful. Approval request has been sent to respective Co-ordinator. Registration link has been generated and sent to your registered email id. kindly, read the instructions carefully.", "success")
-            return redirect(url_for('main.profile'))
-        else:
-            flash(f"Already Registered for this {event_name.title()}", "info")
-            return redirect(url_for("main.profile"))
+            return render_template('qr_code.html', qr_code=qr_code)
     return render_template('event_register.html', event_name=event_name)
 
 
@@ -213,8 +213,27 @@ def event_registration(event_name):
 @login_required
 def event_registration_team_members(event_name, team_leader, pay_id):
     event = EventRegistration.query.filter_by(pay_id=pay_id).filter_by(team_leader=team_leader).filter_by(event_name=event_name).first()
-
-    return ""
+    team_names = event.team_members.split(', ')
+    team_names_id = event.team_members_id.split(', ')
+    if len(team_names_id) < event.team_size:
+        if str(current_user.id) in team_names_id:
+            flash(f"You already registered for {event_name}.", "info")
+            return redirect(url_for('main.profile'))
+        else:
+            team_names.append(current_user.name)
+            team_names_id.append(str(current_user.id))
+            event.team_members = ', '.join(team_names)
+            event.team_members_id = ', '.join(team_names_id)
+            eve = Events.query.filter_by(event_name=event_name).first()
+            current_user.reward_points += eve.reward_points
+            dept = Department.query.filter_by(dept_name=current_user.dept_name).first()
+            dept.reward_points += eve.reward_points
+            db.session.commit()
+            flash(f"Registration for {event_name} is successful.", "success")
+            return redirect(url_for('main.profile'))
+    else:
+        flash(f"Only {event.team_size} participants can be there as limit was set by your Team Leader.", "info")
+        return redirect(url_for('main.profile'))
 
 
 @main.route('/payment_success/', methods=['POST'])

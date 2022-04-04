@@ -54,6 +54,7 @@ class Events(db.Model):
     out_entry_fees = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     prize = db.Column(db.Text, nullable=False)
+    qr_code = db.Column(db.String(1000), nullable=False)
     main_co_ordinator = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
@@ -68,6 +69,7 @@ class EventRegistration(db.Model):
     mobile_number = db.Column(db.String(1000), nullable=False)
     team_size = db.Column(db.Integer, nullable=False)
     team_members = db.Column(db.String(1000), nullable=False)
+    team_members_id = db.Column(db.String(1000), nullable=False)
     paid = db.Column(db.Boolean)
     pay_id = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

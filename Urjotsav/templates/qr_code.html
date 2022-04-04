@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Page Header Section Start Here -->
+<section class="page-header padding-tb">
+    <div class="overlay"></div>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="page-header-content-area">
+            <h4 class="ph-title">Make Payment</h4>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Login Section Section Starts Here -->
+<div class="login-section padding-tb">
+    <div class=" container">
+        <div class="account-wrapper">
+            {% set qr_link = 'assets/images/qrcodes/'+ qr_code +'.png' %}
+            <br>
+            <img src="{{ url_for('static', filename=qr_link) }}" alt="Qrcode">
+        </div>
+    </div>
+</div>
+<!-- Login Section Section Ends Here -->
+{% endblock content %}
