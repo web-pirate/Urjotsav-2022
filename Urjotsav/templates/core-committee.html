@@ -36,7 +36,6 @@
                                         <th>Event Name</th>
                                         <th>Date</th>
                                         <th>Fees</th>
-                                        <th>Paid </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,10 +52,7 @@
                                         <td>{{ event.team_members | title }}</td>
                                         <td>{{ event.event_name | title }}</td>
                                         <td>{{ event.date.date() }}</td>
-                                        <td>₹ {{ event.fees | title }}</td>
-                                        {% if event.paid | title %}
-                                        <td>Yes</td>
-                                        {% endif %}
+                                        <td>₹{{ event.fees | title }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

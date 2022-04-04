@@ -119,10 +119,12 @@
                 </div>
             </section>
 
+            {% if cultural or managerial or technical or sports %}
             <!-- Charts Section -->
             <div>
                 <canvas id="myChart"></canvas>
             </div>
+            {% endif %}
 
             <script>
                 const ctx = document.getElementById('myChart').getContext('2d');
@@ -132,33 +134,33 @@
                         labels: ['Cultural', 'Managerial', 'Technical', 'Sports'],
                         datasets: [{
                             label: 'Registrations: ',
-                            data: [$('#cultural').data(), $('#managerial').data(), $('#technical').data(), $('#sports').data()],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                            data: [{{ cultural }}, {{ managerial }}, {{ technical }}, {{ sports }}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                        borderWidth: 1
+                }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
                     }
+                }
                 });
             </script>
 
@@ -183,7 +185,7 @@
                                                 Cultural
                                             </div>
                                         </td>
-                                        <td>₹ {{ cultural_amount }}</td>
+                                        <td>₹{{ cultural_amount }}</td>
                                     </tr>
                                     <tr>
                                         <td class="product-item">
@@ -191,7 +193,7 @@
                                                 Technical
                                             </div>
                                         </td>
-                                        <td>₹ {{ technical_amount }}</td>
+                                        <td>₹{{ technical_amount }}</td>
                                     </tr>
                                     <tr>
                                         <td class="product-item">
@@ -199,7 +201,7 @@
                                                 Sports
                                             </div>
                                         </td>
-                                        <td>₹ {{ sports_amount }}</td>
+                                        <td>₹{{ sports_amount }}</td>
                                     </tr>
                                     <tr>
                                         <td class="product-item">
@@ -207,7 +209,7 @@
                                                 Managerial
                                             </div>
                                         </td>
-                                        <td>₹ {{ managerial_amount }}</td>
+                                        <td>₹{{ managerial_amount }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -216,18 +218,65 @@
                 </div>
             </div>
 
+            {% if cultural_amount or managerial_amount or technical_amount or sports_amount %}
+            <!-- Charts Section -->
+            <div>
+                <canvas id="amount"></canvas>
+            </div>
+            {% endif %}
+
+            <script>
+                const amt = document.getElementById('amount').getContext('2d');
+                const amount = new Chart(amt, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Cultural', 'Managerial', 'Technical', 'Sports'],
+                        datasets: [{
+                            label: 'Collected Amount (₹)',
+                            data: [{{ cultural_amount }}, {{ managerial_amount }}, {{ technical_amount }}, {{ sports_amount }}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                        borderWidth: 1
+                }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+                });
+            </script>
+            <!-- Charts End -->
+            <br>
+            <br>
+
 
             <!-- Branch Wise  -->
-
             <div class="shop-cart w-100 ">
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
-                            <h3 class="title">Reward points <span class="committee">Branch Wise</span> </h3>
+                            <h3 class="title">Reward points <span class="committee">Department Wise</span> </h3>
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Branch Name</th>
+                                        <th>Department Name</th>
                                         <th>Reward Points</th>
                                     </tr>
                                 </thead>
@@ -245,13 +294,9 @@
                                 </tbody>
                             </table>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

@@ -27,6 +27,7 @@ class User(db.Model, UserMixin):
     registered_events = db.relationship('EventRegistration', backref='user', lazy='dynamic')
     main_co_ordinators = db.relationship('Events', backref='user', lazy='dynamic')
     payments = db.relationship('Payments', backref='user', lazy='dynamic')
+    
 
     def get_reset_token(self, expires_sec=600):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
