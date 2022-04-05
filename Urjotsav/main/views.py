@@ -249,6 +249,8 @@ def payment_success():
     return redirect(url_for('main.dashboard'))
 
 
+@main.route('/')
+
 @main.route('/gallery/')
 def gallery():
     """Gallery Route"""
