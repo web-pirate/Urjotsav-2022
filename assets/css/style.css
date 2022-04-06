@@ -1403,6 +1403,15 @@ ul li {
   }
 }
 
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 4px;
+  }
+
+
 /* @@@@@@@@@@@@@  Common CSS Writing Now  @@@@@@@@@@@@@@ */
 .padding-tb {
   padding-top: 80px;
@@ -4141,9 +4150,9 @@ ul li {
   font-size: 48px;
   color: #fff;
 }
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .banner-section .banner-wrapper .banner-content h1 {
-    font-size: 60px;
+    font-size: 40px !important;
   }
 }
 @media (min-width: 1200px) {
