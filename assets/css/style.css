@@ -4141,9 +4141,9 @@ ul li {
   font-size: 48px;
   color: #fff;
 }
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .banner-section .banner-wrapper .banner-content h1 {
-    font-size: 60px;
+    font-size: 40px !important;
   }
 }
 @media (min-width: 1200px) {
