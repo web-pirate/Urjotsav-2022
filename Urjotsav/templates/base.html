@@ -69,7 +69,7 @@
               </li>
               <li><a href="{{ url_for('main.about') }}">About</a></li>
               <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
             {% if current_user.is_authenticated %}
             {% if current_user.role == "Student" %}
@@ -111,7 +111,12 @@
               <span></span>
             </div>
             <div class="ellepsis-bar d-lg-none">
-              <i class="icofont-info-square"></i>
+              {% if current_user.is_authenticated %}
+              <a href="{{ url_for('main.logout') }}" class="login"><i class="icofont-logout"
+                  style="border-radius: 2px;"></i>
+                <span>Logout</span>
+              </a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -129,9 +134,9 @@
 
 
 
-  <footer class="footer-section   padding-tb padding-b d-flex "
+  <footer class="footer-section padding-tb padding-b d-flex"
     style="background-image: url('static/assets/images/footer/footer.jpg');">
-    <div class="container ">
+    <div class="container" id="contact">
       <div class=" footer-contant">
         <h5 class="text-white">Contact Details</h5>
         <ul>

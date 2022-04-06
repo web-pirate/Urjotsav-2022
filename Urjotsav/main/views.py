@@ -201,11 +201,13 @@ def event_registration(event_name):
             current_user.reward_points += events.reward_points
             dept.reward_points += events.reward_points
             db.session.commit()
-            qr_code = events.qr_code
-            send_event_registration_link(email=current_user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
+            message = f"Registration for {event_name.title()} is successful. Approval request has been sent to respective Co-ordinator."
+            if int(team_size) > 1:
+                message = f"Registration for {event_name.title()} is successful. Approval request has been sent to respective Co-ordinator. Registration link has been generated and sent to your registered email id. kindly, read the instructions carefully."
+                send_event_registration_link(email=current_user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
             send_event_registration_link_co_ordinator(email=user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
-            flash(f"Registration for {event_name.title()} is successful. Approval request has been sent to respective Co-ordinator. Registration link has been generated and sent to your registered email id. kindly, read the instructions carefully.", "success")
-            return render_template('qr_code.html', qr_code=qr_code)
+            flash(f"{message}", "success")
+            return redirect(url_for('main.profile'))
     return render_template('event_register.html', event_name=event_name)
 
 

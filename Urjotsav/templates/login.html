@@ -7,7 +7,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="page-header-content-area">
-            <h4 class="ph-title">Login for Event</h4>
+            <h4 class="ph-title">Login</h4>
             <ul class="lab-ul">
                 <li><a href="{{ url_for('main.home') }}">Home</a></li>
                 <li><a class="active">login</a></li>
@@ -31,7 +31,6 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-
             <form class="account-form" method='post' action="{{ url_for('main.login') }}">
                 <div class="form-group">
                     <input type="email" placeholder="Email" name="email">
