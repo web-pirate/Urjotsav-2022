@@ -23,9 +23,17 @@
 <!-- Registration section start Here -->
 <div class="login-section padding-tb">
     <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="profile">
             <h3 class="title">{{ current_user.name }} <span class="committee">(Core Committee)</span> </h3>
-
             <section class="speakers-section pt-5 shape-img">
                 <div class="container">
                     <div class="section-wrapper">

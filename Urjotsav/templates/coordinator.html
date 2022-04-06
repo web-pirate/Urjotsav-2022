@@ -7,15 +7,6 @@
 <section class="page-header bg_img padding-tb">
     <div class="overlay"></div>
     <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for cat, msg in messages %}
-        <div class="alert alert-{{ cat }}">
-            {{ msg }}
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
         <div class="page-header-content-area">
             <h4 class="ph-title">Co-ordinators</h4>
         </div>
@@ -26,6 +17,15 @@
 <!-- Registration section start Here -->
 <div class="login-section padding-tb">
     <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="profile">
             <h3 class="title">{{ current_user.name }}</h3>
 

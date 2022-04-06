@@ -20,6 +20,15 @@
             <!-- Branch Wise  -->
             <d class="shop-cart w-100 ">
                 <div class="container">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for cat, msg in messages %}
+                    <div class="alert alert-{{ cat }}">
+                        {{ msg }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                     <div class="section-wrapper">
                         <div class="cart-top">
                             <h3 class="title">Registered Students <span class="committee">(Paid Registrations)</span>
@@ -49,7 +58,7 @@
                                         </td>
                                         <td>{{ event.team_leader | title }}</td>
                                         <td>{{ event.mobile_number | title }}</td>
-                                        <td>{{ event.team_members | title }}</td>
+                                        <td>{{ event.team_size | title }}</td>
                                         <td>{{ event.event_name | title }}</td>
                                         <td>{{ event.date.date() }}</td>
                                         <td>₹{{ event.fees | title }}</td>

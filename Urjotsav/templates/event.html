@@ -24,10 +24,17 @@
         <div class="section-header">
             <h2>Event Details</h2>
         </div>
-
-
-        <div class="shop-cart padding-tb">
+        <div class="shop-cart">
             <div class="container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for cat, msg in messages %}
+                <div class="alert alert-{{ cat }}">
+                    {{ msg }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
                 <div class="section-wrapper">
                     <div class="cart-top">
                         <table>
