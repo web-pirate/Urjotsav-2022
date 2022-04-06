@@ -20,17 +20,19 @@
 <!-- Registration section start Here -->
 <div class="login-section padding-tb">
     <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="account-wrapper">
             <h3 class="title">Register Now</h3>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for cat, msg in messages %}
-            <div class="alert alert-{{ cat }}">
-                {{ msg }}
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
+            <label for=""><span style="color: red;">** &nbsp;</span>PIEMR student should register with their domain
+                email-id(@piemr.edu.in)</label>
             <form class="account-form" method="post" action="{{ url_for('main.register') }}">
                 <div class="form-group">
                     <input type="text" placeholder="Name" name="name">
@@ -38,6 +40,32 @@
                 <div class="form-group">
                     <input type="text" placeholder="Enrollment Number" name="enrollment_number">
                 </div>
+                <div class="form-group">
+                    <div class="d-flex justify-content-between flex-wrap pt-sm-2">
+                        <div class="checkgroup">
+                            <input type="checkbox" id="remember" name="remember" onclick="myFunction()">
+                            <label for="remember">Outside PIEMR</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="text" style="display:none">
+                    <input type="text" placeholder="Your Institution Name"
+                        value="Prestige Institute of Engineering Management & Research, Indore" name="college_name"
+                        id="college" required>
+                </div>
+                <script>
+                    function myFunction() {
+                        var checkBox = document.getElementById("remember");
+                        var text = document.getElementById("text");
+                        var college_name = document.getElementById("college_name");
+                        if (checkBox.checked == true) {
+                            text.style.display = "block";
+                            college_name.setAttribute("value", "");
+                        } else {
+                            text.style.display = "none";
+                        }
+                    }
+                </script>
                 <div class="form-group">
                     <input type="text" placeholder="Email" name="email">
                 </div>

@@ -34,7 +34,11 @@ def register():
         if request.form.get('password') == request.form.get('cpassword'):
             if not User.query.filter_by(email=request.form.get('email')).first() or not User.query.filter_by(email=request.form.get('mobile_number')).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
-                token = s.dumps({"name": request.form.get('name'), "email": request.form.get('email'), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
+                remember = request.form.get('remember')
+                if not remember:
+                    college = "Prestige Institute of Engineering Management & Research, Indore"
+                college = request.form.get('college')
+                token = s.dumps({"college": college, "name": request.form.get('name'), "email": request.form.get('email'), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
                 send_confirm_email(email=request.form.get('email'), token=token)
 
@@ -61,7 +65,7 @@ def confirm_email(token):
         is_piemr = False
         if data['email'].lower().strip().split('@')[-1] == 'piemr.edu.in':
             is_piemr = True
-        user = User(name=data['name'], enrollment_number=data["enrollment_number"], email=data["email"], mobile_number=data['Mobile Number'], password=data["password"], 
+        user = User(name=data['name'], college=data['college'], enrollment_number=data["enrollment_number"], email=data["email"], mobile_number=data['Mobile Number'], password=data["password"], 
                     dept_name=data['dept_name'], role='Student', reward_points=0, is_piemr=is_piemr)
         db.session.add(user)
         db.session.commit()
@@ -121,7 +125,7 @@ def login():
                 flash("User logged in successfully!", "success")
                 return redirect(next_page) if next_page else redirect(url_for('main.profile'))
             else:
-                flash("Please check you password. Password don't match!", "danger")
+                flash("Please check your password. Password don't match!", "danger")
                 return redirect(url_for('main.login'))
         else:
             flash(
