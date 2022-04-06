@@ -94,13 +94,41 @@
         <div class="container">
             <div class="account-wrapper">
                 <h3 class="title">Register Now</h3>
+                <label for=""><span style="color: red;">** &nbsp;</span>PIEMR student should register with their domain email-id(@piemr.edu.in)</label>
+
                 
                 <form class="account-form">
+
+                     
+
                     <div class="form-group">
                         <input type="text" placeholder="User Name/Enrollment No." name="username">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Email" name="email">
+                        <div class="d-flex justify-content-between flex-wrap pt-sm-2">
+                            <div class="checkgroup">
+                                <input type="checkbox" id="myCheck" name="remember" id="remember" onclick="myFunction()">
+                                <label for="remember">Outside PIEMR</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="text" style="display:none">
+                        <input type="text" placeholder="Your Institution Name" name="college" required>
+                    </div>
+                    
+                    <script>
+                        function myFunction() {
+                        var checkBox = document.getElementById("myCheck");
+                        var text = document.getElementById("text");
+                        if (checkBox.checked == true){
+                            text.style.display = "block";
+                        } else {
+                            text.style.display = "none";
+                        }
+                        }
+                    </script>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" name="email" required>
                     </div>
                     <div class="form-group">
                         <input type="number" placeholder="Phone" name="phone">
@@ -126,14 +154,8 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <div class="d-flex justify-content-between flex-wrap pt-sm-2">
-                            <div class="checkgroup">
-                                <input type="checkbox" name="remember" id="remember">
-                                <label for="remember">From Prestige</label>
-                            </div>
-                        </div>
-                    </div>
+                    
+
                     <div class="form-group">
                         <button class="d-block lab-btn"><span>Register</span></button>
                     </div>
