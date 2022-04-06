@@ -54,7 +54,6 @@ class Events(db.Model):
     out_entry_fees = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     prize = db.Column(db.Text, nullable=False)
-    qr_code = db.Column(db.String(1000), nullable=False)
     main_co_ordinator = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

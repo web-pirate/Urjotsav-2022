@@ -208,6 +208,8 @@ def event_registration(event_name):
             send_event_registration_link_co_ordinator(email=user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
             flash(f"{message}", "success")
             return redirect(url_for('main.profile'))
+        flash("You already registered for this event.", "info")
+        return redirect(url_for('main.profile'))
     return render_template('event_register.html', event_name=event_name)
 
 
@@ -251,8 +253,6 @@ def payment_success():
     return redirect(url_for('main.dashboard'))
 
 
-@main.route('/')
-
 @main.route('/gallery/')
 def gallery():
     """Gallery Route"""
@@ -265,13 +265,16 @@ def dashboard():
     """Dashboard Route"""
     if current_user.role != "Co-ordinator":
         return redirect(url_for('main.core_dashboard'))
-    co_ordinator = Events.query.filter_by(main_co_ordinator=current_user.id).first()
-    events = EventRegistration.query.filter_by(event_name=co_ordinator.event_name).all()
-    total_found = len(events)
+    events_list = []
+    event = Events.query.filter_by(main_co_ordinator=current_user.id).all()
+    for eve in event:
+        events_list.extend(EventRegistration.query.filter_by(event_name=eve.event_name).all())
+    #events = EventRegistration.query.filter_by(event_name=event.event_name).all()
+    total_found = len(events_list)
     total_amount = 0
-    for event in events:
+    for event in events_list:
         total_amount += int(event.fees)
-    return render_template('coordinator.html', events=events, total_found=total_found, total_amount=total_amount)
+    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount)
 
 
 @main.route('/core_dashboard/')

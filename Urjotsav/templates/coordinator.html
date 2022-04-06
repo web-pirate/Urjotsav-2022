@@ -75,9 +75,12 @@
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
+                            {% if events[0] %}
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>Event Type</th>
+                                        <th>Event Name</th>
                                         <th>Team Leader</th>
                                         <th>Mobile Number</th>
                                         <th>Team Size</th>
@@ -91,10 +94,10 @@
 
                                     {% for event in events %}
                                     <tr>
+                                        <td>{{ event.event_type }}</td>
+                                        <td>{{ event.event_name }}</td>
                                         <td class="product-item">
-                                            <div class="p-content">
-                                                <h5>{{ event.team_leader }}</h5>
-                                            </div>
+                                            {{ event.team_leader }}
                                         </td>
                                         <td>{{ event.mobile_number }}</td>
                                         <td>{{ event.team_size }}</td>
@@ -118,6 +121,9 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
+                            {% else %}
+                            No Registrations.
+                            {% endif %}
                         </div>
                     </div>
                 </div>
