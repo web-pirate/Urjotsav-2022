@@ -7182,3 +7182,9 @@ ul li {
   font-weight: lighter;
   font-size: large;
 }
+@media (max-width: 1200px) {
+  .student-img{
+    height: 150px;
+    width: 150px;
+  }
+}

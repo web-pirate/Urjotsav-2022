@@ -56,6 +56,17 @@ def register():
             return redirect(url_for('main.register'))
     return render_template('registration.html')
 
+@main.route('/t&c/')
+def tc():
+    return render_template('t&c.html')
+
+@main.route('/privacy/')
+def privacy():
+    return render_template('Privacy.html')
+
+@main.route('/refund_policy/')
+def refund():
+    return render_template('refund.html')
 
 # ------ Confirm Registration ------ #
 @main.route('/confirm_email/<token>/')
