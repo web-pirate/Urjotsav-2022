@@ -44,6 +44,7 @@ def register():
 
                 flash(
                     f"An confirmation email has been sent to you on {request.form.get('email')}!", "success")
+                flash(f"Please check your SPAM folder for confirmation email", "danger")
                 return redirect(url_for('main.login'))
             else:
                 flash(
