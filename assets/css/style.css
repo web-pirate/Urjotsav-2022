@@ -1469,7 +1469,7 @@ ul li {
 /* @@@@@@@@@@@@@  Page Header Section Start Here  @@@@@@@@@@@@@@ */
 .page-header {
   padding: 100px 0;
-  background: url(../images/footer/bg.jpg);
+  background: url(../images/banner/banner.jpeg);
   background-size: cover;
 }
 @media (min-width: 992px) {
@@ -7190,4 +7190,10 @@ ul li {
   color: #f64482;
   font-weight: lighter;
   font-size: large;
+}
+@media (max-width: 1200px) {
+  .student-img{
+    height: 150px;
+    width: 150px;
+  }
 }
