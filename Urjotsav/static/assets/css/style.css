@@ -1442,12 +1442,12 @@ ul li {
 }
 
 .bg-image {
-  background: url("../images/event/01.jpg");
+  background: url("/static/assets/images/event/01.jpg");
   background-size: cover;
 }
 
 .shape-img:after {
-  background-image: url("../images/shape/shape.png");
+  background-image: url("/static/assets/images/shape/shape.png");
   background-size: contain;
   background-repeat: no-repeat;
   top: 0;
@@ -1460,7 +1460,7 @@ ul li {
 /* @@@@@@@@@@@@@  Page Header Section Start Here  @@@@@@@@@@@@@@ */
 .page-header {
   padding: 100px 0;
-  background: url(../images/footer/bg.jpg);
+  background: url("/static/assets/images/banner/banner.jpeg");
   background-size: cover;
 }
 @media (min-width: 992px) {
@@ -2072,7 +2072,7 @@ ul li {
   filter: drop-shadow(0 5px 0 white);
 }
 .pricing-item.blue-style .pricing-header {
-  background-image: url(../images/pricing-plan/01.svg);
+  background-image: url("/static/assets/images/pricing-plan/01.svg");
   filter: drop-shadow(0 5px 0 rgba(0, 107, 247, 0.1));
 }
 .pricing-item.blue-style .facility-item span i {
@@ -2091,7 +2091,7 @@ ul li {
   background-image: linear-gradient(90deg, #1270e3 0%, #59c2ff 100%);
 }
 .pricing-item.orange-style .pricing-header {
-  background-image: url(../images/pricing-plan/02.svg);
+  background-image: url("/static/assets/images/pricing-plan/02.svg");
   filter: drop-shadow(0 5px 0 rgba(252, 155, 10, 0.1));
 }
 .pricing-item.orange-style .facility-item span i {
@@ -2110,7 +2110,7 @@ ul li {
   color: #fff;
 }
 .pricing-item.purple-style .pricing-header {
-  background-image: url(../images/pricing-plan/03.svg);
+  background-image: url("/static/assets/images/pricing-plan/03.svg");
   filter: drop-shadow(0 5px 0 rgba(66, 0, 247, 0.1));
 }
 .pricing-item.purple-style .facility-item span i {
@@ -2561,7 +2561,7 @@ ul li {
   content: "";
   width: 50px;
   height: 50px;
-  background: url(../images/quote.png) no-repeat center center;
+  background: url("/static/assets/images/quote.png") no-repeat center center;
   background-size: contain;
   margin-bottom: 15px;
 }
@@ -2602,7 +2602,7 @@ ul li {
   display: block;
   width: 84px;
   height: 60px;
-  background: url(../images/qoute2.png) no-repeat center center;
+  background: url("/static/assets/images/qoute2.png") no-repeat center center;
   background-size: contain;
   margin: 0 auto 30px;
 }
@@ -3984,7 +3984,7 @@ ul li {
 /*================*** Header Section End Here     ***===================*/
 /*======== Banner css start here  =========*/
 .banner-section {
-  background: url(../images/banner/bg-dark.jpg);
+  background: url('/static/assets/images/banner/banner.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
 }

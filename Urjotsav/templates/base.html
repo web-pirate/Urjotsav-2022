@@ -8,7 +8,8 @@
 
 
   <!-- favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/x-icon/01.png') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/logo/logo.png') }}">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.min.css') }}">
@@ -124,14 +125,9 @@
   {% endblock content %}
 
   <!-- Footer Section start here -->
-
-
-
-
-  <!-- Footer Section start here -->
   <footer class="footer-section padding-tb padding-b d-flex"
-    style="background-image: 'assets/images/footer/footer.jpg';">
-    <div class="container">
+    style="background-image: url(/static/assets/images/footer/footer.jpg);">
+    <div class="container" id="contact">
       <div class="contact-details row">
         <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
           <h5 class="text-white">Contact Details</h5>
@@ -155,10 +151,9 @@
         <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
           <h5 class="text-white">Links</h5>
           <ul>
-            <li><a href="about.html" class="text-white">About Us</a></li>
+            <li><a href="{{ url_for('main.about') }} about.html" class="text-white">About Us</a></li>
 
-            <li> <a href="gallery.html" class="text-white">Gallary</a></li>
-            <li> <a href="registration.html" class="text-white">Registration</a></li>
+            <li> <a href="{{ url_for('main.gallery') }} gallery.html" class="text-white">Gallary</a></li>
           </ul>
         </div>
 
@@ -174,8 +169,6 @@
 
     </div>
   </footer>
-  <!-- Footer Section end here -->
-
   <!-- Footer Section end here -->
 
 
