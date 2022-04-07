@@ -4138,12 +4138,20 @@ ul li {
 .banner-section .banner-wrapper .banner-content h1 {
   line-height: 1.286;
   margin-bottom: 18px;
-  font-size: 48px;
+  font-size: 30px;
   color: #fff;
 }
-@media (min-width: 576px) {
+@media (max-width: 375px){
   .banner-section .banner-wrapper .banner-content h1 {
-    font-size: 60px;
+    line-height: 1.286;
+    margin-bottom: 18px;
+    font-size: 30px !important;
+    color: #fff;
+  }
+}
+@media (max-width: 576px) {
+  .banner-section .banner-wrapper .banner-content h1 {
+    font-size: 40px !important;
   }
 }
 @media (min-width: 1200px) {
