@@ -44,7 +44,6 @@ def register():
 
                 flash(
                     f"An confirmation email has been sent to you on {request.form.get('email')}!", "success")
-                flash(f"Please check your SPAM folder for confirmation email", "danger")
                 return redirect(url_for('main.login'))
             else:
                 flash(
@@ -223,6 +222,7 @@ def event_registration(event_name):
                 send_event_registration_link(email=current_user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
             send_event_registration_link_co_ordinator(email=user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
             flash(f"{message}", "success")
+            flash(f"Please contact your co-ordinator {user.name.title()} on {user.mobile_number} for making Payment.", "info")
             return redirect(url_for('main.profile'))
         flash("You already registered for this event.", "info")
         return redirect(url_for('main.profile'))
@@ -267,6 +267,24 @@ def payment_success():
     db.session.commit()
     flash("Payment Received.", "success")
     return redirect(url_for('main.dashboard'))
+
+
+
+@main.route('/event_delete/', methods=['POST'])
+@login_required
+def event_delete():
+    event_id = request.form.get('event_id')
+    eve = EventRegistration.query.filter_by(pay_id=event_id).first()
+    user = User.query.filter_by(id=eve.user_id).first()
+    event = Events.query.filter_by(event_name=eve.event_name).first()
+    user.reward_points -= event.reward_points
+    dept = Department.query.filter_by(dept_name=user.dept_name).first()
+    dept.reward_points -= event.reward_points
+    db.session.delete(eve)
+    db.session.commit()
+    flash("Deleted successfully.", "success")
+    return redirect(url_for('main.dashboard'))
+
 
 
 @main.route('/gallery/')

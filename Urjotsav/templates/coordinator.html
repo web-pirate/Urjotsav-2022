@@ -116,7 +116,7 @@
                                         <th>Team Members</th>
                                         <th>Fees</th>
                                         <th>Date</th>
-                                        <th>Paid</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -138,10 +138,17 @@
                                             Paid
                                             {% else %}
                                             <form action="{{ url_for('main.payment_success') }}" method="post">
-                                                <div class="about-btn-grp btn-sm">
+                                                <div class="btn-sm">
                                                     <input type="text" value="{{ event.pay_id }}" name="event_id"
                                                         hidden>
-                                                    <button type="submit" class="lab-btn style-orange">Approve</button>
+                                                    <button type="submit" class="btn btn-success">Approve</button>
+                                                </div>
+                                            </form>
+                                            <form action="{{ url_for('main.event_delete') }}" method="post">
+                                                <div class="btn-sm">
+                                                    <input type="text" value="{{ event.pay_id }}" name="event_id"
+                                                        hidden>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
                                                 </div>
                                             </form>
                                             {% endif %}
