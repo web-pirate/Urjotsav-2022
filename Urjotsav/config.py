@@ -6,8 +6,8 @@ class Config:
     APP_SECRET = '53de360c128a7f185c57e5a675a1404a90527ed6e997d789cc92985d01861684'
 
     # Mail Settings
-    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_SERVER = 'smtp.zoho.in'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
-    MAIL_USERNAME = '51110102966@piemr.edu.in'
-    MAIL_PASSWORD = 'Tejas@piemr@1810'
+    MAIL_USERNAME = 'info@piemrurjotsav.in'
+    MAIL_PASSWORD = 'Urjotsav#2k22Piemr'

@@ -285,12 +285,11 @@ def dashboard():
     event = Events.query.filter_by(main_co_ordinator=current_user.id).all()
     for eve in event:
         events_list.extend(EventRegistration.query.filter_by(event_name=eve.event_name).all())
-    #events = EventRegistration.query.filter_by(event_name=event.event_name).all()
     total_found = len(events_list)
     total_amount = 0
-    for event in events_list:
-        total_amount += int(event.fees)
-    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount)
+    for eve in events_list:
+        total_amount += int(eve.fees)
+    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event)
 
 
 @main.route('/core_dashboard/')

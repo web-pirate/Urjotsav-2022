@@ -28,7 +28,6 @@
         {% endwith %}
         <div class="profile">
             <h3 class="title">{{ current_user.name }}</h3>
-
             <section class="speakers-section pt-5 shape-img">
                 <div class="container">
                     <div class="section-wrapper">
@@ -42,7 +41,6 @@
                                                     <div class="speaker-infos left">
                                                         <h5>Total Registrations:</h5>
                                                         <h5>{{ total_found }}</h5>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,18 +58,49 @@
                                                     <div class="speaker-infos left">
                                                         <h5>Total Amount:</h5>
                                                         <h5>₹ {{ total_amount }} </h5>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
             </section>
             <div class="shop-cart padding-tb">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="cart-top">
+                            {% if event[0] %}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>PIEMR Fees</th>
+                                        <th>Outside Fees</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for eve in event %}
+                                    <tr>
+                                        <td>{{ eve.event_name }}</td>
+                                        <td>{{ eve.in_entry_fees }}</td>
+                                        <td>{{ eve.out_entry_fees }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            No Events.
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-cart">
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
