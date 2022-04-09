@@ -35,10 +35,10 @@
                 email-id(@piemr.edu.in)</label>
             <form class="account-form" method="post" action="{{ url_for('main.register') }}">
                 <div class="form-group">
-                    <input type="text" placeholder="Name" name="name">
+                    <input type="text" placeholder="Name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" placeholder="Enrollment Number" name="enrollment_number">
+                    <input type="text" placeholder="Enrollment Number" name="enrollment_number" required>
                 </div>
                 <div class="form-group">
                     <div class="d-flex justify-content-between flex-wrap pt-sm-2">
@@ -67,47 +67,52 @@
                     }
                 </script>
                 <div class="form-group">
-                    <input type="text" placeholder="Email" name="email">
+                    <input type="text" placeholder="Email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" placeholder="Mobile Number" name="mobile_number">
+                    <input type="text" placeholder="Mobile Number" name="mobile_number" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" name="password">
+                    <input type="password" placeholder="Password" name="password" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Confirm Password" name="cpassword" class="relative">
+                    <input type="password" placeholder="Confirm Password" name="cpassword" class="relative" required>
                 </div>
                 <div class="form-group">
-                    <select class="from-select" name="dept_name">
+                    <select class="from-select" name="dept_name" required>
                         <option value="0" disabled selected>Department</option>
-                        <option value="Artificial Intelligence & Data Science" name="dept_name">Artificial Intelligence
+                        <option value="Artificial Intelligence & Data Science" name="dept_name" required>Artificial
+                            Intelligence
                             & Data Science</option>
-                        <option value="Automation and Robotics" name="dept_name">Automation and Robotics</option>
-                        <option value="Bachelor of Commerce" name="dept_name">Bachelor of Commerce</option>
-                        <option value="Bachelor of Computer Applications" name="dept_name">Bachelor of Computer
+                        <option value="Automation and Robotics" name="dept_name" required>Automation and Robotics
+                        </option>
+                        <option value="Bachelor of Commerce" name="dept_name" required>Bachelor of Commerce</option>
+                        <option value="Bachelor of Computer Applications" name="dept_name" required>Bachelor of Computer
                             Applications
                         </option>
-                        <option value="Bachelor of Sciences" name="dept_name">Bachelor of Sciences</option>
-                        <option value="Civil Engineering" name="dept_name">Civil Engineering</option>
-                        <option value="Computer Science Engineering" name="dept_name">Computer Science Engineering
+                        <option value="Bachelor of Sciences" name="dept_name" required>Bachelor of Sciences</option>
+                        <option value="Civil Engineering" name="dept_name" required>Civil Engineering</option>
+                        <option value="Computer Science Engineering" name="dept_name" required>Computer Science
+                            Engineering
                         </option>
-                        <option value="Department of Applied Science & Humanities" name="dept_name">Department of
+                        <option value="Department of Applied Science & Humanities" name="dept_name" required>Department
+                            of
                             Applied Science & Humanities</option>
-                        <option value="Diploma In Vocation" name="dept_name">Diploma In Vocation</option>
-                        <option value="Electrical Engineering" name="dept_name">Electrical Engineering</option>
-                        <option value="Electronics & Communication Engineering" name="dept_name">Electronics &
+                        <option value="Diploma In Vocation" name="dept_name" required>Diploma In Vocation</option>
+                        <option value="Electrical Engineering" name="dept_name" required>Electrical Engineering</option>
+                        <option value="Electronics & Communication Engineering" name="dept_name" required>Electronics &
                             Communication Engineering</option>
-                        <option value="Law" name="dept_name">Law</option>
-                        <option value="Master of Business Administration" name="dept_name">Master of Business
+                        <option value="Law" name="dept_name" required>Law</option>
+                        <option value="Master of Business Administration" name="dept_name" required>Master of Business
                             Administration</option>
-                        <option value="Master of Computer Applications" name="dept_name">Master of Computer Applications
+                        <option value="Master of Computer Applications" name="dept_name" required>Master of Computer
+                            Applications
                         </option>
-                        <option value="Master of Philosophy" name="dept_name">Master of Philosophy</option>
-                        <option value="Master of Sciences" name="dept_name">Master of Sciences</option>
-                        <option value="Mechanical Engineering" name="dept_name">Mechanical Engineering</option>
-                        <option value="PGDM" name="dept_name">PGDM</option>
-                        <option value="Other" name="dept_name">Other</option>
+                        <option value="Master of Philosophy" name="dept_name" required>Master of Philosophy</option>
+                        <option value="Master of Sciences" name="dept_name" required>Master of Sciences</option>
+                        <option value="Mechanical Engineering" name="dept_name" required>Mechanical Engineering</option>
+                        <option value="PGDM" name="dept_name" required>PGDM</option>
+                        <option value="Other" name="dept_name" required>Other</option>
                     </select>
                 </div>
                 <div class="form-group">
