@@ -207,11 +207,15 @@ def event_registration(event_name):
                 fees = events.out_entry_fees
             date = events.event_date.date()
             venue = events.venue
-
+            pay_status = "Processing"
+            paid_status = 0
+            if fees == '0':
+                pay_status = "Success"
+                paid_status = 1
             pay_id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=25))
-            pay = Payments(amount=fees, payment_id=pay_id, date=datetime.now(tz), status='Processing', user_id=current_user.id)
+            pay = Payments(amount=fees, payment_id=pay_id, date=datetime.now(tz), status=pay_status, user_id=current_user.id)
             eve = EventRegistration(event_type=event_type, event_name=event_name, fees=fees, date=date, venue=venue, 
-            team_size=team_size, team_members=current_user.name, team_members_id=current_user.id, paid=0, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
+            team_size=team_size, team_members=current_user.name, team_members_id=current_user.id, paid=paid_status, team_leader=current_user.name, pay_id=pay_id, mobile_number=current_user.mobile_number, 
             user_id=current_user.id)
             db.session.add(eve)
             db.session.add(pay)
