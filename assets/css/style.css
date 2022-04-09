@@ -4269,7 +4269,7 @@ ul li {
   color: #fff;
 }
 .sponsor-section .all-sponsor {
-  max-width: 960px;
+  /* max-width: 960px; */
   margin: 0 auto;
 }
 .sponsor-section .all-sponsor h5 {
