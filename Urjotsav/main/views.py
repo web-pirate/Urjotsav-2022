@@ -32,18 +32,21 @@ def register():
         return redirect(url_for('main.profile'))
     if request.method == 'POST':
         if request.form.get('password') == request.form.get('cpassword'):
-            if not User.query.filter_by(email=request.form.get('email')).first() or not User.query.filter_by(email=request.form.get('mobile_number')).first():
+            if not User.query.filter_by(email=request.form.get('email').strip()).first() or not User.query.filter_by(mobile_number=request.form.get('mobile_number').strip()).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
                 remember = request.form.get('remember')
                 if not remember:
                     college = "Prestige Institute of Engineering Management & Research, Indore"
                 college = request.form.get('college')
-                token = s.dumps({"college": college, "name": request.form.get('name'), "email": request.form.get('email'), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
+                token = s.dumps({"college": college, "name": request.form.get('name'), "email": request.form.get('email').strip(), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
-                send_confirm_email(email=request.form.get('email'), token=token)
+                try:
+                    send_confirm_email(email=request.form.get('email').strip(), token=token)
+                except Exception as e:
+                    flash(f"{e}", "danger")
+                    return redirect(url_for('main.login'))
 
-                flash(
-                    f"An confirmation email has been sent to you on {request.form.get('email')}!", "success")
+                flash(f"An confirmation email has been sent to you on {request.form.get('email')}!", "success")
                 return redirect(url_for('main.login'))
             else:
                 flash(
