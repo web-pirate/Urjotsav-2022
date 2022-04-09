@@ -32,16 +32,16 @@ def register():
         return redirect(url_for('main.profile'))
     if request.method == 'POST':
         if request.form.get('password') == request.form.get('cpassword'):
-            if not User.query.filter_by(email=request.form.get('email').strip()).first() or not User.query.filter_by(mobile_number=request.form.get('mobile_number').strip()).first():
+            if not User.query.filter_by(email=request.form.get('email').strip().lower()).first() and not User.query.filter_by(mobile_number=request.form.get('mobile_number')).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
                 remember = request.form.get('remember')
                 if not remember:
                     college = "Prestige Institute of Engineering Management & Research, Indore"
                 college = request.form.get('college')
-                token = s.dumps({"college": college, "name": request.form.get('name'), "email": request.form.get('email').strip(), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
+                token = s.dumps({"college": college, "name": request.form.get('name'), "email": request.form.get('email').strip().lower(), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
                 try:
-                    send_confirm_email(email=request.form.get('email').strip(), token=token)
+                    send_confirm_email(email=request.form.get('email').strip().lower(), token=token)
                 except Exception as e:
                     flash(f"{e}", "danger")
                     return redirect(url_for('main.login'))
@@ -50,7 +50,7 @@ def register():
                 return redirect(url_for('main.login'))
             else:
                 flash(
-                    f"You already have an account! Either Email or EnrollmentNumber or Mobile Number is already in use.", "info")
+                    f"You already have an account! Either Email or Mobile Number is already in use.", "info")
                 return redirect(url_for('main.login'))
         else:
             flash(
