@@ -33,11 +33,10 @@ def send_event_registration_link(email, event_name, team_leader, pay_id):
     mail.send(msg)
 
 
-def send_event_registration_link_co_ordinator(email, event_name, team_leader, pay_id):
+def send_event_registration_link_co_ordinator(email, event_name, team_leader):
     msg = Message(f'Team Registration for {event_name}',
                   sender=('URJOTSAV 2K22', 'info@piemrurjotsav.in'), recipients=[email])
     msg.body = f'''Event Name: {event_name}
 Team Leader: {team_leader}
-Payment ID: {pay_id}
 '''
     mail.send(msg)

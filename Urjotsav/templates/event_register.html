@@ -6,15 +6,6 @@
 <section class="page-header bg_img padding-tb">
     <div class="overlay"></div>
     <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for cat, msg in messages %}
-        <div class="alert alert-{{ cat }}">
-            {{ msg }}
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
         <div class="page-header-content-area">
             <h4 class="ph-title">Event Confirmation Form Page</h4>
             <ul class="lab-ul">
@@ -29,14 +20,27 @@
 <!-- Registration section start Here -->
 <div class="login-section padding-tb">
     <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="account-wrapper">
+            <div class="alert alert-info">
+                In case of more than one member, please share registration link with your team members to confirm their
+                registration. Link will be shared on your email Id.
+            </div>
             <h3 class="title">Fill this form</h3>
 
             <form class="account-form" method="post"
                 action="{{ url_for('main.event_registration', event_name=event_name) }}">
 
                 <div class="form-group">
-                    <input type="number" placeholder="No. Of Participants" name="groupNo">
+                    <input type="number" placeholder="No. Of Participants (Including You.)" name="groupNo">
                 </div>
                 <div class="form-group">
                     <button class="d-block lab-btn"><span>Register</span></button>

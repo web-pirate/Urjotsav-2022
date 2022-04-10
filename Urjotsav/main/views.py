@@ -227,7 +227,7 @@ def event_registration(event_name):
             if int(team_size) > 1:
                 message = f"Registration for {event_name.title()} is successful. Approval request has been sent to respective Co-ordinator. Registration link has been generated and sent to your registered email id. kindly, read the instructions carefully."
                 send_event_registration_link(email=current_user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
-            send_event_registration_link_co_ordinator(email=user.email, event_name=event_name, team_leader=current_user.name, pay_id=pay_id)
+            send_event_registration_link_co_ordinator(email=user.email, event_name=event_name, team_leader=current_user.name)
             flash(f"{message}", "success")
             flash(f"Please contact your co-ordinator {user.name.title()} on {user.mobile_number} for making Payment.", "info")
             return redirect(url_for('main.profile'))
