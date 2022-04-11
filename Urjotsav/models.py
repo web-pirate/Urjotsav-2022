@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(1000), nullable=False)
     reward_points = db.Column(db.Integer, nullable=False, default=0)
     is_piemr = db.Column(db.Boolean, default=False)
+    college = db.Column(db.String(1000), nullable=False)
     registered_events = db.relationship('EventRegistration', backref='user', lazy='dynamic')
     main_co_ordinators = db.relationship('Events', backref='user', lazy='dynamic')
     payments = db.relationship('Payments', backref='user', lazy='dynamic')

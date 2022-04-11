@@ -183,6 +183,7 @@
                                 <thead>
                                     <tr>
                                         <th>Event Category</th>
+                                        <th>Total Amount Generated</th>
                                         <th>Total Amount Collected</th>
                                     </tr>
                                 </thead>
@@ -194,6 +195,7 @@
                                             </div>
                                         </td>
                                         <td>₹{{ cultural_amount }}</td>
+                                        <td>₹{{ cultural_amount_collected }}</td>
                                     </tr>
                                     <tr>
                                         <td class="product-item">
@@ -202,6 +204,7 @@
                                             </div>
                                         </td>
                                         <td>₹{{ technical_amount }}</td>
+                                        <td>₹{{ technical_amount_collected }}</td>
                                     </tr>
                                     <tr>
                                         <td class="product-item">
@@ -210,6 +213,7 @@
                                             </div>
                                         </td>
                                         <td>₹{{ sports_amount }}</td>
+                                        <td>₹{{ sports_amount_collected }}</td>
                                     </tr>
                                     <tr>
                                         <td class="product-item">
@@ -218,6 +222,7 @@
                                             </div>
                                         </td>
                                         <td>₹{{ managerial_amount }}</td>
+                                        <td>₹{{ managerial_amount_collected }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -241,7 +246,7 @@
                         labels: ['Cultural', 'Managerial', 'Technical', 'Sports'],
                         datasets: [{
                             label: 'Collected Amount (₹)',
-                            data: [{{ cultural_amount }}, {{ managerial_amount }}, {{ technical_amount }}, {{ sports_amount }}],
+                            data: [{{ cultural_amount_collected }}, {{ managerial_amount_collected }}, {{ technical_amount_collected }}, {{ sports_amount_collected }}],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

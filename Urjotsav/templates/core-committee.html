@@ -30,6 +30,46 @@
                     {% endif %}
                     {% endwith %}
                     <div class="section-wrapper">
+
+
+                        <div class="cart-top">
+                            <h3 class="title">Eventwise Details<span class="committee"> (Paid Registrations)</span>
+                            </h3>
+
+                            {% if events_list[0] %}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Sno.</th>
+                                        <th>Event name</th>
+                                        <th>No. Of Registered Students</th>
+                                        <th>Amount Collected</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for event in events_list %}
+                                    <tr>
+                                        <td class="product-item">
+                                            <div class="p-content">
+                                                {{ loop.index }}.
+                                            </div>
+                                        </td>
+                                        <td> <a
+                                                href="{{ url_for('event_wise_user', event_type=event_type, event_name=event['event_name']) }}">{{
+                                                event["event_name"] }}</a> </td>
+                                        <td>{{ event["total_registration"] }}</td>
+                                        <td>₹ {{ event["fees"] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            No Registrations
+                            {% endif %}
+                        </div>
+
+
                         <div class="cart-top">
                             <h3 class="title">Registered Students <span class="committee">(Paid Registrations)</span>
                             </h3>
@@ -61,7 +101,7 @@
                                         <td>{{ event.team_size | title }}</td>
                                         <td>{{ event.event_name | title }}</td>
                                         <td>{{ event.date.date() }}</td>
-                                        <td>₹{{ event.fees | title }}</td>
+                                        <td>₹ {{ event.fees | title }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

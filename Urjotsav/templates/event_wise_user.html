@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header Section Start Here -->
+<section class="page-header bg_img padding-tb">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="page-header-content-area">
+      <h4 class="ph-title">{{ event_name }}</h4>
+    </div>
+  </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Registration section start Here -->
+<div class="login-section padding-tb">
+  <div class="container">
+    <div class="profile ">
+      <!-- Branch Wise  -->
+      <div class="shop-cart w-100 ">
+        <div class="container">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for cat, msg in messages %}
+          <div class="alert alert-{{ cat }}">
+            {{ msg }}
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+          <div class="section-wrapper">
+
+            <section class="speakers-section pt-5 shape-img">
+              <div class="container">
+                <div class="section-wrapper">
+                  <div class="row g-4 justify-content-center">
+                    <div class="col-xl-6 col-lg-8 col-12">
+                      <div class="speaker-item">
+                        <div class="speaker-inner">
+                          <div class="speaker-content">
+                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                              <div class="row">
+                                <div class="speaker-infos left">
+                                  <h5>Event Date
+                                  </h5>
+                                  <h5>{{ event_date.date() }}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-8 col-12">
+                      <div class="speaker-item">
+                        <div class="speaker-inner">
+                          <div class="speaker-content">
+                            <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                              <div class="row">
+                                <div class="speaker-infos left">
+                                  <h5>Event Fees
+                                  </h5>
+                                  <h5>₹ {{ event_fees }}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <br>
+
+
+            <div class="cart-top">
+              <h3 class="title">{{ event_name | title }}<span class="committee"> (Paid Registrations)</span>
+              </h3>
+
+              {% if events[0] %}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sno.</th>
+                    <th>Team Leader name </th>
+                    <th>Leader Mobile Number</th>
+                    <th>Team Size</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% for event in events %}
+                  <tr>
+                    <td class="product-item">
+                      <div class="p-content">
+                        {{ loop.index }}.
+                      </div>
+                    </td>
+                    <td>{{ event.team_leader | title }}</td>
+                    <td>{{ event.mobile_number | title }}</td>
+                    <td>{{ event.team_size | title }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              No Registrations
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Registration section end Here -->
+
+  {% endblock content %}

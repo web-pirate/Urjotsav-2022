@@ -79,7 +79,7 @@ def confirm_email(token):
         is_piemr = False
         if data['email'].lower().strip().split('@')[-1] == 'piemr.edu.in':
             is_piemr = True
-        user = User(name=data['name'], college=data['college'], enrollment_number=data["enrollment_number"], email=data["email"], mobile_number=data['Mobile Number'], password=data["password"], 
+        user = User(name=data['name'], college=data['college'], enrollment_number=data["enrollment_number"], email=data["email"].strip(), mobile_number=data['Mobile Number'], password=data["password"], 
                     dept_name=data['dept_name'], role='Student', reward_points=0, is_piemr=is_piemr)
         db.session.add(user)
         db.session.commit()
@@ -282,12 +282,17 @@ def payment_success():
 def event_delete():
     event_id = request.form.get('event_id')
     eve = EventRegistration.query.filter_by(pay_id=event_id).first()
-    user = User.query.filter_by(id=eve.user_id).first()
+    pay = Payments.query.filter_by(payment_id=event_id).first()
     event = Events.query.filter_by(event_name=eve.event_name).first()
-    user.reward_points -= event.reward_points
-    dept = Department.query.filter_by(dept_name=user.dept_name).first()
-    dept.reward_points -= event.reward_points
+    members = eve.team_members_id.split(', ')
+    for member in members:
+        user = User.query.filter_by(id=int(member)).first()
+        user.reward_points -= event.reward_points
+        dept = Department.query.filter_by(dept_name=user.dept_name).first()
+        dept.reward_points -= event.reward_points
+        db.session.commit()
     db.session.delete(eve)
+    db.session.delete(pay)
     db.session.commit()
     flash("Deleted successfully.", "success")
     return redirect(url_for('main.dashboard'))
@@ -334,23 +339,42 @@ def core_dashboard():
     cultural_eve = EventRegistration.query.filter_by(event_type="cultural").all()
     managerial_eve = EventRegistration.query.filter_by(event_type="managerial").all()
     technical_eve = EventRegistration.query.filter_by(event_type="technical").all()
+    
+    sports_eve_collected = EventRegistration.query.filter_by(event_type="sports").filter_by(paid=1).all()
+    cultural_eve_collected = EventRegistration.query.filter_by(event_type="cultural").filter_by(paid=1).all()
+    managerial_eve_collected = EventRegistration.query.filter_by(event_type="managerial").filter_by(paid=1).all()
+    technical_eve_collected = EventRegistration.query.filter_by(event_type="technical").filter_by(paid=1).all()
 
     sports_amount = 0
     cultural_amount = 0
     managerial_amount = 0
     technical_amount = 0
 
+    sports_amount_collected = 0
+    cultural_amount_collected = 0
+    managerial_amount_collected = 0
+    technical_amount_collected = 0
+
     for event in sports_eve:
-        sports_amount += int(event.fees)
+        sports_amount += int(event.fees.replace(' / Team', ''))
     for event in cultural_eve:
-        cultural_amount += int(event.fees)
+        cultural_amount += int(event.fees.replace(' / Team', ''))
     for event in managerial_eve:
-        managerial_amount += int(event.fees)
+        managerial_amount += int(event.fees.replace(' / Team', ''))
     for event in technical_eve:
-        technical_amount += int(event.fees)
+        technical_amount += int(event.fees.replace(' / Team', ''))
+    
+    for event in sports_eve_collected:
+        sports_amount_collected += int(event.fees.replace(' / Team', ''))
+    for event in cultural_eve_collected:
+        cultural_amount_collected += int(event.fees.replace(' / Team', ''))
+    for event in managerial_eve_collected:
+        managerial_amount_collected += int(event.fees.replace(' / Team', ''))
+    for event in technical_eve_collected:
+        technical_amount_collected += int(event.fees.replace(' / Team', ''))
     
     return render_template('dashboard.html', sports=sports, cultural=cultural, managerial=managerial, 
-    technical=technical, depts=depts, sports_amount=sports_amount, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
+    technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
 
 
 @main.route('/core_dashboard/<event_type>/')
@@ -359,7 +383,26 @@ def event_wise_data(event_type):
     """Event-wise Route"""
     if current_user.role != "Core":
         return redirect(url_for('main.dashboard'))
-
+    total_event = set()
+    events_list = list()
     events = EventRegistration.query.filter_by(event_type=event_type).filter_by(paid=1).all()
 
-    return render_template('core-committee.html', events=events, event_type=event_type)
+    for event in events:
+        total_event.add(event.event_name)
+
+    for eve in total_event:
+        fees = 0
+        even = EventRegistration.query.filter_by(event_name=eve).filter_by(paid=1).all()
+        for eve_paid in even:
+            fees += int(eve_paid.fees.replace(' / Team', ''))
+        dic = {"event_name": eve, "total_registration": len(even), "fees": fees}
+        events_list.append(dic)
+    return render_template('core-committee.html', events=events, event_type=event_type, events_list=events_list)
+
+@main.route('/core_dashboard/<event_type>/<event_name>/')
+@login_required
+def event_wise_user(event_type, event_name):
+    events = EventRegistration.query.filter_by(event_type=event_type).filter_by(event_name=event_name).filter_by(paid=1).all()
+    event_date = events[0].date
+    event_fees = events[0].fees
+    return render_template('event_wise_user.html', events=events, event_name=event_name, event_date=event_date, event_fees=event_fees)
