@@ -403,6 +403,8 @@ def event_wise_data(event_type):
 @login_required
 def event_wise_user(event_type, event_name):
     events = EventRegistration.query.filter_by(event_type=event_type).filter_by(event_name=event_name).filter_by(paid=1).all()
-    event_date = events[0].date
-    event_fees = events[0].fees
-    return render_template('event_wise_user.html', events=events, event_name=event_name, event_date=event_date, event_fees=event_fees)
+    event = Events.query.filter_by(event_type=event_type).filter_by(event_name=event_name).first()
+    event_date = event.event_date
+    in_event_fees = event.in_entry_fees
+    out_event_fees = event.out_entry_fees
+    return render_template('event_wise_user.html', events=events, event_name=event_name, event_date=event_date, in_event_fees=in_event_fees, out_event_fees=out_event_fees)
