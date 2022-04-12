@@ -9,38 +9,15 @@
             <div class="row gy-5 align-items-center">
                 <div class="col-lg-12 col-12">
                     <div class="banner-content text-center">
-                        <h1 class="mb-0" style="font-size: 38px;"> <span style="color: #f64482;">URJOTSAV</span> is an
+                        <h1 class="mb-0" style="font-size: 40px;"> <span style="color: rgb(255, 255, 0);">URJOTSAV
+                                2k22</span> is
+                            an
                             Annual Technical,
                             Cultural, Managerial & Sports Fest of the Prestige Institute of Engineering Management
                             & Research
                             (PIEMR, INDORE)</h1>
-                        <!-- <p>Be the witness of marvalous event <br>
-                                Call us For More info.</p> -->
-
-                        {% if current_user.is_authenticated %}
-                        {% if current_user.role == "Student" %}
-                        <a href="{{ url_for('main.profile') }}" class="lab-btn mt-3"><span><i class="icofont-tasks"></i>
-                                Profile</span> </a>
-                        {% elif current_user.role == "Co-ordinator" %}
-                        <a href="{{ url_for('main.dashboard') }}" class="lab-btn mt-3"><span><i
-                                    class="icofont-tasks"></i>
-                                Dashboard</span> </a>
-                        {% elif current_user.role == "Core" %}
-                        <a href="{{ url_for('main.core_dashboard') }}" class="lab-btn mt-3"><span><i
-                                    class="icofont-tasks"></i>
-                                Dashboard</span> </a>
-                        {% endif %}
-                        {% else %}
-                        <a href="{{ url_for('main.register') }}" class="lab-btn mt-3"><span><i
-                                    class="icofont-tasks"></i>
-                                Register
-                                Now</span> </a>
-                        {% endif %}
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 col-12">
-                        <div class="banner-image">
-                             <img src="assets/images/banner/01.png" alt="banner-img"> -->
             </div>
         </div>
     </div>
@@ -51,120 +28,49 @@
 
 
 <!-- ======= Industry Academia sectin start here ======== -->
-<section class="sponsor-section padding-tb bg-image">
+<section class="sponsor-section padding-tb" style="background-color: rgb(255, 255, 0, 0.6);">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" style="max-width: 950px;">
             <h2 style="font-size: 32px;">Prestige PIEMR Industry-HR meet</h2>
+            <h3>23<sup>rd</sup> April 2022 - 2:30 PM Onwards</h3>
+            <p style="color: black; font-weight: bold; text-align: justify;">The Industry - HR
+                professionals will visit project expo &
+                interact with faculty and
+                students of PIEMR.
+                They will also give awards to achiever's.</p>
         </div>
-        <div class="section-wrapper text-center">
+        <div class="section-wrapper">
             <div class="all-sponsor">
                 <!-- silver-sponsor -->
                 <div class="silver-sponsor">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/yogi.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/yogi1.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Dr. Yogi Sriram</h5>
-                                <p style="color: white; font-size: 15px;">Larsen & Toubro</p>
-                                <p style="color: white; font-size: 13px;">Advisor to CEO & MD, Group Human Resources</p>
-                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/bhuwansing.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/bhuvan.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Dr. Bhuvan Damahe</h5>
-                                <p style="color: white; font-size: 15px;">Larsen & Toubro</p>
-                                <p style="color: white; font-size: 13px;">Head, L&T Skill Trainers Academy</p>
-                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/deepak.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/deepak1.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Dr. Deepak Deshpande</h5>
-                                <p style="color: white; font-size: 15px;">NTT Ltd</p>
-                                <p style="color: white; font-size: 13px;">Senior Director - Senior <abbr
-                                        title="Vice President">VC</abbr> & Chief <abbr title="Human Resources">HR</abbr>
-                                    Officer</p>
-                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/sougata.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/sougata1.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Mr. Sougata Sen</h5>
-                                <p style="color: white; font-size: 15px;">Hexaware Technologies</p>
-                                <p style="color: white; font-size: 13px;">Head - Campus Hiring & Relations</p>
-                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/manish.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/manish1.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Mr. Manish Sawjiani</h5>
-                                <p style="color: white; font-size: 15px;">Valuelabs</p>
-                                <p style="color: white; font-size: 13px;">Senior Vice President</p>
-                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/shilpi.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/aniruddha1.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Ms. Shilpi Shah</h5>
-                                <p style="color: white; font-size: 15px;">Valuelabs</p>
-                                <p style="color: white; font-size: 13px;">Senior Vice President</p>
-                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/swapnakant.png') }}"
+                            <img src="{{ url_for('static', filename='assets/images/delegate/brillian1.png') }}"
                                 alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Mr. Swapnakant Samal</h5>
-                                <p style="color: white; font-size: 15px;">Reliance Industries Ltd.</p>
-                                <p style="color: white; font-size: 13px;">Head Corporate Functions, Hiring, Policy,
-                                    Processes & Digitisation</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/aniruddha.png') }}"
-                                alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Mr. Aniruddha Khekale</h5>
-                                <p style="color: white; font-size: 15px;">CG POWER INDUSTRIAL SOLUTION</p>
-                                <p style="color: white; font-size: 13px;">Executive <abbr
-                                        title="Vice President">VC</abbr> & Head <abbr title="Human Resources">HR</abbr>,
-                                    Business Excellence</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/brillian.png') }}"
-                                alt="sponsor">
-                            <br>
-                            <br>
-                            <div class="speaker-infos">
-                                <h5 style="color: white; font-size: 20px;">Mr. Brillian S. K, DTM, PRA</h5>
-                                <p style="color: white; font-size: 15px;">Times Professional Learning</p>
-                                <p style="color: white; font-size: 13px;">Chief People Officer - Times Professional
-                                    Learning</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,236 +82,79 @@
 
 
 <!-- ==========About Section start Here========== -->
-<section class="about-section padding-tb padding-b shape-img">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
+<section class="about-section padding-t shape-img">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-lg-6">
                 <div class="about-image">
-                    <img src="{{ url_for('static', filename='assets/images/about/01.jpg') }}" alt="about image">
-                    <a href="https://www.youtube.com/embed/EM9kBn_LPKE" class="play-btn" data-rel="lightcase">
+                    <img src="{{ url_for('static', filename='assets/images/about/03.jpg') }}" alt="about image">
+                    <a href=" https://www.youtube.com/embed/zoNXg2zKkj8 " class="play-btn" data-rel="lightcase">
                         <i class="icofont-ui-play"></i>
                         <span class="pluse_2"></span>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-10">
-                <div class="section-header text-center">
-                    <h2>Urjotsav 2k22</h2>
-                    <p>About Urjotsav 2k22</p>
+            <div class="col-lg-6">
+                <div class="about-image">
+                    <img src="{{ url_for('static', filename='assets/images/about/02.jpg') }}" alt="about image">
+                    <a href="https://www.youtube.com/embed/HjW89qIp0ww" class="play-btn" data-rel="lightcase">
+                        <i class="icofont-ui-play"></i>
+                        <span class="pluse_2"></span>
+                    </a>
                 </div>
-                <div class="section-wrapper text-center">
-                    <p style="font-weight: bold;">Urjotsav is for technical as well as cultural fest. In fact, the
-                        college atmosphere takes a festive mood on that occasion. Most of the students take part in
-                        the College Fest. They enjoy it very much. Often students of other colleges are invited to
-                        take an active part in the festival it build team mangament in students
-                        Urjotsav - as its name suggests something that is invigorating makes you feel refreshed and
-                        more energetic.
-                        We @ PIEMR celebrate this festival of amusement and enthusiasm every year as our annual
-                        fest. It's a 6 days event where everyone gets restored with power and gets fulfilled with
-                        new strength to continue our studies with high stamina.
-                    </p>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="section-header text-center">
+                <h2>About Urjotsav 2k22</h2>
+            </div>
+            <div class="section-wrapper text-center">
+                <p style="font-weight: bold; text-align: justify; text-justify: inter-word;">Urjotsav is for technical
+                    as well as cultural fest.
+                    In
+                    fact, the
+                    college atmosphere takes a festive mood on that occasion. Most of the students take part in
+                    the College Fest. They enjoy it very much. Often students of other colleges are invited to
+                    take an active part in the festival it build team mangament in students
+                    Urjotsav - as its name suggests something that is invigorating makes you feel refreshed and
+                    more energetic.
+                    We @ PIEMR celebrate this festival of amusement and enthusiasm every year as our annual
+                    fest. It's a 6 days event where everyone gets restored with power and gets fulfilled with
+                    new strength to continue our studies with high stamina.
+                    </pre>
 
-                    <div class="about-btn-grp">
-                        {% if current_user.is_authenticated %}
-                        {% if current_user.role == "Student" %}
-                        <a href="{{ url_for('main.profile') }}" class="lab-btn style-orange "><span><i
-                                    class="icofont-tasks"></i>
-                                Profile</span> </a>
-                        {% elif current_user.role == "Co-ordinator" %}
-                        <a href="{{ url_for('main.dashboard') }}" class="lab-btn style-orange "><span><i
-                                    class="icofont-tasks"></i>
-                                Dashboard</span> </a>
-                        {% elif current_user.role == "Core" %}
-                        <a href="{{ url_for('main.core_dashboard') }}" class="lab-btn style-orange "><span><i
-                                    class="icofont-tasks"></i>
-                                Dashboard</span> </a>
-                        {% endif %}
-                        {% else %}
-                        <a href="{{ url_for('main.register') }}" class="lab-btn style-orange "><span><i
-                                    class="icofont-tasks"></i>
-                                Register
-                                Now</span> </a>
-                        {% endif %}
-                    </div>
+                <div class="about-btn-grp">
+                    {% if current_user.is_authenticated %}
+                    {% if current_user.role == "Student" %}
+                    <a href="{{ url_for('main.profile') }}" class="lab-btn style-orange "><span><i
+                                class="icofont-tasks"></i>
+                            Profile</span> </a>
+                    {% elif current_user.role == "Co-ordinator" %}
+                    <a href="{{ url_for('main.dashboard') }}" class="lab-btn style-orange "><span><i
+                                class="icofont-tasks"></i>
+                            Dashboard</span> </a>
+                    {% elif current_user.role == "Core" %}
+                    <a href="{{ url_for('main.core_dashboard') }}" class="lab-btn style-orange "><span><i
+                                class="icofont-tasks"></i>
+                            Dashboard</span> </a>
+                    {% endif %}
+                    {% else %}
+                    <a href="{{ url_for('main.register') }}" class="lab-btn style-orange "><span><i
+                                class="icofont-tasks"></i>
+                            Register
+                            Now</span> </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- ==========About Section end Here========== -->
-
-<!-- Speakers section start here -->
-<section class="speakers-section padding-tb padding-b shape-img">
-    <div class="container">
-        <div class="section-header">
-            <h2>Our Student Co-ordinators</h2>
-            <p>Tech Contributers of Prestige</p>
-        </div>
-        <div class="section-wrapper">
-            <div class="row g-4 justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-12">
-                    <div class="speaker-item">
-                        <div class="speaker-inner">
-                            <div class="speaker-thumb">
-                                <img src="{{ url_for('static', filename='assets/images/speakers/01.png') }}"
-                                    alt="speaker" class="student-img">
-                            </div>
-                            <div class="speaker-content">
-                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                    <div class="speaker-infos">
-                                        <h5>Rajat Sharma</h5>
-                                        <p>Full Stack Developer</p>
-                                    </div>
-
-                                </div>
-                                <div class="spkr-content-details">
-                                    <ul class="social-icons">
-                                        <li><a href="https://www.linkedin.com/in/rajat-sharma-aa5980158"
-                                                target="_blank"><i class="icofont-linkedin"></i></a></li>
-                                        <li><a href="https://www.instagram.com/rajatt__sharma_/" target="_blank"><i
-                                                    class="icofont-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-8 col-12">
-                    <div class="speaker-item">
-                        <div class="speaker-inner">
-                            <div class="speaker-thumb">
-                                <img src="{{ url_for('static', filename='assets/images/speakers/02.png') }}"
-                                    alt="speaker" class="student-img">
-                            </div>
-                            <div class="speaker-content">
-                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                    <div class="speaker-infos">
-                                        <h5>Manish Singh</h5>
-                                        <p>Full Stack Developer</p>
-                                    </div>
-                                </div>
-                                <div class="spkr-content-details">
-                                    <ul class="social-icons">
-                                        <li><a href="https://www.linkedin.com/in/manish-singh-ab6a60187?originalSubdomain=in"
-                                                target="_blank"><i class="icofont-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-8 col-12">
-                    <div class="speaker-item">
-                        <div class="speaker-inner">
-                            <div class="speaker-thumb">
-                                <img src="{{ url_for('static', filename='assets/images/speakers/03.png') }}"
-                                    alt="speaker" class="student-img">
-                            </div>
-                            <div class="speaker-content">
-                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                    <div class="speaker-infos">
-                                        <h5>Navalkhe Tejas</h5>
-                                        <p>Full Stack Developer</p>
-                                    </div>
-
-                                </div>
-                                <div class="spkr-content-details">
-                                    <ul class="social-icons">
-                                        <li><a href="https://www.linkedin.com/in/tejasnavalkhe1810/" target="_blank"><i
-                                                    class="icofont-linkedin"></i></a></li>
-                                        <li><a href="https://www.facebook.com/TejasNavalkhe" target="_blank"><i
-                                                    class="icofont-facebook"></i></a></li>
-                                        <li><a href="https://www.instagram.com/tejasnavalkhe1810/" target="_blank"><i
-                                                    class="icofont-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-8 col-12">
-                    <div class="speaker-item">
-                        <div class="speaker-inner">
-                            <div class="speaker-thumb">
-                                <img src="{{ url_for('static', filename='assets/images/speakers/04.png') }}"
-                                    alt="speaker" class="student-img">
-                            </div>
-                            <div class="speaker-content">
-                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
-                                    <div class="speaker-infos">
-                                        <h5>Kshitij Ovhal</h5>
-                                        <p>Full Stack Developer</p>
-                                    </div>
-                                </div>
-                                <div class="spkr-content-details">
-                                    <br>
-                                    <ul class="social-icons">
-                                        <li><a href="https://in.linkedin.com/in/kshitij-ovhal-52595b1a4"
-                                                target="_blank"><i class="icofont-linkedin"></i></a></li>
-                                        <li><a href="https://www.instagram.com/kshitij_0825/" target="_blank"><i
-                                                    class="icofont-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
     </div>
-    </div>
-</section>
 
-<!-- ======= Sponsor sectin start here ======== -->
-<section class="sponsor-section padding-tb padding-b bg-image">
-    <div class="container">
-        <div class="section-header">
-            <h2>Event Sponsors</h2>
-            <p>Check Who Makes The Event Possible</p>
-        </div>
-        <div class="section-wrapper text-center">
-            <div class="all-sponsor">
-                <!--  -->
-
-                <!-- silver-sponsor -->
-                <h5 class="mt-4">Tech Fest Sponsor</h5>
-                <div class="silver-sponsor">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/codechef.jpg') }}"
-                                alt="sponsor">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-2.png') }}"
-                                alt="sponsor">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-3.png') }}"
-                                alt="sponsor">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-4.png') }}"
-                                alt="sponsor">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/silver-5.png') }}"
-                                alt="sponsor">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <a href="#" class="lab-btn"><span>
-                        Become a Sponsor
-                    </span></a> -->
-        </div>
-    </div>
 </section>
-<!-- ======= Sponsor sectin end here ======== -->
+<!-- ========== About Section ends  Here========== -->
 
 <!-- ===== Pricing Plan Start here  ==== -->
-<section class="pricing-plan-section padding-tb padding-b shape-img" id="events_list">
+<section class="pricing-plan-section padding-b shape-img" id="events_list">
     <div class="container-fluid ml-5 mr-5">
         <div class="section-header">
             <h2>Our Key Events</h2>
@@ -671,13 +420,183 @@
 </section>
 <!-- ===== Pricing Plan end here  ==== -->
 
+
+<!-- ======= Sponsor sectin start here ======== -->
+
+<section class="sponsor-section padding-tb padding-b bg-image">
+    <div class="container">
+        <div class="section-header">
+            <h2>Event Sponsors</h2>
+            <p>Check Who Makes The Event Possible</p>
+        </div>
+        <div class="section-wrapper text-center">
+            <div class="all-sponsor">
+                <!--  -->
+
+                <!-- silver-sponsor -->
+                <div class="silver-sponsor">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/codechef.jpg') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/pantaloons-logo.png') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/Sayaji.jpg') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/TVS.png') }}" alt="sponsor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <a href="#" class="lab-btn"><span>
+                        Become a Sponsor
+                    </span></a> -->
+        </div>
+    </div>
+</section>
+<!-- ======= Sponsor sectin end here ======== -->
+
+
+<!-- Speakers section start here -->
+<section class="speakers-section padding-tb padding-b shape-img">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Student Co-ordinators</h2>
+            <p>Tech Contributers of Prestige</p>
+        </div>
+        <div class="section-wrapper">
+            <div class="row g-4 justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/03.png') }}"
+                                    alt="speaker" class="student-img">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5>Navalkhe Tejas</h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <ul class="social-icons">
+                                        <li><a href="https://www.linkedin.com/in/tejasnavalkhe1810/" target="_blank"><i
+                                                    class="icofont-linkedin"></i></a></li>
+                                        <li><a href="https://www.facebook.com/TejasNavalkhe" target="_blank"><i
+                                                    class="icofont-facebook"></i></a></li>
+                                        <li><a href="https://www.instagram.com/tejasnavalkhe1810/" target="_blank"><i
+                                                    class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/01.png') }}"
+                                    alt="speaker" class="student-img">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5>Rajat Sharma</h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+
+                                </div>
+                                <div class="spkr-content-details">
+                                    <ul class="social-icons">
+                                        <li><a href="https://www.linkedin.com/in/rajat-sharma-aa5980158"
+                                                target="_blank"><i class="icofont-linkedin"></i></a></li>
+                                        <li><a href="https://www.instagram.com/rajatt__sharma_/" target="_blank"><i
+                                                    class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/02.png') }}"
+                                    alt="speaker" class="student-img">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5>Manish Singh</h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+                                    <ul class="social-icons">
+                                        <li><a href="https://www.linkedin.com/in/manish-singh-ab6a60187?originalSubdomain=in"
+                                                target="_blank"><i class="icofont-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8 col-12">
+                    <div class="speaker-item">
+                        <div class="speaker-inner">
+                            <div class="speaker-thumb">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/04.png') }}"
+                                    alt="speaker" class="student-img">
+                            </div>
+                            <div class="speaker-content">
+                                <div class="spkr-content-title d-flex flex-wrap justify-content-between">
+                                    <div class="speaker-infos">
+                                        <h5>Kshitij Ovhal</h5>
+                                        <p>Full Stack Developer</p>
+                                    </div>
+                                </div>
+                                <div class="spkr-content-details">
+                                    <br>
+                                    <ul class="social-icons">
+                                        <li><a href="https://in.linkedin.com/in/kshitij-ovhal-52595b1a4"
+                                                target="_blank"><i class="icofont-linkedin"></i></a></li>
+                                        <li><a href="https://www.instagram.com/kshitij_0825/" target="_blank"><i
+                                                    class="icofont-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+</section>
+
+
+
+
 <!-- ===== Event Gift start here  ==== -->
 <section class="event-gift-section padding-tb padding-b bg-image">
     <div class="container">
         <div class="row flex-lg-row-reverse">
             <div class="col-lg-6 col-12">
                 <div class="section-header">
-                    <h2>Event Prices</h2>
+                    <h2>Event Prizes</h2>
                     <p>Our Complimentary Gifts For You</p>
                 </div>
                 <div class="section-wrapper">
@@ -688,7 +607,7 @@
                         </p>
                         <ul class="gift-list">
                             <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </span> Cash Prices</li>
+                                </span> Cash Prizes</li>
                             <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </span> Shields</li>
                             <li class="gift-item"><span><i class="fa fa-check-circle" aria-hidden="true"></i>

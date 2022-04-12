@@ -333,7 +333,7 @@ def core_dashboard():
     cultural = len(EventRegistration.query.filter_by(event_type='cultural').all())
     managerial = len(EventRegistration.query.filter_by(event_type='managerial').all())
     technical = len(EventRegistration.query.filter_by(event_type='technical').all())
-    depts = Department.query.all()
+    depts = Department.query.order_by(Department.reward_points.desc()).all()
     
     sports_eve = EventRegistration.query.filter_by(event_type="sports").all()
     cultural_eve = EventRegistration.query.filter_by(event_type="cultural").all()
