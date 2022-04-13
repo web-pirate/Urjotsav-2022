@@ -40,25 +40,10 @@
 
 
   <!-- ==========Header Section Starts Here========== -->
-  <script> 
-    function counter_fn(){
-        var counter = $('#cntr span').text(); // geting value from span
-        var count = 0;
-        count = parseInt(counter.value);
-        count = count+1;
-        counter.innerHTML = parseInt(count);
-   }
-   window.onload = counter_fn;  
-</script>
   <header class="header-section">
 
     <div class="container text-center">
       <img src="{{ url_for('static', filename='assets/images/logo/logo1.png') }}" alt="PIEMR LOGO">
-      <div id="cntr"> 
-        The number of visitors is : 
-        <span>5000</span>
-    </div>
-
     </div>
     <div class="header-bottom">
       <div class="container">
