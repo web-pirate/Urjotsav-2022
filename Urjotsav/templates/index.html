@@ -32,73 +32,85 @@
     <div class="container-fluid text-center my-3">
         <div class="row">
             <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel slide" style="transition: 0.3s ease-in-out left;" data-bs-ride="carousel">
-                <div class="carousel-inner" style="transition: 0.3s ease-in-out left;" role="listbox">
-                    <div class="carousel-item active" style="transition: 0.3s ease-in-out left;">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="{{ url_for('static', filename='assets/images/gallery/cul1.jpg') }}" class="img-fluid">
+                <div id="recipeCarousel" class="carousel slide" style="transition: 0.3s ease-in-out left;"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner" style="transition: 0.3s ease-in-out left;" role="listbox">
+                        <div class="carousel-item active" style="transition: 0.3s ease-in-out left;">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="{{ url_for('main.event', event_type='cultural') }}"><img
+                                                src="{{ url_for('static', filename='assets/images/gallery/carousel/cul1.jpg') }}"
+                                                class="img-fluid"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="{{ url_for('main.event', event_type='cultural') }}">
+                                            <img src="{{ url_for('static', filename='assets/images/gallery/carousel/cul2.jpg') }}"
+                                                class="img-fluid"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="{{ url_for('main.event', event_type='technical') }}">
+                                            <img src="{{ url_for('static', filename='assets/images/gallery/carousel/tech1.jpg') }}"
+                                                class="img-fluid"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="{{ url_for('main.event', event_type='technical') }}">
+                                            <img src="{{ url_for('static', filename='assets/images/gallery/carousel/Tech2.jpg') }}"
+                                                class="img-fluid"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="{{ url_for('main.event', event_type='technical') }}">
+                                            <img src="{{ url_for('static', filename='assets/images/gallery/carousel/tech3.jpg') }}"
+                                                class="img-fluid"></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="{{ url_for('static', filename='assets/images/gallery/cul2.jpg') }}" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="{{ url_for('static', filename='assets/images/gallery/tech1.jpg') }}" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="{{ url_for('static', filename='assets/images/gallery/Tech2.jpg') }}" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="{{ url_for('static', filename='assets/images/gallery/tech3.jpg') }}" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="carousel-control-prev w-aut circle" href="#recipeCarousel" role="button"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev w-aut circle" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
             </div>
         </div>
-        </div>
-        
+
     </div>
-    </section>
-    
+</section>
+
 
 <!---gallery sections ends  here -->
 
 
 <!-- ======= Industry Academia sectin start here ======== -->
-<section class="sponsor-section padding-tb" style="background-image: url(/static/assets/images/banner/banner100.jpg);">
+<section class="sponsor-section" style="background-image: url(/static/assets/images/banner/banner100.jpg);">
     <div class="container">
         <div class="px-4 text-center ">
             <h2 class="fs-2 display-5 fw-bold " style="color: #f64482;">Prestige PIEMR
@@ -561,12 +573,10 @@
                             <img src="{{ url_for('static', filename='assets/images/sponsor/1.png') }}" alt="sponsor">
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/2.png') }}"
-                                alt="sponsor">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/2.png') }}" alt="sponsor">
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/sponsor/3.png') }}"
-                                alt="sponsor">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/3.png') }}" alt="sponsor">
                         </div>
                         <div class="swiper-slide">
                             <img src="{{ url_for('static', filename='assets/images/sponsor/4.png') }}" alt="sponsor">
@@ -704,12 +714,13 @@
                     <div class="speaker-item">
                         <div class="speaker-inner">
                             <div class="speaker-thumb">
-                                <img src="assets/images/speakers/02.png" alt="speaker">
+                                <img src="{{ url_for('static', filename='assets/images/speakers/05.png') }}"
+                                    alt="speaker" class="student-img">
                             </div>
                             <div class="speaker-content">
                                 <div class="spkr-content-title d-flex flex-wrap justify-content-between">
                                     <div class="speaker-infos">
-                                        <h5><a href="speaker-details.html">Vishal Singh </a> </h5>
+                                        <h5>Vishal Singh</h5>
                                         <p>UI Designer</p>
                                     </div>
                                 </div>
