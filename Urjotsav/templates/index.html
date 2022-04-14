@@ -27,6 +27,78 @@
 <!-- ==========Banner Section end Here========== -->
 
 
+<!---gallery sections start here ----->
+<div class="container text-center my-3">
+    <div class="row">
+        <div class="row mx-auto my-auto justify-content-center">
+            <div id="recipeCarousel" class="carousel slide" style="transition: 0.3s ease-in-out left;"
+                data-bs-ride="carousel">
+                <div class="carousel-inner" style="transition: 0.3s ease-in-out left;" role="listbox">
+                    <div class="carousel-item active" style="transition: 0.3s ease-in-out left;">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="{{ url_for('static', filename='assets/images/gallery/cul1.jpg') }}"
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="{{ url_for('static', filename='assets/images/gallery/cul2.jpg') }}"
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="{{ url_for('static', filename='assets/images/gallery/tech1.jpg') }}"
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="{{ url_for('static', filename='assets/images/gallery/Tech2.jpg') }}"
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="{{ url_for('static', filename='assets/images/gallery/tech3.jpg') }}"
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev w-aut circle" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!---gallery sections ends  here ----->
+
+
 <!-- ======= Industry Academia section start here ======== -->
 <section class="sponsor-section padding-tb" style="background-image: url(/static/assets/images/banner/banner100.jpg);">
     <div class="container">
@@ -482,8 +554,6 @@
         </div>
         <div class="section-wrapper text-center">
             <div class="all-sponsor">
-                <!--  -->
-
                 <!-- silver-sponsor -->
                 <div class="silver-sponsor">
                     <div class="swiper-wrapper">
@@ -496,12 +566,15 @@
                         <div class="swiper-slide">
                             <img src="{{ url_for('static', filename='assets/images/sponsor/3.png') }}" alt="sponsor">
                         </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/4.png') }}" alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/sponsor/5.png') }}" alt="sponsor">
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- <a href="#" class="lab-btn"><span>
-                        Become a Sponsor
-                    </span></a> -->
         </div>
     </div>
 </section>
