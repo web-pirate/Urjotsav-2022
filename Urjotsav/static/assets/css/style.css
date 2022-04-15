@@ -7201,3 +7201,20 @@ ul li {
   padding: 10px !important;
   color: red !important;
 }
+.vedio{
+  width: 420px;
+  height: 400px;
+}
+
+.image-rect{
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+  .vedio{
+    width: 198px;
+    height: 201px;
+  }
+}
