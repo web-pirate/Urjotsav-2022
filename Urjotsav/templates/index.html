@@ -32,6 +32,59 @@
     <div class="container-fluid text-center my-3">
         <div class="row">
             <div class="row mx-auto my-auto justify-content-center">
+            <div id="recipeCarousel" class="carousel slide" style="transition: 0.3s ease-in-out left;" data-bs-ride="carousel">
+                <div class="carousel-inner" style="transition: 0.3s ease-in-out left;" role="listbox">
+                    <div class="carousel-item active" style="transition: 0.3s ease-in-out left;">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                   <a href="{{ url_for('main.event', event_type='cultural') }}">
+                                       <img src="{{ url_for('static', filename='assets/images/gallery/cul1.jpg') }}" class="img-fluid">
+                                   </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <a href="{{ url_for('main.event', event_type='cultural') }}">
+                                     <img src="{{ url_for('static', filename='assets/images/gallery/cul2.jpg') }}" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <a href="{{ url_for('main.event', event_type='technical') }}">
+                                     <img src="{{ url_for('static', filename='assets/images/gallery/tech1.jpg') }}" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <a href="{{ url_for('main.event', event_type='technical') }}">
+                                     <img src="{{ url_for('static', filename='assets/images/gallery/Tech2.jpg') }}" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <a href="{{ url_for('main.event', event_type='technical') }}">
+                                     <img src="{{ url_for('static', filename='assets/images/gallery/tech3.jpg') }}" class="img-fluid">
+                                    </a>
                 <div id="recipeCarousel" class="carousel slide" style="transition: 0.3s ease-in-out left;"
                     data-bs-ride="carousel">
                     <div class="carousel-inner" style="transition: 0.3s ease-in-out left;" role="listbox">
@@ -166,6 +219,9 @@
                         </div>
                         <div class="swiper-slide">
                             <img src="{{ url_for('static', filename='assets/images/delegate/13.png') }}" alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/delegate/30.png') }}" alt="sponsor">
                         </div>
                     </div>
                 </div>
