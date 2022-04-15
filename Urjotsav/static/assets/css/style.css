@@ -7202,7 +7202,7 @@ ul li {
   color: red !important;
 }
 .vedio{
-  width: 420px;
+  width: 500px;
   height: 400px;
 }
 
@@ -7212,9 +7212,9 @@ ul li {
   transition: all 0.3s ease;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 770px) {
   .vedio{
-    width: 198px;
-    height: 201px;
+    width: 202px;
+    height: 202px;
   }
 }
