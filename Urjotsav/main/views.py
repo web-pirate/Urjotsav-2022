@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app 
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
 from Urjotsav.models import User, EventRegistration, Events, Department, Payments
 from flask_login import current_user, logout_user, login_user, login_required
@@ -408,3 +408,7 @@ def event_wise_user(event_type, event_name):
     in_event_fees = event.in_entry_fees
     out_event_fees = event.out_entry_fees
     return render_template('event_wise_user.html', events=events, event_name=event_name, event_date=event_date, in_event_fees=in_event_fees, out_event_fees=out_event_fees)
+
+
+
+    
