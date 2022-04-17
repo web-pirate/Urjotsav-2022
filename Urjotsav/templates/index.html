@@ -168,6 +168,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <a href="{{ url_for('main.event', event_type='cultural') }}">
+                                        <img src="{{ url_for('static', filename='assets/images/carousel-img/13.jpeg') }}" class="img-fluid">
+                                       </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-img">
+                                    <a href="{{ url_for('main.event', event_type='cultural') }}">
+                                        <img src="{{ url_for('static', filename='assets/images/carousel-img/14.jpeg') }}" class="img-fluid">
+                                       </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                    
 
                 </div>
@@ -233,10 +255,7 @@
                             <img src="{{ url_for('static', filename='assets/images/delegate/hr/6.png') }}"
                                 alt="sponsor">
                         </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/hr/7.png') }}"
-                                alt="sponsor">
-                        </div>
+                       
                         <div class="swiper-slide">
                             <img src="{{ url_for('static', filename='assets/images/delegate/hr/8.png') }}"
                                 alt="sponsor">
@@ -261,6 +280,14 @@
                             <img src="{{ url_for('static', filename='assets/images/delegate/hr/13.png') }}"
                                 alt="sponsor">
                         </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/delegate/hr/15.jpg') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ url_for('static', filename='assets/images/delegate/hr/16.jpg') }}"
+                                alt="sponsor">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -269,6 +296,58 @@
 </section>
 <!-- Industry Academia section end here -->
 
+<!-- performer section start here -->
+
+<section class="about-section shape-img">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <h2 class="fs-2 display-5 fw-bold" style="text-align: center;;">Performers - PIEMR Urjotsav 2k22</h2>
+            <div class="col-10 col-sm-8 col-lg-6">
+                <div class="about-image">
+                    <video src="/static/assets/images/videos/amitab.mp4" poster="/static/assets/images/videos/amb.png" controls="" class="vedio">
+                    </video>
+                    <strong>Prof. Shashikant Pedwal</strong>
+                    <br>
+                    <strong>Kaun Banega Prestigean Scholar</strong>
+                    <br>
+                    <strong>21st April 2022 Evening</strong>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-image">
+                    <video src="/static/assets/images/videos/jaishreeram.mp4" poster="/static/assets/images/videos/sas.png" controls="" class="vedio"></video>
+                    <strong>Mr. Sharad Sharma</strong>
+                    <br>
+                    <strong>Zee Sa Re Ga Ma Pa fame</strong>
+                    <br>
+                    <strong>23rd April 2022 Evening</strong>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="about-image">
+                    <video src="/static/assets/images/videos/bappi.mp4" poster="/static/assets/images/videos/bappi.png" controls="" class="vedio"></video>
+                    <strong>Shri Bhuvnesh Komkali</strong>
+                    <br>
+                    <strong>Hindustani Classical Singing Concert</strong>
+                    <br>
+                    <strong>20th April 2022 Evening</strong>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-image">
+                    <video src="/static/assets/images/videos/tatiya.mp4" poster="/static/assets/images/videos/tatiya.png" controls="" class="vedio"></video>
+                    <strong>Shalu, Indian Humanoid </strong>
+                    <br>
+                    <strong>Inventor: Dinesh Kunwar Patel</strong>
+                    <br>
+                    <strong>21st April Evening</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- performer section ends here -->
 
 <!-- ======= Workshop section start here ======== -->
 <section class="sponsor-section" style="background-image: url(/static/assets/images/banner/banner100.jpg);">
@@ -315,10 +394,7 @@
                             <img src="{{ url_for('static', filename='assets/images/delegate/workshop/8.png') }}"
                                 alt="sponsor">
                         </div>
-                        <div class="swiper-slide">
-                            <img src="{{ url_for('static', filename='assets/images/delegate/workshop/9.png') }}"
-                                alt="sponsor">
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -327,9 +403,8 @@
 </section>
 <!-- Workshop section end here -->
 
-
 <!-- ======= Tech Talk section start here ======== -->
-<section class="sponsor-section padding-tb" style="background-image: url(/static/assets/images/banner/bannertt.jpg);">
+<section class="sponsor-section padding-tb" style="background-image: url(/static/assets/images/banner/banner100.jpg);">
     <div class="container">
         <div class="px-4 text-center ">
             <h2 class="fs-2 display-5 fw-bold " style="color: #f64482;">Prestige PIEMR Tech Talk Session</h2>
@@ -341,12 +416,20 @@
                 <!-- silver-sponsor -->
                 <div class="silver-sponsor">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        <div class="swiper">
                             <img src="{{ url_for('static', filename='assets/images/delegate/techtalk/1.png') }}"
                                 alt="sponsor">
                         </div>
-                        <div class="swiper-slide">
+                        <div class="swiper">
                             <img src="{{ url_for('static', filename='assets/images/delegate/techtalk/2.png') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper">
+                            <img src="{{ url_for('static', filename='assets/images/delegate/techtalk/3.png') }}"
+                                alt="sponsor">
+                        </div>
+                        <div class="swiper">
+                            <img src="{{ url_for('static', filename='assets/images/delegate/techtalk/4.png') }}"
                                 alt="sponsor">
                         </div>
                     </div>
@@ -381,24 +464,9 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="section-header text-center">
-                <h2>About Urjotsav 2k22</h2>
-            </div>
+    
             <div class="section-wrapper text-center">
-                <p style="font-weight: bold; text-align: justify; text-justify: inter-word;" class="fs-4">Urjotsav is
-                    for technical
-                    as well as cultural fest.
-                    In
-                    fact, the
-                    college atmosphere takes a festive mood on that occasion. Most of the students take part in
-                    the College Fest. They enjoy it very much. Often students of other colleges are invited to
-                    take an active part in the festival it build team mangament in students
-                    Urjotsav - as its name suggests something that is invigorating makes you feel refreshed and
-                    more energetic.
-                    We @ PIEMR celebrate this festival of amusement and enthusiasm every year as our annual
-                    fest. It's a 6 days event where everyone gets restored with power and gets fulfilled with
-                    new strength to continue our studies with high stamina.
-                    </pre>
+
 
                 <div class="about-btn-grp">
                     {% if current_user.is_authenticated %}
@@ -644,22 +712,22 @@
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                         </span> <a href="{{ url_for('main.event', event_type='technical') }}"
                                             style="font-size: 15px;">Robotic
-                                            Arm Programming Competion</a>
+                                            Arm Programming Competition</a>
                                     </li>
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                         </span> <a href="{{ url_for('main.event', event_type='technical') }}">Code War
-                                            Competion</a>
+                                            Competition</a>
                                     </li>
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                         </span> <a href="{{ url_for('main.event', event_type='technical') }}">Circuit
-                                            Design Competion</a>
+                                            Design Competition</a>
                                     </li>
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                         </span> <a href="{{ url_for('main.event', event_type='technical') }}">Robo Game
-                                            Competion</a>
+                                            Competition</a>
                                     </li>
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
@@ -669,7 +737,7 @@
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
                                         </span> <a href="{{ url_for('main.event', event_type='technical') }}">Aero
-                                            Modeling Competion</a>
+                                            Modeling Competition</a>
                                     </li>
                                     <li class="facility-item">
                                         <span><i class="fa fa-check-circle" aria-hidden="true"></i>
