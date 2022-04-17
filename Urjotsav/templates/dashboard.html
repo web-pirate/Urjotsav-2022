@@ -182,6 +182,37 @@
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Reward Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                    <tr>
+                                        <td class="product-item">
+                                            <div class="p-content">
+                                                {{ user.name }}
+                                            </div>
+                                        </td>
+                                        <td>{{ user.dept_name }}</td>
+                                        <td>{{ user.reward_points }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-cart padding-tb w-100 ">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="cart-top">
+                            <table>
+                                <thead>
+                                    <tr>
                                         <th>Event Category</th>
                                         <th>Total Amount Generated</th>
                                         <th>Total Amount Collected</th>
