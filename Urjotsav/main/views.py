@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app 
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
-from Urjotsav.models import User, EventRegistration, Events, Department, Payments
+from Urjotsav.models import User, EventRegistration, Events, Department, Payments,Counter
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
 from datetime import timedelta, datetime
@@ -16,8 +16,13 @@ tz = pytz.timezone('Asia/Calcutta')
 
 @main.route('/')
 def home():
-  """Home Route"""
+  ''' c= Counter.query.all().first()
+   c= c+1
+   print(c)
+   db.session.add(c)
+   db.session.commit()'''
   return render_template('index.html')
+
 
 @main.route('/about/')
 def about():

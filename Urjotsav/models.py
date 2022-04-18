@@ -88,3 +88,10 @@ class Payments(db.Model):
     date = db.Column(db.DateTime, default=datetime.now(tz))
     status = db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class Counter(db.Model):
+    id= db.Column(db.Integer, primary_key=True)
+    count= db.Column(db.Integer)
+
+    
+
