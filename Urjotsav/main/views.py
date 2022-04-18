@@ -349,6 +349,7 @@ def core_dashboard():
     cultural_eve_collected = EventRegistration.query.filter_by(event_type="cultural").filter_by(paid=1).all()
     managerial_eve_collected = EventRegistration.query.filter_by(event_type="managerial").filter_by(paid=1).all()
     technical_eve_collected = EventRegistration.query.filter_by(event_type="technical").filter_by(paid=1).all()
+    users = User.query.order_by(User.reward_points.desc()).all()[0:3]
 
     sports_amount = 0
     cultural_amount = 0
@@ -378,8 +379,7 @@ def core_dashboard():
     for event in technical_eve_collected:
         technical_amount_collected += int(event.fees.replace(' / Team', ''))
     
-    return render_template('dashboard.html', sports=sports, cultural=cultural, managerial=managerial, 
-    technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
+    return render_template('dashboard.html', sports=sports, cultural=cultural, users=users, managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
 
 
 @main.route('/core_dashboard/<event_type>/')
