@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app 
 from Urjotsav.main.forms import RequestResetForm, ResetPasswordForm
-from Urjotsav.models import User, EventRegistration, Events, Department, Payments,Counter
+from Urjotsav.models import User, EventRegistration, Events, Department, Payments, Counter
 from flask_login import current_user, logout_user, login_user, login_required
 from Urjotsav import db
 from datetime import timedelta, datetime
@@ -16,23 +16,29 @@ tz = pytz.timezone('Asia/Calcutta')
 
 @main.route('/')
 def home():
-  ''' c= Counter.query.all().first()
-   c= c+1
-   print(c)
-   db.session.add(c)
-   db.session.commit()'''
-  return render_template('index.html')
+    """Home Route"""
+    c = Counter.query.first()
+    if not c:
+       counter = Counter(count=4999)
+       db.session.add(counter)
+       db.session.commit()
+    c = Counter.query.first()
+    c.count += 1
+    db.session.commit()
+    return render_template('index.html', count=c.count)
 
 
 @main.route('/about/')
 def about():
   """About Route"""
-  return render_template('about.html')
+  c = Counter.query.first()
+  return render_template('about.html', count=c.count)
 
 
 @main.route('/register/', methods=['GET', 'POST'])
 def register():
     """Registration Route"""
+    c = Counter.query.first()
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
     if request.method == 'POST':
@@ -61,19 +67,22 @@ def register():
             flash(
                 f"Please, check your password", "alert")
             return redirect(url_for('main.register'))
-    return render_template('registration.html')
+    return render_template('registration.html', count=c.count)
 
 @main.route('/t&c/')
 def tc():
-    return render_template('t&c.html')
+    c = Counter.query.first()
+    return render_template('t&c.html', count=c.count)
 
 @main.route('/privacy/')
 def privacy():
-    return render_template('Privacy.html')
+    c = Counter.query.first()
+    return render_template('Privacy.html', count=c.count)
 
 @main.route('/refund_policy/')
 def refund():
-    return render_template('refund.html')
+    c = Counter.query.first()
+    return render_template('refund.html', count=c.count)
 
 # ------ Confirm Registration ------ #
 @main.route('/confirm_email/<token>/')
@@ -100,6 +109,7 @@ def confirm_email(token):
 # ------ Reset Password Request Route ------ #
 @main.route('/reset_password/', methods=['GET', 'POST'])
 def reset_request():
+    c = Counter.query.first()
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
     form = RequestResetForm()
@@ -108,12 +118,13 @@ def reset_request():
         send_reset_email(user)
         flash("An email has been sent with instructions to reset your password.", "info")
         return redirect(url_for('main.login'))
-    return render_template('reset_request.html', form=form)
+    return render_template('reset_request.html', form=form, count=c.count)
 
 
 # ------ Reset Password <TOKEN> Route ------ #
 @main.route('/reset_password/<token>/', methods=['GET', 'POST'])
 def reset_token(token):
+    c = Counter.query.first()
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
     user = User.verify_reset_token(token)
@@ -126,12 +137,13 @@ def reset_token(token):
         db.session.commit()
         flash("Your password has been updated! You are now able to login", "success")
         return redirect(url_for('main.login'))
-    return render_template('reset_token.html', form=form)
+    return render_template('reset_token.html', form=form, count=c.count)
 
 
 @main.route('/login/', methods=['GET', 'POST'])
 def login():
     """Login Route"""
+    c = Counter.query.first()
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
     if request.method == 'POST':
@@ -150,7 +162,7 @@ def login():
             flash(
                 "You don't have an account. Please create now to login.", "info")
             return redirect(url_for('main.register'))
-    return render_template('login.html')
+    return render_template('login.html', count=c.count)
 
 
 @main.route('/logout/')
@@ -166,18 +178,20 @@ def logout():
 @login_required
 def profile():
     """Profile Route"""
+    c = Counter.query.first()
     if current_user.role != "Student":
         return redirect(url_for('main.dashboard'))
     total_amount = 0
     events = EventRegistration.query.filter_by(user_id=current_user.id).all()
     for event in events:
         total_amount += int(event.fees)
-    return render_template('profile.html', events=events, total_amount=total_amount)
+    return render_template('profile.html', events=events, total_amount=total_amount, count=c.count)
 
 
 @main.route('/event/<event_type>/')
 def event(event_type):
     """All Event Route"""
+    c = Counter.query.first()
     events = Events.query.filter_by(event_type=event_type).all()
     current_event = ''
     if event_type == "cultural":
@@ -188,13 +202,14 @@ def event(event_type):
         current_event = "Sports"
     elif event_type == "technical":
         current_event = "Technical"
-    return render_template('event.html', events=events, current_event=current_event)
+    return render_template('event.html', events=events, current_event=current_event, count=c.count)
 
 
 @main.route('/event_registration/<event_name>/', methods=['GET', 'POST'])
 @login_required
 def event_registration(event_name):
     """Event Registration"""
+    c = Counter.query.first()
     if request.method == 'POST':
         current_registrations = EventRegistration.query.filter_by(user_id=current_user.id).filter_by(event_name=event_name).all()
         is_already_registered = False
@@ -238,7 +253,7 @@ def event_registration(event_name):
             return redirect(url_for('main.profile'))
         flash("You already registered for this event.", "info")
         return redirect(url_for('main.profile'))
-    return render_template('event_register.html', event_name=event_name)
+    return render_template('event_register.html', event_name=event_name, count=c.count)
 
 
 @main.route('/event_registration/<event_name>/<team_leader>/<pay_id>/')
@@ -307,13 +322,15 @@ def event_delete():
 @main.route('/gallery/')
 def gallery():
     """Gallery Route"""
-    return render_template('gallery.html')
+    c = Counter.query.first()
+    return render_template('gallery.html', count=c.count)
 
 
 @main.route('/dashboard/')
 @login_required
 def dashboard():
     """Dashboard Route"""
+    c = Counter.query.first()
     if current_user.role != "Co-ordinator":
         return redirect(url_for('main.core_dashboard'))
     events_list = []
@@ -324,13 +341,14 @@ def dashboard():
     total_amount = 0
     for eve in events_list:
         total_amount += int(eve.fees)
-    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event)
+    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event, count=c.count)
 
 
 @main.route('/core_dashboard/')
 @login_required
 def core_dashboard():
     """Core Dashboard Route"""
+    c = Counter.query.first()
     if current_user.role != "Core":
         return redirect(url_for('main.dashboard'))
 
@@ -379,13 +397,18 @@ def core_dashboard():
     for event in technical_eve_collected:
         technical_amount_collected += int(event.fees.replace(' / Team', ''))
     
-    return render_template('dashboard.html', sports=sports, cultural=cultural, users=users, managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, technical_amount=technical_amount)
+    return render_template('dashboard.html', sports=sports, cultural=cultural, users=users,
+     managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, 
+     managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, 
+     cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, 
+     technical_amount=technical_amount, count=c.count)
 
 
 @main.route('/core_dashboard/<event_type>/')
 @login_required
 def event_wise_data(event_type):
     """Event-wise Route"""
+    c = Counter.query.first()
     if current_user.role != "Core":
         return redirect(url_for('main.dashboard'))
     total_event = set()
@@ -402,18 +425,16 @@ def event_wise_data(event_type):
             fees += int(eve_paid.fees.replace(' / Team', ''))
         dic = {"event_name": eve, "total_registration": len(even), "fees": fees}
         events_list.append(dic)
-    return render_template('core-committee.html', events=events, event_type=event_type, events_list=events_list)
+    return render_template('core-committee.html', events=events, event_type=event_type, events_list=events_list, count=c.count)
 
 @main.route('/core_dashboard/<event_type>/<event_name>/')
 @login_required
 def event_wise_user(event_type, event_name):
+    c = Counter.query.first()
     events = EventRegistration.query.filter_by(event_type=event_type).filter_by(event_name=event_name).filter_by(paid=1).all()
     event = Events.query.filter_by(event_type=event_type).filter_by(event_name=event_name).first()
     event_date = event.event_date
     in_event_fees = event.in_entry_fees
     out_event_fees = event.out_entry_fees
-    return render_template('event_wise_user.html', events=events, event_name=event_name, event_date=event_date, in_event_fees=in_event_fees, out_event_fees=out_event_fees)
-
-
-
-    
+    return render_template('event_wise_user.html', events=events, event_name=event_name, event_date=event_date, 
+    in_event_fees=in_event_fees, out_event_fees=out_event_fees, count=c.count)

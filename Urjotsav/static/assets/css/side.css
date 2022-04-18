@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: url(https://i.imgur.com/3Ad4Atf.jpg);
+    /* background: url(https://i.imgur.com/3Ad4Atf.jpg); */
     background-position: center;
     background-size: cover;
     height: 100vh
@@ -50,11 +50,10 @@ nav li a {
 nav li:nth-child(1) a {
     background: #ff0000
 }
+
 nav li:nth-child(2) a {
     background: blue
 }
-
-
 
 ul li  span {
     display: block;
@@ -62,5 +61,3 @@ ul li  span {
     letter-spacing: 1px;
     text-transform: uppercase
 }
-
-

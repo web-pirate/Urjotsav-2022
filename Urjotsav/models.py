@@ -90,8 +90,5 @@ class Payments(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class Counter(db.Model):
-    id= db.Column(db.Integer, primary_key=True)
-    count= db.Column(db.Integer)
-
-    
-
+    id = db.Column(db.Integer, primary_key=True)
+    count = db.Column(db.Integer)
