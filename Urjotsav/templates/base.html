@@ -24,9 +24,21 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/side.css') }}">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  {% block metas %}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <scriptasync src="https://www.googletagmanager.com/gtag/js?id=G-TWP130TM3R">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      functiongtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-  {% endblock metas %}
+      gtag('config', 'G-TWP130TM3R');
+    </script>
+
+
+    {% block metas %}
+
+    {% endblock metas %}
 
 </head>
 
