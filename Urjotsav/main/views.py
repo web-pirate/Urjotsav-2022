@@ -296,7 +296,6 @@ def payment_success():
     return redirect(url_for('main.dashboard'))
 
 
-
 @main.route('/event_delete/', methods=['POST'])
 @login_required
 def event_delete():
@@ -316,7 +315,6 @@ def event_delete():
     db.session.commit()
     flash("Deleted successfully.", "success")
     return redirect(url_for('main.dashboard'))
-
 
 
 @main.route('/gallery/')
@@ -344,7 +342,7 @@ def dashboard():
     return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event, count=c.count)
 
 
-@main.route('/core_dashboard/')
+@main.route('/core_dashboard/', methods=['GET', 'POST'])
 @login_required
 def core_dashboard():
     """Core Dashboard Route"""
@@ -396,6 +394,8 @@ def core_dashboard():
         managerial_amount_collected += int(event.fees.replace(' / Team', ''))
     for event in technical_eve_collected:
         technical_amount_collected += int(event.fees.replace(' / Team', ''))
+    if request.method == "POST":
+        users = User.query.filter(User.reward_points>=int(request.form.get('get_range'))).all()
     
     return render_template('dashboard.html', sports=sports, cultural=cultural, users=users,
      managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, 
@@ -426,6 +426,7 @@ def event_wise_data(event_type):
         dic = {"event_name": eve, "total_registration": len(even), "fees": fees}
         events_list.append(dic)
     return render_template('core-committee.html', events=events, event_type=event_type, events_list=events_list, count=c.count)
+
 
 @main.route('/core_dashboard/<event_type>/<event_name>/')
 @login_required
