@@ -178,9 +178,10 @@
 
             <form action="/core_dashboard/" method="post" id="get_reward_points">
                 <label for="get_range" class="form-label">Select Range For Reward Points</label>
-                <input type="range" min="0" max="200" id="get_range" name="get_range" onchange="myFunction()">
+                <input type="range" min="0" max="200" id="get_range" name="get_range" value="{{ get_range }}" onchange="myFunction()">
                 <input class="submit" type="submit" hidden></input>
-                <span id="get_range_value"></span>
+                <br>
+                <span id="get_range_value">Showing result for: {{ get_range }}</span>
             </form>
 
 
@@ -361,7 +362,7 @@ function myFunction() {
   const myForm = document.getElementById("get_reward_points");
   var get_range_value = document.getElementById("get_range_value");
   myForm.submit();
-  get_range_value.innerHTML = x;
+  get_range_value.innerHTML = "Showing result for: "+ x;
 }
 </script>
 
