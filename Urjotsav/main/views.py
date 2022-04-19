@@ -296,7 +296,6 @@ def payment_success():
     return redirect(url_for('main.dashboard'))
 
 
-
 @main.route('/event_delete/', methods=['POST'])
 @login_required
 def event_delete():
@@ -316,7 +315,6 @@ def event_delete():
     db.session.commit()
     flash("Deleted successfully.", "success")
     return redirect(url_for('main.dashboard'))
-
 
 
 @main.route('/gallery/')
@@ -344,7 +342,7 @@ def dashboard():
     return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event, count=c.count)
 
 
-@main.route('/core_dashboard/')
+@main.route('/core_dashboard/', methods=['GET', 'POST'])
 @login_required
 def core_dashboard():
     """Core Dashboard Route"""
@@ -368,6 +366,7 @@ def core_dashboard():
     managerial_eve_collected = EventRegistration.query.filter_by(event_type="managerial").filter_by(paid=1).all()
     technical_eve_collected = EventRegistration.query.filter_by(event_type="technical").filter_by(paid=1).all()
     users = User.query.order_by(User.reward_points.desc()).all()[0:3]
+    get_range = "Top 3"
 
     sports_amount = 0
     cultural_amount = 0
@@ -396,12 +395,15 @@ def core_dashboard():
         managerial_amount_collected += int(event.fees.replace(' / Team', ''))
     for event in technical_eve_collected:
         technical_amount_collected += int(event.fees.replace(' / Team', ''))
+    if request.method == "POST":
+        get_range = int(request.form.get('get_range'))
+        users = User.query.filter(User.reward_points>=int(request.form.get('get_range'))).order_by(User.reward_points.desc()).all()
     
     return render_template('dashboard.html', sports=sports, cultural=cultural, users=users,
      managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, 
      managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, 
      cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, 
-     technical_amount=technical_amount, count=c.count)
+     technical_amount=technical_amount, count=c.count, get_range=get_range)
 
 
 @main.route('/core_dashboard/<event_type>/')
@@ -426,6 +428,7 @@ def event_wise_data(event_type):
         dic = {"event_name": eve, "total_registration": len(even), "fees": fees}
         events_list.append(dic)
     return render_template('core-committee.html', events=events, event_type=event_type, events_list=events_list, count=c.count)
+
 
 @main.route('/core_dashboard/<event_type>/<event_name>/')
 @login_required

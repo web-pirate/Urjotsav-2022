@@ -173,9 +173,19 @@
             </script>
 
             <!-- Charts End -->
+            <br>
+            <br>
+
+            <form action="/core_dashboard/" method="post" id="get_reward_points">
+                <label for="get_range" class="form-label">Select Range For Reward Points</label>
+                <input type="range" min="0" max="200" id="get_range" name="get_range" value="{{ get_range }}" onchange="myFunction()">
+                <input class="submit" type="submit" hidden></input>
+                <br>
+                <span id="get_range_value">Showing result for: {{ get_range }}</span>
+            </form>
 
 
-            <div class="shop-cart padding-tb w-100 ">
+            <div class="shop-cart w-100 ">
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="cart-top">
@@ -345,4 +355,15 @@
     </div>
 </div>
 <!-- Registration section end Here -->
+
+<script>
+function myFunction() {
+  var x = document.getElementById("get_range").value;
+  const myForm = document.getElementById("get_reward_points");
+  var get_range_value = document.getElementById("get_range_value");
+  myForm.submit();
+  get_range_value.innerHTML = "Showing result for: "+ x;
+}
+</script>
+
 {% endblock content %}
