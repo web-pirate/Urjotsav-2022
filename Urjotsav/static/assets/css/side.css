@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: url(https://i.imgur.com/3Ad4Atf.jpg);
+  
     background-position: center;
     background-size: cover;
     height: 100vh
@@ -18,7 +18,7 @@ body {
 
 nav {
     position: fixed;
-    width: 100px;
+    width: 120px;
     margin-top: 150px;
     transition: all 0.3s linear;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .4)
@@ -52,6 +52,9 @@ nav li:nth-child(1) a {
 }
 nav li:nth-child(2) a {
     background: blue
+}
+nav li:nth-child(3) a {
+    background: pink
 }
 
 
