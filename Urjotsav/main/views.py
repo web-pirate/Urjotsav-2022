@@ -46,9 +46,9 @@ def register():
             if not User.query.filter_by(email=request.form.get('email').strip().lower()).first() and not User.query.filter_by(mobile_number=request.form.get('mobile_number')).first():
                 s = URLSerializer(current_app.config['SECRET_KEY'])
                 remember = request.form.get('remember')
+                college = request.form.get('college')
                 if not remember:
                     college = "Prestige Institute of Engineering Management & Research, Indore"
-                college = request.form.get('college')
                 token = s.dumps({"college": college, "name": request.form.get('name'), "email": request.form.get('email').strip().lower(), "Mobile Number": request.form.get('mobile_number'), "enrollment_number": request.form.get('enrollment_number'), "dept_name": request.form.get('dept_name'), "password": request.form.get('password')},
                                 salt="send-email-confirmation")
                 try:
@@ -293,6 +293,32 @@ def payment_success():
     pay.status = "Success"
     db.session.commit()
     flash("Payment Received.", "success")
+    return redirect(url_for('main.dashboard'))
+
+
+@main.route('/reward_point_add/', methods=['POST'])
+@login_required
+def reward_point_add():
+    event_id = request.form.get('event_id')
+    position = request.form.get('position')
+    eve = EventRegistration.query.filter_by(pay_id=event_id).first()
+    team_members = eve.team_members_id.split(', ')
+    for member in team_members:
+        user = User.query.filter_by(id=int(member)).first()
+        dept = Department.query.filter_by(dept_name=user.dept_name).first()
+        message = ""
+        points = 0
+        if position == "first":
+            points = 25
+            message = "First Position allocated."
+        else:
+            points = 10
+            message = "Second Position allocated."
+        user.reward_points += points
+        dept.reward_points += points
+        db.session.commit()
+
+    flash(message, "success")
     return redirect(url_for('main.dashboard'))
 
 

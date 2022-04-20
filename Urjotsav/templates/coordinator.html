@@ -123,7 +123,7 @@
 
                                     {% for event in events %}
                                     <tr>
-                                        <td>{{ event.event_type }}</td>
+                                        <td>{{ event.event_type | title }}</td>
                                         <td>{{ event.event_name }}</td>
                                         <td class="product-item">
                                             {{ event.team_leader }}
@@ -135,7 +135,24 @@
                                         <td>{{ event.date.date() }}</td>
                                         <td>
                                             {% if event.paid %}
-                                            Paid
+                                            <span>Paid</span>
+                                            <!-- <form action="{{ url_for('main.reward_point_add') }}" method="post">
+                                                <div class="btn-sm">
+                                                    <input type="text" value="{{ event.pay_id }}" name="event_id"
+                                                        hidden>
+                                                    <input type="text" value="first" name="position" hidden>
+                                                    <button type="submit" class="btn btn-success">First</button>
+                                                </div>
+                                            </form>
+
+                                            <form action="{{ url_for('main.reward_point_add') }}" method="post">
+                                                <div class="btn-sm">
+                                                    <input type="text" value="{{ event.pay_id }}" name="event_id"
+                                                        hidden>
+                                                    <input type="text" value="second" name="position" hidden>
+                                                    <button type="submit" class="btn btn-success">Second</button>
+                                                </div>
+                                            </form> -->
                                             {% else %}
                                             <form action="{{ url_for('main.payment_success') }}" method="post">
                                                 <div class="btn-sm">
