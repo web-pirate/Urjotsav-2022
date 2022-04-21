@@ -302,6 +302,7 @@ def reward_point_add():
     event_id = request.form.get('event_id')
     position = request.form.get('position')
     eve = EventRegistration.query.filter_by(pay_id=event_id).first()
+    events = EventRegistration.query.filter_by(event_name=eve.event_name).all()
     team_members = eve.team_members_id.split(', ')
     for member in team_members:
         user = User.query.filter_by(id=int(member)).first()
@@ -317,6 +318,14 @@ def reward_point_add():
         user.reward_points += points
         dept.reward_points += points
         db.session.commit()
+    if position == 'first':
+        for event in events:
+            event.first_no = False
+            db.session.commit()
+    else:
+        for event in events:
+            event.second_no = False
+            db.session.commit()
 
     flash(message, "success")
     return redirect(url_for('main.dashboard'))
