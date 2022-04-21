@@ -136,7 +136,8 @@
                                         <td>
                                             {% if event.paid %}
                                             <span>Paid</span>
-                                            <!-- <form action="{{ url_for('main.reward_point_add') }}" method="post">
+                                            {% if event.first_no %}
+                                            <form action="{{ url_for('main.reward_point_add') }}" method="post">
                                                 <div class="btn-sm">
                                                     <input type="text" value="{{ event.pay_id }}" name="event_id"
                                                         hidden>
@@ -144,7 +145,8 @@
                                                     <button type="submit" class="btn btn-success">First</button>
                                                 </div>
                                             </form>
-
+                                            {% endif %}
+                                            {% if event.second_no %}
                                             <form action="{{ url_for('main.reward_point_add') }}" method="post">
                                                 <div class="btn-sm">
                                                     <input type="text" value="{{ event.pay_id }}" name="event_id"
@@ -152,7 +154,8 @@
                                                     <input type="text" value="second" name="position" hidden>
                                                     <button type="submit" class="btn btn-success">Second</button>
                                                 </div>
-                                            </form> -->
+                                            </form>
+                                            {% endif %}
                                             {% else %}
                                             <form action="{{ url_for('main.payment_success') }}" method="post">
                                                 <div class="btn-sm">

@@ -72,6 +72,8 @@ class EventRegistration(db.Model):
     team_members_id = db.Column(db.String(1000), nullable=False)
     paid = db.Column(db.Boolean)
     pay_id = db.Column(db.String(100))
+    first_no = db.Column(db.Boolean, default=True)
+    second_no = db.Column(db.Boolean, default=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
