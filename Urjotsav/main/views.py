@@ -184,7 +184,7 @@ def profile():
     total_amount = 0
     events = EventRegistration.query.filter_by(user_id=current_user.id).all()
     for event in events:
-        total_amount += int(event.fees)
+        total_amount += int(event.fees.replace(' / Team', ''))
     return render_template('profile.html', events=events, total_amount=total_amount, count=c.count)
 
 
@@ -367,14 +367,20 @@ def dashboard():
     if current_user.role != "Co-ordinator":
         return redirect(url_for('main.core_dashboard'))
     events_list = []
+    event_list_collected = []
     event = Events.query.filter_by(main_co_ordinator=current_user.id).all()
     for eve in event:
         events_list.extend(EventRegistration.query.filter_by(event_name=eve.event_name).all())
+    for eve in event:
+        event_list_collected.extend(EventRegistration.query.filter_by(event_name=eve.event_name).filter_by(paid=1).all())
     total_found = len(events_list)
     total_amount = 0
+    total_amount_collected = 0
     for eve in events_list:
-        total_amount += int(eve.fees)
-    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event, count=c.count)
+        total_amount += int(eve.fees.replace(' / Team', ''))
+    for eve in event_list_collected:
+        total_amount_collected += int(eve.fees.replace(' / Team', ''))
+    return render_template('coordinator.html', events=events_list, total_found=total_found, total_amount=total_amount, event=event, count=c.count, total_amount_collected=total_amount_collected)
 
 
 @main.route('/core_dashboard/', methods=['GET', 'POST'])
