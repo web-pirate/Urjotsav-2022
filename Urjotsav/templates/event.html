@@ -70,7 +70,8 @@
                                     <td>
                                         {% if current_user.is_authenticated and current_user.role == "Student" %}
                                         <div class="about-btn-grp btn-sm">
-                                            <a href="#" class="lab-btn style-orange"><span>Register</span></a>
+                                            <a href="{{ url_for('main.event_registration', event_name=event_name) }}"
+                                                class="lab-btn style-orange"><span>Register</span></a>
                                         </div>
                                         {% elif current_user.is_authenticated and current_user.role == "Co-ordinator" %}
                                         <div class="about-btn-grp btn-sm">
