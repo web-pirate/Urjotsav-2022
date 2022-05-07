@@ -31,6 +31,7 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
+
             <form class="account-form" method='post' action="{{ url_for('main.login') }}">
                 <div class="form-group">
                     <input type="email" placeholder="Email" name="email">

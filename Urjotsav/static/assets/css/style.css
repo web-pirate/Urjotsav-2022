@@ -7196,7 +7196,6 @@ ul li {
     width: 150px;
   }
 }
-
 .circle{
   padding: 10px !important;
   color: red !important;
@@ -7211,7 +7210,6 @@ ul li {
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-
 @media (max-width: 770px) {
   .vedio{
     width: 202px;

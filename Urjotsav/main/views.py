@@ -352,11 +352,13 @@ def event_delete():
     return redirect(url_for('main.dashboard'))
 
 
+
 @main.route('/gallery/')
 def gallery():
     """Gallery Route"""
     c = Counter.query.first()
     return render_template('gallery.html', count=c.count)
+
 
 
 @main.route('/dashboard/')
@@ -396,12 +398,12 @@ def core_dashboard():
     managerial = len(EventRegistration.query.filter_by(event_type='managerial').all())
     technical = len(EventRegistration.query.filter_by(event_type='technical').all())
     depts = Department.query.order_by(Department.reward_points.desc()).all()
-    
+
     sports_eve = EventRegistration.query.filter_by(event_type="sports").all()
     cultural_eve = EventRegistration.query.filter_by(event_type="cultural").all()
     managerial_eve = EventRegistration.query.filter_by(event_type="managerial").all()
     technical_eve = EventRegistration.query.filter_by(event_type="technical").all()
-    
+
     sports_eve_collected = EventRegistration.query.filter_by(event_type="sports").filter_by(paid=1).all()
     cultural_eve_collected = EventRegistration.query.filter_by(event_type="cultural").filter_by(paid=1).all()
     managerial_eve_collected = EventRegistration.query.filter_by(event_type="managerial").filter_by(paid=1).all()
@@ -427,7 +429,7 @@ def core_dashboard():
         managerial_amount += int(event.fees.replace(' / Team', ''))
     for event in technical_eve:
         technical_amount += int(event.fees.replace(' / Team', ''))
-    
+
     for event in sports_eve_collected:
         sports_amount_collected += int(event.fees.replace(' / Team', ''))
     for event in cultural_eve_collected:
@@ -436,14 +438,15 @@ def core_dashboard():
         managerial_amount_collected += int(event.fees.replace(' / Team', ''))
     for event in technical_eve_collected:
         technical_amount_collected += int(event.fees.replace(' / Team', ''))
+
     if request.method == "POST":
         get_range = int(request.form.get('get_range'))
         users = User.query.filter(User.reward_points>=int(request.form.get('get_range'))).order_by(User.reward_points.desc()).all()
-    
+
     return render_template('dashboard.html', sports=sports, cultural=cultural, users=users,
-     managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected, 
-     managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected, 
-     cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount, 
+     managerial=managerial, technical=technical, depts=depts, technical_amount_collected=technical_amount_collected,
+     managerial_amount_collected=managerial_amount_collected, sports_amount=sports_amount, sports_amount_collected=sports_amount_collected,
+     cultural_amount_collected=cultural_amount_collected, cultural_amount=cultural_amount, managerial_amount=managerial_amount,
      technical_amount=technical_amount, count=c.count, get_range=get_range)
 
 
@@ -469,7 +472,6 @@ def event_wise_data(event_type):
         dic = {"event_name": eve, "total_registration": len(even), "fees": fees}
         events_list.append(dic)
     return render_template('core-committee.html', events=events, event_type=event_type, events_list=events_list, count=c.count)
-
 
 @main.route('/core_dashboard/<event_type>/<event_name>/')
 @login_required

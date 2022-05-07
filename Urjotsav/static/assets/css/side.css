@@ -10,6 +10,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+  
     background-position: center;
     background-size: cover;
     height: 100vh
@@ -49,7 +50,6 @@ nav li a {
 nav li:nth-child(1) a {
     background: #ff0000
 }
-
 nav li:nth-child(2) a {
     background: blue
 }
@@ -57,9 +57,13 @@ nav li:nth-child(3) a {
     background: pink
 }
 
+
+
 ul li  span {
     display: block;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase
 }
+
+

@@ -56,10 +56,10 @@
                                 <tr>
                                     <th scope="row" style="text-align:center;">{{ loop.index }}
                                     </th>
-                                    <td>{{ event.event_name | title }}</td>
-                                    <td>{{ event.co_cordinators | title }}</td>
+                                    <td>{{ event.event_name }}</td>
+                                    <td>{{ event.co_cordinators.split('\n')|join('<br>'|safe) }}</td>
                                     <td>{{ event.event_date.date() }}</td>
-                                    <td>{{ event.venue | title }}</td>
+                                    <td>{{ event.venue }}</td>
                                     {% if current_user.is_authenticated and current_user.is_piemr %}
                                     <td>₹ {{ event.in_entry_fees }}</td>
                                     {% else %}

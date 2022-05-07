@@ -33,7 +33,7 @@
 
 
                         <div class="cart-top">
-                            <h3 class="title">Eventwise Details<span class="committee"> (Paid Registrations)</span>
+                            <h3 class="title">Eventwise Details<span class="committe"> (Paid Registrations)</span>
                             </h3>
 
                             {% if events_list[0] %}
@@ -55,9 +55,8 @@
                                                 {{ loop.index }}.
                                             </div>
                                         </td>
-                                        <td> <a
-                                                href="{{ url_for('event_wise_user', event_type=event_type, event_name=event['event_name']) }}">{{
-                                                event["event_name"] }}</a> </td>
+                                        <td><a href="{{ url_for('main.event_wise_user', event_type=event_type, event_name=event['event_name']) }}">{{
+                                                event["event_name"] }}</a></td>
                                         <td>{{ event["total_registration"] }}</td>
                                         <td>₹ {{ event["fees"] }}</td>
                                     </tr>
